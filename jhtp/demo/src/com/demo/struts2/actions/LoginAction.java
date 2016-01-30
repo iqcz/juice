@@ -28,8 +28,7 @@ public class LoginAction extends ActionSupport {
 
 	public String execute() throws Exception {
 		if (this.userDAO.isValid(username, password)) {
-			ActionContext.getContext().getSession().put(Constants.USERNAME_KEY,
-					username);
+			ActionContext.getContext().getSession().put(Constants.USERNAME_KEY, username);
 			return Action.SUCCESS;
 		} else {
 			super.addActionError(super.getText("login.message.failed"));
