@@ -24,8 +24,7 @@ public class UserDAO extends HibernateDaoSupport implements IUserDAO {
 		});
 		
 		List list1 = (List) getHibernateTemplate().execute(session -> session.createCriteria(User.class)
-				.add(Restrictions.eq("username", username))
-						.add(Restrictions.eq("password", password)).list());
+				.add(Restrictions.eq("username", username)).add(Restrictions.eq("password", password)).list());
 		if (list.size() > 0) {
 			return true;
 		} else {
@@ -58,7 +57,7 @@ public class UserDAO extends HibernateDaoSupport implements IUserDAO {
 				new Integer(userid));
 	}
 
-	public List getUsers() {
+	public List<User> getUsers() {
 		return getHibernateTemplate().find("from User");
 	}
 
