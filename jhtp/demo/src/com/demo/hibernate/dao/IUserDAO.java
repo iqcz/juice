@@ -14,7 +14,7 @@ public interface IUserDAO {
 
 	public User getUser(String userid);
 
-	public List getUsers();
+	public List<User> getUsers();
 
 	public void deleteUser(String userid);
 }
