@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ProcessingEmployees {
@@ -59,9 +60,14 @@ public class ProcessingEmployees {
 		// sort employees by last name, then first name
 		System.out.printf("%nEmployees in ascending order by last name then first:%n");
 		
+		List<String> lowSalaryEmployeeName = list.parallelStream()
+				.filter(d -> d.getSalary() < 4000)
+				.sorted(Comparator.comparing(Employee::getSalary))
+				.map(Employee::getName)
+				.collect(Collectors.toList());
 		
 		
-		
+		System.out.println(lowSalaryEmployeeName);
 		
 	}
 }
