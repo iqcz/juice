@@ -32,9 +32,9 @@ public class Pager {
 	protected int lastPageNo = 1;
 
 	// 结果集存放List
-	protected List resultList;
+	protected List<String> resultList;
 	
-	public Pager(int pageSize, int pageNo, int rowCount, List resultList) {
+	public Pager(int pageSize, int pageNo, int rowCount, List<String> resultList) {
 		this.pageSize = pageSize;
 		this.pageNo = pageNo;
 		this.rowCount = rowCount;
@@ -58,7 +58,7 @@ public class Pager {
 	}
 	
 	public Object[] getPageSizeIndexs() {
-		List result = new ArrayList(pageSizeList.length);
+		List<String> result = new ArrayList<>(pageSizeList.length);
 		for (int i = 0; i < pageSizeList.length; i++) {
 			result.add(String.valueOf(pageSizeList[i]));
 		}
@@ -67,7 +67,7 @@ public class Pager {
 	}
 	
 	public Object[] getPageNoIndexs() {
-		List result = new ArrayList(pageCount);
+		List<String> result = new ArrayList<>(pageCount);
 		for (int i = 0; i < pageCount; i++) {
 			result.add(String.valueOf(i + 1));
 		}
@@ -115,11 +115,11 @@ public class Pager {
 		this.pageSizeList = pageSizeList;
 	}
 
-	public List getResultList() {
+	public List<String> getResultList() {
 		return resultList;
 	}
 
-	public void setResultList(List resultList) {
+	public void setResultList(List<String> resultList) {
 		this.resultList = resultList;
 	}
 
