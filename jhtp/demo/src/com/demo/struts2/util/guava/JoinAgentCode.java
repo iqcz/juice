@@ -83,6 +83,7 @@ public class JoinAgentCode {
 		}
 
 		System.out.println(ipList);
+		// just for test.
 	}
 
 }
