@@ -13,5 +13,7 @@ public class App
         System.out.println("delete");
         
         String str = "null";
+        
+        System.out.println(str);
     }
 }
