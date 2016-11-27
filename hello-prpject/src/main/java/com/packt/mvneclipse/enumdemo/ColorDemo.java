@@ -9,6 +9,8 @@ public class ColorDemo {
 			System.out.println("Name: " + c.name());
 			System.out.println("codinal: " + c.ordinal());
 			System.out.println("tostring: " + c.toString());
+			System.out.println(c.getColor());
+			System.out.println("==============");
 		}
 		
 	}
