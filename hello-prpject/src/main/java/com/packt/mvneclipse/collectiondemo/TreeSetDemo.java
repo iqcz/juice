@@ -20,7 +20,7 @@ public class TreeSetDemo {
 		ts.add("F");
 		ts.add("D");
 
-		System.out.println(ts);
+		System.out.println(ts.first());
 		System.out.println(ts.last());
 	}
 
