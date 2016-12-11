@@ -13,6 +13,16 @@ public class GetAnnotations {
 		for (int i = 0; i < ans.length; i++) {
 			System.out.println(ans[i]);
 		}
+		
+		// 判断制定方法上有无制定类型的Annotation存在
+		if(toStringMethod.isAnnotationPresent(MyAnnotation.class)) {
+			MyAnnotation myAnno = null;
+			myAnno = toStringMethod.getAnnotation(MyAnnotation.class);
+			String key = myAnno.key();
+			String value = myAnno.value();
+			
+			System.out.printf("%s -> %s.", key, value);
+		}
 	}
 }
 
