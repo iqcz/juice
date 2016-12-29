@@ -1,0 +1,19 @@
+----------------------------------------------------------------
+Sun Nov 27 10:58:15 CST 2016:
+正在使用类加载程序 sun.misc.Launcher$AppClassLoader@66d3c617 引导数据库
+目录 C:\sourcreCode\examples\ch24\ch24\books_examples\books 中的 Derby 版本 The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631) 实例 a816c00e-0158-a3b8-01f2-00000707c4e8
+已从 file:/C:/Java/jdk1.8.0_102/db/lib/derby.jar 加载
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_102-b14
+user.dir=C:\sourcreCode\examples\ch24\ch24\books_examples
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+数据库类加载程序已启动 - derby.database.classpath=''
+----------------------------------------------------------------
+Sun Nov 27 11:01:52 CST 2016：正在关闭 Derby 引擎
+----------------------------------------------------------------
+Sun Nov 27 11:01:52 CST 2016:
+正在使用类加载程序 sun.misc.Launcher$AppClassLoader@66d3c617 关闭数据库目录 C:\sourcreCode\examples\ch24\ch24\books_examples\books 上的实例 a816c00e-0158-a3b8-01f2-00000707c4e8
+----------------------------------------------------------------
