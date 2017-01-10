@@ -1,5 +1,10 @@
 package com.packt.mvneclipse.stringdemo;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +24,17 @@ public class JoinerDemo {
 		strList.add("");
 		strList.add("Three");
 		
-		System.out.println(buildString(strList, "|").toString());
+		System.out.println(buildString(strList, ";").toString());
+		System.out.println(StandardCharsets.UTF_8);
+		
+		
+		try (InputStream input = new FileInputStream("/Users/ben/details.txt")){
+			input.available();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 	}
 
 	public static String buildString(List<String> stringList, String delimiter) {
