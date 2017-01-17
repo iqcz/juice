@@ -8,14 +8,14 @@ import com.packt.mvneclipse.guava.model.Person;
 public class SetsExample {
 
 	public static void main(String[] args) {
-//		Set<String> set1 = Sets.newHashSet("one", "two", "three"); // 元素多的set应该放在前面。in the first set.
-//		Set<String> set2 = Sets.newHashSet("one", "two", "four");
-//		
-//		System.out.println(Sets.difference(set1, set2));
-//		Sets.SetView<String> setView = Sets.symmetricDifference(set1, set2);// 两个set 做差集
-//		for(String element : setView) {
-//			System.out.println(element);
-//		}
+		Set<String> set1 = Sets.newHashSet("one", "two", "three"); // 元素多的set应该放在前面。in the first set.
+		Set<String> set2 = Sets.newHashSet("one", "two", "four");
+		
+		System.out.println(Sets.difference(set1, set2));
+		Sets.SetView<String> setView = Sets.symmetricDifference(set1, set2);// 两个set 做差集
+		for(String element : setView) {
+			System.out.println(element);
+		}
 		
 		Person p1 = new Person("Jolin", "Cai", 35, "F");
 		Person p2 = new Person("Jolin", "Cai", 35, "F");
@@ -35,6 +35,9 @@ public class SetsExample {
 		
 		Sets.SetView<String> sv = Sets.intersection(s1, s2);// 两个set 的交集
 		System.out.println(sv);
+		
+		Sets.SetView<String> unionSv = Sets.union(s1, s2); // 两个set的合集
+		System.out.println(unionSv);
 	}
 
 }
