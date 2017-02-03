@@ -5,7 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 /**
  * 在指定文件中查找字母‘a’的个数
- * @author i324779
+ * @author Yanxue Li
  *
  */
 public class FileExample {

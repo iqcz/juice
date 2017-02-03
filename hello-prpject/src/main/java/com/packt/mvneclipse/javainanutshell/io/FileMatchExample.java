@@ -21,7 +21,7 @@ public class FileMatchExample {
 		if(m.find()) {
 		    String metaName = m.group(1);
 		    String arg = m.group(2);
-		    
+
 		    System.out.printf("%s, %s\n", metaName, arg);
 		    // doMeta(metaName, arg);
 		    continue READ;
