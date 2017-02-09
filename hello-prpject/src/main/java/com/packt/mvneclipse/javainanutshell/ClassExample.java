@@ -1,14 +1,14 @@
 package com.packt.mvneclipse.javainanutshell;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.Vector;
 
 public class ClassExample {
 
     public static void main(String[] args) {
-
-	System.out.println(commonAncestor(Integer.class, Double.class));
+//	System.out.println(commonAncestor(Integer.class, Double.class));
+	System.out.println(commonAncestor(Vector.class, ArrayList.class));
 	//System.out.println(commonAncestor(LinkedList.class, ArrayList.class));
     }
 
@@ -39,7 +39,7 @@ public class ClassExample {
 	c = c2;
 	// c != null 非常重要，如果不加，如果c1的继承层级比c2的要深，
 	// 则c2 会一直赋值最后变成 Object，
-	// 而 object 是没有 getSuperClass()方法的。
+	// 而 Object 是没有 getSuperClass()方法的。
 	while(c != null && !c.equals(Object.class)) {
 	    for(Class<?> k : ancestors) {
 		if(c.equals(k)) {
