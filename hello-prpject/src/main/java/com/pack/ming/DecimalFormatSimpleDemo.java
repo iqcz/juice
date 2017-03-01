@@ -2,6 +2,11 @@ package com.pack.ming;
 
 import java.text.DecimalFormat;
 
+/**
+ * 数字格式化
+ * @author TurtusLi
+ *
+ */
 public class DecimalFormatSimpleDemo {
 
     public static void main(String[] args) {
@@ -9,9 +14,9 @@ public class DecimalFormatSimpleDemo {
 	simpleFormat("00000000.###kg", 123456.789);
 	simpleFormat("000000.000", 123.78);
 
-	useApplePatternMethodForm("#.###%", 0.789);
-	useApplePatternMethodForm("###.##", 123456.78);
-	useApplePatternMethodForm("0.00\u2030", 0.789);
+	useApplePatternMethodForm("#.###%", 0.78);
+	useApplePatternMethodForm("###.##", 123456.781); // 最后一位四舍五入，保留两位小数
+	useApplePatternMethodForm("0.00\u2030", 0.789); // 千分位格式
     }
 
     public static void simpleFormat(String pattern, double value) {
