@@ -1,4 +1,4 @@
-package com.pack.ming;
+package com.packt.ming;
 
 import java.text.DecimalFormat;
 
