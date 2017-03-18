@@ -1,4 +1,4 @@
-package com.pack.ming;
+package com.packt.ming;
 
 import java.util.Calendar;
 import java.util.Date;
