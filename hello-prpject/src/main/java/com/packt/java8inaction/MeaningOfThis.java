@@ -2,7 +2,7 @@ package com.packt.java8inaction;
 
 /**
  * What is the final value for printing this?
- * @author i324779
+ * @author Yanxue
  *
  */
 public class MeaningOfThis {
