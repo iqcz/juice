@@ -17,8 +17,9 @@ public class MeaningOfThis {
 	    @Override
 	    public void run() {
 		int value = 10;
-		System.out.println(this.value);
 		System.out.println(value);
+		System.out.println(this.value);
+		System.out.println(MeaningOfThis.this.value);
 	    }
 	};
 	r.run();
