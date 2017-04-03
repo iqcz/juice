@@ -7,6 +7,14 @@ public class FilteringApples {
 
     public static void main(String... args) {
 
+	
+	for (String it : new String[] { "Rod", "Carlos", "Chris" }) {
+	    if (it.length() < 4) {
+		System.out.println(it);
+	    }
+	}
+	
+	
 	List<Apple> inventory = Arrays.asList(
 		new Apple(80, "green"), 
 		new Apple(155, "green"), 
