@@ -11,6 +11,8 @@ public class StaticMethodReference {
 
 	// equivalent to
 	Collections.sort(Arrays.asList(5, 12, 4), (a, b) -> Comparators.ascending(a, b));
+	
+	Collections.sort(Arrays.asList(5, 12, 4), (a, b) -> a.compareTo(b));
     }
 
 }
