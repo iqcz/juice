@@ -5,14 +5,14 @@ import java.util.Collections;
 
 public class StaticMethodReference {
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-	Collections.sort(Arrays.asList(5, 12, 4), Comparators::ascending);
+		Collections.sort(Arrays.asList(5, 12, 4), Comparators::ascending);
 
-	// equivalent to
-	Collections.sort(Arrays.asList(5, 12, 4), (a, b) -> Comparators.ascending(a, b));
-	
-	Collections.sort(Arrays.asList(5, 12, 4), (a, b) -> a.compareTo(b));
-    }
+		// equivalent to
+		Collections.sort(Arrays.asList(5, 12, 4), (a, b) -> Comparators.ascending(a, b));
+
+		Collections.sort(Arrays.asList(5, 12, 4), (a, b) -> a.compareTo(b));
+	}
 
 }

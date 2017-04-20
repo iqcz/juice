@@ -18,6 +18,11 @@ public class InfertypeDemo {
 	
 //	processNames(Collections.emptyList()); // get error in java 7,but OK in java 8
 	processNames(Collections.<String>emptyList()); 
+	
+	Collections.sort(Arrays.asList(5, 12, 4), Comparators::ascending);
+
+	// equivalent to
+	Collections.sort(Arrays.asList(5, 12, 4), (a, b) -> Comparators.ascending(a, b));
     }
     
     static void processNames(List<String> names) {
