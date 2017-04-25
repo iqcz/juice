@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>The HTML5 Programmer’s Reference</title>
+  </head>
+  <body>
+    <article>
+      <h1>Using the &lt;output&gt; tag</h1>
+      <form id="mainform" onsubmit="return false">
+        <label for="input-number">Temperature</label>
+        <input name="input-number" id="input-number" type="number" step="any"><br>
+        
+        <input type="radio" name="convert-choice" id="radio-ftoc" checked value="ftoc">
+        <label for="radio-ftoc">Convert Fahrenheit to Celcius</label><br>
+        
+        <input type="radio" name="convert-choice" id="radio-ctof" value="ctof">
+        <label for="radio-ctof">Convert Celcius to Fahrenheit</label><br>
+        
+        Result:
+        <output name="output-target" for="input-number" id="output-target"></output>
+      </form>
+    </article>
+    <script>
+		var myForm = document.getElementById(’mainform’);
+		var converter = {
+		  ctof: function(degreesC) {
+		    return (((degreesC * 9) / 5) + 32);
+		  },
+		  ftoc: function(degreesF) {
+		    return (((degreesF - 32) * 5) / 9);
+		  }
+		};
+		myForm.addEventListener(’input’, function() {
+		  var inputNumber = document.getElementById(’input-number’),
+		      outputTarget = document.getElementById(’output-target’);
+		  var sel = document.querySelector(’input[name=convert-choice]:checked’).value;
+		  outputTarget.value = converter[sel](parseInt(inputNumber.value));
+		}, false);
+    </script>
+  </body>
+</html>

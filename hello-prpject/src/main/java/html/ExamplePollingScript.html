@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>The HTML5 Programmer’s Reference</title>
+  </head>
+  <body>
+  <script>
+		//This is a mock API that simply returns the same JSON structure
+		//every time the URL is requested. This JSON structure has a single
+		//property, isChanged, which is set to false.
+		var strUri = ’./example3-1.json’;
+		
+		//This is how often we’ll query the mock API, in milliseconds.
+		var timerLength = 1000;
+		
+		//Reference to the currently active timer.
+		var pollTimeout;
+		
+		/**
+		* Fetch an update from a web service at the specified URL. Initiates an
+		* XMLHttpRequest to the service and attaches an event handler for the success
+		* state.
+		* @param {string} strUrl The URL of the target web service.
+		*/
+		function fetchUpdates(strUrl) {
+		 // Create and configure a new XMLHttpRequest object.
+		 var myXhr = new XMLHttpRequest();
+		 myXhr.open("GET", strUrl);
+		 // Register an event handler for the readyStateChange event published by
+		 // XMLHttpRequest.
+		 myXhr.onreadystatechange = function() {
+		   // If readyState is 4, request is complete.
+		   if (myXhr.readyState === 4) {
+		     handleUpdates(myXhr.responseText);
+		   }
+		 };
+		 // Everything is configured. Send the request.
+		 myXhr.send();
+		}
+		
+		/**
+		* Handle an update from the mock API. Parses the JSON returned by the API and
+		* looks for changes, and then initiates the next query to the mock service.
+		* @param {string} jsonString A JSON-formatted string.
+		*/
+		function handleUpdates(jsonString) {
+		 // Parse the JSON string.
+		 var jsonResponse = JSON.parse(jsonString);
+		 if (jsonResponse.isChanged) {
+		   // Handle changes here, probably by checking the structure to determine
+		   // what changed and then route the change to the approprate part of the app.
+		   console.log(’change reported.’);
+		 } else {
+		   console.log(’no changes reported.’);
+		 }
+		 // Schedule the next polling call.
+		 pollTimeout = setTimeout(fetchUpdates.bind(this, strUri), timerLength);
+		}
+		
+		//Initiate polling process. 
+		fetchUpdates(strUri);
+  </script>
+  </body>
+</html>
