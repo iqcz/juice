@@ -9,5 +9,4 @@ public class Test {
 	dog.info();
 	dog.run();
     }
-
 }
