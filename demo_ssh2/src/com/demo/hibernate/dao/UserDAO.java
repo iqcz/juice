@@ -13,13 +13,20 @@ import com.demo.hibernate.beans.User;
 public class UserDAO extends HibernateDaoSupport implements IUserDAO {
 
 	public boolean isValid(final String username, final String password) {
-		List list = (List) getHibernateTemplate().execute(new HibernateCallback() {
-			public Object doInHibernate(Session session) throws HibernateException {
-				List result = session.createCriteria(User.class).add(Restrictions.eq("username", username))
-						.add(Restrictions.eq("password", password)).list();
-				return result;
-			}
-		});
+//		List<User> list = (List<User>) getHibernateTemplate().execute(new HibernateCallback() {
+//			public Object doInHibernate(Session session) throws HibernateException {
+//				List result = session.createCriteria(User.class).add(Restrictions.eq("username", username))
+//						.add(Restrictions.eq("password", password)).list();
+//				return result;
+//			}
+//		});
+		List<User> list = (List<User>) getHibernateTemplate().execute(session -> {
+			return session.createCriteria(User.class)
+					.add(Restrictions.eq("username", username))
+					.add(Restrictions.eq("password", password))
+					.list();
+			});
+			
 		if (list.size() > 0) {
 			return true;
 		} else {
@@ -49,7 +56,7 @@ public class UserDAO extends HibernateDaoSupport implements IUserDAO {
 		return (User) getHibernateTemplate().get(User.class, new Integer(userid));
 	}
 
-	public List getUsers() {
+	public List<User> getUsers() {
 		return getHibernateTemplate().find("from User");
 	}
 
