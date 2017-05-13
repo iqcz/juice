@@ -36,6 +36,7 @@ public class HelloController implements Controller {
 	mv.setViewName("/WEB-INF/content/welcome.jsp");
 	// 返回ModelAndView对象。
 	
+	// just for test new version gitsource
 	return mv;
     } // end method handleRequest
 
