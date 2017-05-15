@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+  		"-//OpenSymphony Group//XWork Validator 1.0//EN"
+		"http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+
+	<validator type="expression">
+		<!-- false出错 -->
+	    <param name="expression"><![CDATA[!(uqm.age>0&&uqm.age2>0&&uqm.age>uqm.age2)]]></param>
+	    <message key="jsp.query.errormessage"></message>
+	</validator>
+	
+</validators> 
