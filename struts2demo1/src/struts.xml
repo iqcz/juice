@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
+    <constant name="struts.locale" value="zh_CN"/>
+    <constant name="struts.custom.i18n.resources" value="message"/>
+    
+	<package name="crud1" namespace="/crud1" extends="struts-default">
+		<action name="userToList" class="cn.javass.user.action.UserToListAction">
+			<result>/user/UserList.jsp</result>
+		</action>
+		<action name="userToAdd" class="cn.javass.user.action.UserToAddAction">
+			<result>/user/UserAdd.jsp</result>
+		</action>
+		<action name="userAdd" class="cn.javass.user.action.UserAddAction">
+			<result>/user/UserSuccess.jsp</result>
+		</action>
+		<action name="userToUpdate" class="cn.javass.user.action.UserToUpdateAction">
+			<result>/user/UserUpdate.jsp</result>
+		</action>
+		<action name="userUpdate" class="cn.javass.user.action.UserUpdateAction">
+			<result>/user/UserSuccess.jsp</result>
+		</action>
+		<action name="userDelete" class="cn.javass.user.action.UserDeleteAction">
+			<result>/user/UserSuccess.jsp</result>
+		</action>
+		<action name="userToQuery" class="cn.javass.user.action.UserToQueryAction">
+			<result>/user/UserQuery.jsp</result>
+		</action>
+		<action name="userQuery" class="cn.javass.user.action.UserQueryAction">
+			<result>/user/UserList.jsp</result>
+			<result name="input">/user/UserQuery.jsp</result>
+		</action>
+	</package>
+
+</struts>
