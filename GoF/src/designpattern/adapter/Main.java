@@ -6,6 +6,8 @@ public class Main {
         Print p = new PrintBanner("Hello");
         p.printWeak();
         p.printStrong();
+      
+      	／／ just for test on ipad app
     }
 
 }
