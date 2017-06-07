@@ -1,4 +1,4 @@
-package templatemethod;
+package designpattern.templatemethod;
 
 public abstract class AbstractDisplay { // 抽象类AbstractDisplay
     

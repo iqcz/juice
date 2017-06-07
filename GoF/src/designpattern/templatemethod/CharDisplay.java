@@ -1,4 +1,4 @@
-package templatemethod;
+package designpattern.templatemethod;
 
 public class CharDisplay extends AbstractDisplay {  // CharDisplay是AbstractDisplay的子类 
     

@@ -1,4 +1,4 @@
-package templatemethod;
+package designpattern.templatemethod;
 
 public class StringDisplay extends AbstractDisplay { // StringDisplay也是AbstractDisplay的子类
 
