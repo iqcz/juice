@@ -1,5 +1,10 @@
 package exam;
 
+/**
+ * StringBuilder 不一定比 String 执行速度快
+ * @author i324779
+ *
+ */
 public class StringVSStringBuilder {
 
 	public static void main(String[] args) {
@@ -26,6 +31,7 @@ public class StringVSStringBuilder {
 		System.out.println(System.currentTimeMillis() - start1);
 		
 		System.out.println(Integer.parseInt("10", 16));
+		
 	}
 
 }
