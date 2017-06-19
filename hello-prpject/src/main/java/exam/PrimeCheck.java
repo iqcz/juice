@@ -30,5 +30,29 @@ public class PrimeCheck {
 	}
 	return true;
     }
+    
+    /**
+     * 减少了循环次数
+     * @param n
+     * @return
+     */
+    public boolean isPrimeFast(long n) {
+        if (n <= 1) {
+            return false;
+        }
+        if (n == 2) {
+            return true;
+        }
+        if (n % 2 == 0) {
+            return false;
+        }
+        long limit = (long) Math.sqrt(n);
+        for (long i = 3; i <= limit; i += 2) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
 
 }
