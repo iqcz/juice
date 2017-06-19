@@ -54,5 +54,9 @@ public class PrimeCheck {
         }
         return true;
     }
+    
+    public boolean isPrimeFaster(long n) {
+	
+    }
 
 }
