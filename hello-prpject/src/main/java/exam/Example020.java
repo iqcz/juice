@@ -2,6 +2,7 @@ package exam;
 
 /**
  * getClass方法的释义是：返回此Object的运行时类。
+ * 要想获取父类，使用：getSuperclass() 方法。
  */
 import java.util.Date;
 
