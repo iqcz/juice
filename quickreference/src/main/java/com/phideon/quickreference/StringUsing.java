@@ -72,6 +72,8 @@ public class StringUsing {
 	
 	// toLowerCase
 	
+	// toUpperCase
+	
 	// trim
 	
 	// valueOf：基本类型转换成String。
