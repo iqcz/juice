@@ -9,12 +9,14 @@ public class HTMLBuilder extends Builder {
     private PrintWriter writer;                                                     // 用于编写文件的PrintWriter
     
     public void makeTitle(String title) {                                           // HTML文件的标题
-        filename = title + ".html";                                                 // 将标题作为文件名
+        filename = title + ".html";   
+        // 将标题作为文件名
         try {
             writer = new PrintWriter(new FileWriter(filename));                     // 生成 PrintWriter
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
         writer.println("<html><head><title>" + title + "</title></head><body>");    // 输出标题
         writer.println("<h1>" + title + "</h1>");
     }
@@ -25,9 +27,11 @@ public class HTMLBuilder extends Builder {
     
     public void makeItems(String[] items) {                                         // HTML文件中的条目
         writer.println("<ul>");                                                     // 用<ul>和<li>输出
+        
         for (int i = 0; i < items.length; i++) {
             writer.println("<li>" + items[i] + "</li>");
         }
+        
         writer.println("</ul>");
     }
     
