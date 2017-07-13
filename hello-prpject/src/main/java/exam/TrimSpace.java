@@ -8,6 +8,10 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+/** 
+ * 使用nio.2 api 读取和写入文件。
+ * 程序功能：去除文本中的空格。
+ */
 public class TrimSpace {
 
     public static void main(String[] args) throws IOException {
