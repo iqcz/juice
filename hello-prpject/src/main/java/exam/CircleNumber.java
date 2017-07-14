@@ -11,14 +11,14 @@ public class CircleNumber {
     }
 
     private static boolean isCircleNumber(int num) {
-	int oldValue = num;
-	int temp = 0;
-	while (num > 0) {
-	    temp = temp * 10 + num % 10;
-	    num /= 10;
+	int oldValue = num; // 保存原有的值
+	int temp = 0; // 反过来的值
+	while (num > 0) { // 循环number的每一位数值
+	    temp = temp * 10 + num % 10; // 得到一位数字
+	    num /= 10; // num 减少一位
 	}
 
-	return temp == oldValue;
+	return temp == oldValue; // 判断反值是否与原值相等
     }
 
 }
