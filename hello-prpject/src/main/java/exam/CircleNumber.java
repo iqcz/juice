@@ -1,5 +1,10 @@
 package exam;
 
+/** 回文数字
+ * 
+ * @author TurtusLi
+ *
+ */
 public class CircleNumber {
 
     public static void main(String[] args) {
