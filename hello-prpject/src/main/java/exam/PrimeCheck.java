@@ -55,8 +55,10 @@ public class PrimeCheck {
         return true;
     }
     
-    /*public boolean isPrimeFaster(long n) {
+    // TODO 还有更快的方式
+    public boolean isPrimeFaster(long n) {
+	return false;
 	
-    }*/
+    }
 
 }
