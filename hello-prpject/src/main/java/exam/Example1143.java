@@ -23,6 +23,7 @@ public class Example1143 {
 
 class MyThread extends Thread {
 
+    @Override
     public void run() {
 	System.out.println("Thread will throw exception.");
 	throw new RuntimeException("My own exception from thread.");
