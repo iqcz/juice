@@ -69,6 +69,7 @@ public class PreJDK9UnmodifiableList {
 	// Create an unmodifiable list and store it in list
 	list3 = Collections.unmodifiableList(list3);
 	
+	// Java 9以后，可以使用of()方法来创建不可变类
 	
     }
 }
