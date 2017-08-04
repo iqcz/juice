@@ -9,6 +9,7 @@ import java.io.LineNumberReader;
 /**
  * 比较两个文本文件的不同
  * @author Yanxue Li
+ LineNumberReader usage
  *
  */
 public class CompareFileTool {
