@@ -1,5 +1,7 @@
 package book.javaspecialtroops;
 
+import java.util.Arrays;
+
 /**
  * String 
  * equals
@@ -17,6 +19,9 @@ public class Chapter01Example {
 		test2();
 		System.out.println("-------");
 		test3();
+		
+		int[] a = {1,2, 3};
+		Arrays.copyOf(a, 1);
 	}
 
 	private static void test1() {
