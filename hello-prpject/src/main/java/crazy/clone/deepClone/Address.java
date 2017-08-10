@@ -1,13 +1,24 @@
-package crazy.shadowClone;
+package crazy.clone.deepClone;
 
-public class Address {
+public class Address implements Cloneable {
+	
 	private String state;
-
 	private String province;
+	private String city;
 
+	public Address() {}
+	
+	public Address(String state, String province, String city) {
+		this.state = state;
+		this.province = province;
+		this.city = city;
+	}
+	
+/** getter and setter method start **/	
 	public String getState() {
 		return state;
 	}
+
 
 	public void setState(String state) {
 		this.state = state;
@@ -28,17 +39,8 @@ public class Address {
 	public void setCity(String city) {
 		this.city = city;
 	}
-
-	private String city;
-
-	public Address() {
-	}
+/** getter and setter method end **/	
 	
-	public Address(String state, String province, String city) {
-		this.state = state;
-		this.province = province;
-		this.city = city;
-	}
 	
 	@Override
 	public String toString() {
@@ -48,5 +50,21 @@ public class Address {
 				.append("City: " + city + ".");
 		
 		return builder.toString();
+	}
+	
+	/**
+	 * 深克隆的话，其作为另一个对象的引用对象，要重写clone方法。
+	 */
+	@Override
+	protected Object clone() {
+		Object obj = null;
+		
+		try {
+			obj =  super.clone();
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
+		
+		return obj;
 	}
 }
