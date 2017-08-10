@@ -1,4 +1,4 @@
-package crazy.shadowClone;
+package crazy.clone.shadowClone;
 
 public class Employee implements Cloneable {
 
@@ -6,8 +6,8 @@ public class Employee implements Cloneable {
 	private int age;
 	private Address address;
 
+/** constructor start **/
 	public Employee() {
-
 	}
 
 	public Employee(String name, int age, Address address) {
@@ -15,7 +15,9 @@ public class Employee implements Cloneable {
 		this.age = age;
 		this.address = address;
 	}
-
+	/** constructor end **/
+	
+/** getter and setter method start **/	
 	public String getName() {
 		return name;
 	}
@@ -39,6 +41,8 @@ public class Employee implements Cloneable {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
+/** getter and setter method end **/	
+	
 	
 	@Override
 	public String toString() {
