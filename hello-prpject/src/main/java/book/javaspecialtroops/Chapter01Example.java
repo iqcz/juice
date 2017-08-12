@@ -7,6 +7,9 @@ import java.util.Arrays;
  * equals
  * ==
  * 各种情况
+ * 还要考虑到，随着JDK版本的升级，个别方法的实现也会有所改动，
+ * 例如intern方法，JDK 6 和JDK 7中就不太一样了。
+ * 
  * @author Yanxue.Li
  *
  */
