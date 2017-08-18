@@ -15,6 +15,9 @@ import static org.hamcrest.CoreMatchers.*;
 public class CharsetsTest {
 
 
+	/**
+	 * 使用字符编码，尽量不要手写，容易写错。
+	 */
     @Test
     public void testCharsets(){
         byte[] bytes = null;
