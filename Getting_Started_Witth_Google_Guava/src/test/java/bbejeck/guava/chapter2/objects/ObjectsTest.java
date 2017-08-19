@@ -9,6 +9,7 @@ import static com.google.common.base.Objects.*;
  * User: Bill Bejeck
  * Date: 3/29/13
  * Time: 8:33 PM
+ * Notice, in the new version of Guava, some of below methods are deprecated.
  */
 public class ObjectsTest {
 
