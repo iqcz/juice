@@ -24,29 +24,28 @@ import java.util.Map;
  * Time: 5:14 PM
  */
 @Configuration
-@ComponentScan(basePackages = {"bbejeck.guava.chapter3.depinjection"})
+@ComponentScan(basePackages = { "bbejeck.guava.chapter3.depinjection" })
 
 public class Chapter3Config {
 
-    @Bean(autowire = Autowire.BY_NAME, name = "lowRainfall")
-    public Predicate<City> lowRainFallPredicate() {
-        return new LowRainfallPredicate();
-    }
+	@Bean(autowire = Autowire.BY_NAME, name = "lowRainfall")
+	public Predicate<City> lowRainFallPredicate() {
+		return new LowRainfallPredicate();
+	}
 
-    @Bean(autowire = Autowire.BY_NAME, name = "smallPopulation")
-    public Predicate<City> smallPopulationPredicate() {
-        return new SmallPopulationPredicate();
-    }
+	@Bean(autowire = Autowire.BY_NAME, name = "smallPopulation")
+	public Predicate<City> smallPopulationPredicate() {
+		return new SmallPopulationPredicate();
+	}
 
-    @Bean
-    public Supplier<List<Book>> bookListSupplier() {
-        return new BookListSupplier(new BookServiceImpl());
-    }
+	@Bean
+	public Supplier<List<Book>> bookListSupplier() {
+		return new BookListSupplier(new BookServiceImpl());
+	}
 
-    @Bean
-    Function<List<Book>, Map<String, String>> bookListConverter() {
-        return new BookListConverter();
-    }
-
+	@Bean
+	Function<List<Book>, Map<String, String>> bookListConverter() {
+		return new BookListConverter();
+	}
 
 }
