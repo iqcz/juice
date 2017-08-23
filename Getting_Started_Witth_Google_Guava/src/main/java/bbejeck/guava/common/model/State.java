@@ -12,31 +12,32 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 public class State {
 
-    private String name;
-    private String code;
-    private Set<City> mainCities = new HashSet<City>();
-    private Region region;
+	private String name;
+	private String code;
+	private Region region;
+	
+	private Set<City> mainCities = new HashSet<City>();
 
-    public State(String name, String code, Set<City> mainCities, Region region) {
-        this.name = checkNotNull(name, "Name can't be null");
-        this.code = checkNotNull(code, "Code can't be null");
-        this.mainCities = checkNotNull(mainCities, "Cities can't be null");
-        this.region = checkNotNull(region);
-    }
+	public State(String name, String code, Set<City> mainCities, Region region) {
+		this.name = checkNotNull(name, "Name can't be null");
+		this.code = checkNotNull(code, "Code can't be null");
+		this.mainCities = checkNotNull(mainCities, "Cities can't be null");
+		this.region = checkNotNull(region);
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getCode() {
-        return code;
-    }
+	public String getCode() {
+		return code;
+	}
 
-    public Region getRegion() {
-        return region;
-    }
+	public Region getRegion() {
+		return region;
+	}
 
-    public Set<City> getMainCities() {
-        return mainCities;
-    }
+	public Set<City> getMainCities() {
+		return mainCities;
+	}
 }
