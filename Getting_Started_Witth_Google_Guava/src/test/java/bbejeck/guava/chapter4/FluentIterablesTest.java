@@ -22,85 +22,83 @@ import static org.junit.Assert.assertThat;
  * Time: 9:36 PM
  */
 public class FluentIterablesTest {
-    private Person person1;
-    private Person person2;
-    private Person person3;
-    private Person person4;
-    Collection<Person> personList;
+	private Person person1;
+	private Person person2;
+	private Person person3;
+	private Person person4;
+	
+	Collection<Person> personList;
 
-    @Before
-    public void setUp() {
-        person1 = new Person("Wilma", "Flintstone", 30, "F");
-        person2 = new Person("Fred", "Flintstone", 32, "M");
-        person3 = new Person("Betty", "Rubble", 31, "F");
-        person4 = new Person("Barney", "Rubble", 33, "M");
-        personList = Lists.newArrayList(person1, person2, person3, person4);
-    }
+	@Before
+	public void setUp() {
+		person1 = new Person("Wilma", "Flintstone", 30, "F");
+		person2 = new Person("Fred", "Flintstone", 32, "M");
+		person3 = new Person("Betty", "Rubble", 31, "F");
+		person4 = new Person("Barney", "Rubble", 33, "M");
+		personList = Lists.newArrayList(person1, person2, person3, person4);
+	}
 
+	@Test
+	public void testFilter() throws Exception {
+		Iterable<Person> personsFilteredByAge = FluentIterable.from(personList).filter(new Predicate<Person>() {
+			@Override
+			public boolean apply(Person input) {
+				return input.getAge() > 31;
+			}
+		});
 
-    @Test
-    public void testFilter() throws Exception {
-        Iterable<Person> personsFilteredByAge = FluentIterable.from(personList).filter(new Predicate<Person>() {
-            @Override
-            public boolean apply(Person input) {
-                return input.getAge() > 31;
-            }
-        });
+		assertThat(Iterables.contains(personsFilteredByAge, person2), is(true));
+		assertThat(Iterables.contains(personsFilteredByAge, person4), is(true));
+		assertThat(Iterables.contains(personsFilteredByAge, person1), is(false));
+		assertThat(Iterables.contains(personsFilteredByAge, person3), is(false));
+	}
 
-        assertThat(Iterables.contains(personsFilteredByAge, person2), is(true));
-        assertThat(Iterables.contains(personsFilteredByAge, person4), is(true));
-        assertThat(Iterables.contains(personsFilteredByAge, person1), is(false));
-        assertThat(Iterables.contains(personsFilteredByAge, person3), is(false));
-    }
+	@Test
+	public void testAnyMatch() throws Exception {
+		Predicate<Person> personOlderThan31Predicate = new Predicate<Person>() {
+			@Override
+			public boolean apply(Person input) {
+				return input.getAge() > 31;
+			}
+		};
 
-    @Test
-    public void testAnyMatch() throws Exception {
-        Predicate<Person> personOlderThan31Predicate =  new Predicate<Person>() {
-            @Override
-            public boolean apply(Person input) {
-                return input.getAge() > 31;
-            }
-        };
+		assertThat(FluentIterable.from(personList).anyMatch(personOlderThan31Predicate), is(true));
+	}
 
-        assertThat(FluentIterable.from(personList).anyMatch(personOlderThan31Predicate),is(true));
-    }
+	@Test
+	public void testAllMatch() throws Exception {
+		Predicate<Person> personOlderThan25Predicate = new Predicate<Person>() {
+			@Override
+			public boolean apply(Person input) {
+				return input.getAge() > 25;
+			}
+		};
 
-    @Test
-    public void testAllMatch() throws Exception {
-        Predicate<Person> personOlderThan25Predicate =  new Predicate<Person>() {
-            @Override
-            public boolean apply(Person input) {
-                return input.getAge() > 25;
-            }
-        };
+		assertThat(FluentIterable.from(personList).allMatch(personOlderThan25Predicate), is(true));
+	}
 
-        assertThat(FluentIterable.from(personList).allMatch(personOlderThan25Predicate),is(true));
-    }
+	@Test
+	public void testFilterNoMatch() throws Exception {
+		Iterable<Person> filtered = FluentIterable.from(personList).filter(new Predicate<Person>() {
+			@Override
+			public boolean apply(Person input) {
+				return input.getAge() < 15;
+			}
+		});
 
+		assertThat(Iterables.isEmpty(filtered), is(true));
+	}
 
-    @Test
-    public void testFilterNoMatch() throws Exception {
-        Iterable<Person> filtered = FluentIterable.from(personList).filter(new Predicate<Person>() {
-            @Override
-            public boolean apply(Person input) {
-                return input.getAge() < 15;
-            }
-        });
+	@Test
+	public void testTransform() throws Exception {
+		List<String> transformed = FluentIterable.from(personList).transform(new Function<Person, String>() {
+			@Override
+			public String apply(Person input) {
 
-        assertThat(Iterables.isEmpty(filtered), is(true));
-    }
-
-    @Test
-    public void testTransform() throws Exception {
-        List<String> transformed = FluentIterable.from(personList).transform(new Function<Person, String>() {
-            @Override
-            public String apply(Person input) {
-
-                return Joiner.on('#').join(input.getLastName(), input.getFirstName(), input.getAge());
-            }
-        }).toList();
-        assertThat(transformed.get(1), is("Flintstone#Fred#32"));
-    }
-
+				return Joiner.on('#').join(input.getLastName(), input.getFirstName(), input.getAge());
+			}
+		}).toList();
+		assertThat(transformed.get(1), is("Flintstone#Fred#32"));
+	}
 
 }

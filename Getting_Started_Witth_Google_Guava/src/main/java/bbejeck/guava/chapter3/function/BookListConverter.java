@@ -15,13 +15,13 @@ import java.util.Map;
  */
 public class BookListConverter implements Function<List<Book>, Map<String, String>> {
 
-    @Override
-    public Map<String, String> apply(List<Book> input) {
-        Map<String,String> map = Maps.newHashMap();
-        Joiner joiner = Joiner.on("|");
-        for (Book book : input) {
-              map.put(book.getIsbn(),joiner.join(book.getTitle(),book.getPublisher(),book.getPrice()));
-        }
-       return map;
-    }
+	@Override
+	public Map<String, String> apply(List<Book> input) {
+		Map<String, String> map = Maps.newHashMap();
+		Joiner joiner = Joiner.on("|");
+		for (Book book : input) {
+			map.put(book.getIsbn(), joiner.join(book.getTitle(), book.getPublisher(), book.getPrice()));
+		}
+		return map;
+	}
 }
