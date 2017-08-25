@@ -24,37 +24,35 @@ import static com.google.common.base.Preconditions.checkNotNull;
 @Component
 public class InjectionExample {
 
-    private Predicate<City> lowRainfallPredicate;
-    private Predicate<City> smallPopulationPredicate;
-    private Supplier<List<Book>> bookListSupplier;
-    private Function<List<Book>, Map<String, String>> bookListConverter;
+	private Predicate<City> lowRainfallPredicate;
+	private Predicate<City> smallPopulationPredicate;
+	private Supplier<List<Book>> bookListSupplier;
+	private Function<List<Book>, Map<String, String>> bookListConverter;
 
-    @Autowired
-    public InjectionExample(Function<List<Book>, Map<String, String>> bookListConverter,
-                            Supplier<List<Book>> bookListSupplier,
-                            @Qualifier("lowRainfall") Predicate<City> lowRainfallPredicate,
-                            @Qualifier("smallPopulation") Predicate<City> smallPopulationPredicate) {
+	@Autowired
+	public InjectionExample(Function<List<Book>, Map<String, String>> bookListConverter,
+			Supplier<List<Book>> bookListSupplier, @Qualifier("lowRainfall") Predicate<City> lowRainfallPredicate,
+			@Qualifier("smallPopulation") Predicate<City> smallPopulationPredicate) {
 
-        this.bookListConverter = checkNotNull(bookListConverter);
-        this.bookListSupplier = checkNotNull(bookListSupplier);
-        this.lowRainfallPredicate = checkNotNull(lowRainfallPredicate);
-        this.smallPopulationPredicate = checkNotNull(smallPopulationPredicate);
-    }
+		this.bookListConverter = checkNotNull(bookListConverter);
+		this.bookListSupplier = checkNotNull(bookListSupplier);
+		this.lowRainfallPredicate = checkNotNull(lowRainfallPredicate);
+		this.smallPopulationPredicate = checkNotNull(smallPopulationPredicate);
+	}
 
+	public Map<String, String> convertBooks(List<Book> books) {
+		return bookListConverter.apply(books);
+	}
 
-    public Map<String, String> convertBooks(List<Book> books) {
-        return bookListConverter.apply(books);
-    }
+	public List<Book> getListOfBooks() {
+		return bookListSupplier.get();
+	}
 
-    public List<Book> getListOfBooks() {
-        return bookListSupplier.get();
-    }
+	public List<City> filterByPopulation(List<City> cities) {
+		return FluentIterable.from(cities).filter(smallPopulationPredicate).toList();
+	}
 
-    public List<City> filterByPopulation(List<City> cities) {
-        return FluentIterable.from(cities).filter(smallPopulationPredicate).toList();
-    }
-
-    public List<City> filterByRainfall(List<City> cities) {
-        return FluentIterable.from(cities).filter(lowRainfallPredicate).toList();
-    }
+	public List<City> filterByRainfall(List<City> cities) {
+		return FluentIterable.from(cities).filter(lowRainfallPredicate).toList();
+	}
 }
