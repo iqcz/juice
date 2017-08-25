@@ -11,6 +11,9 @@ import java.util.Date;
  */
 public class StringToDateFunction implements Function<String, Function<Date, String>> {
 
+	/**
+	 * balabala
+	 */
 	@Override
 	public Function<Date, String> apply(String input) {
 		return new DateFormatFunction(input);
