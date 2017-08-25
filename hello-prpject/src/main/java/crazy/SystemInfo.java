@@ -20,6 +20,10 @@ public class SystemInfo {
 		
 		System.out.println(System.getProperty("os.name"));
 		System.out.println(System.getenv("user.dir"));
+		
+		
+		
+		System.out.println(2<<4);
 	}
 
 }
