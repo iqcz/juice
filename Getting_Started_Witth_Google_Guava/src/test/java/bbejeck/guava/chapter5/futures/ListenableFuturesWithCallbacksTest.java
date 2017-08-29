@@ -17,108 +17,103 @@ import static org.junit.Assert.assertThat;
  *
  */
 
-
 public class ListenableFuturesWithCallbacksTest {
 
-    private ListeningExecutorService executorService;
-    private CountDownLatch startSignal;
-    private CountDownLatch endSignal;
-    private static final int NUM_THREADS = 5;
-    private boolean callbackRan;
+	private ListeningExecutorService executorService;
+	private CountDownLatch startSignal;
+	private CountDownLatch endSignal;
+	private static final int NUM_THREADS = 5;
+	private boolean callbackRan;
 
+	@Before
+	public void setUp() {
+		executorService = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(NUM_THREADS));
+		startSignal = new CountDownLatch(1);
+		endSignal = new CountDownLatch(1);
+		callbackRan = false;
 
-    @Before
-    public void setUp() {
-        executorService = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(NUM_THREADS));
-        startSignal = new CountDownLatch(1);
-        endSignal = new CountDownLatch(1);
-        callbackRan = false;
+	}
 
-    }
+	@After
+	public void tearDown() {
+		executorService.shutdownNow();
+	}
 
-    @After
-    public void tearDown() {
-        executorService.shutdownNow();
-    }
+	@Test
+	public void testRunListenableFutureWithCallback() throws Exception {
+		ListenableFuture<String> futureTask = executorService.submit(new Task(startSignal));
+		futureTask.addListener(new Runnable() {
+			@Override
+			public void run() {
+				callbackRan = true;
+				endSignal.countDown();
+			}
+		}, executorService);
 
-    @Test
-    public void testRunListenableFutureWithCallback() throws Exception {
-        ListenableFuture<String> futureTask = executorService.submit(new Task(startSignal));
-        futureTask.addListener(new Runnable() {
-            @Override
-            public void run() {
-                callbackRan = true;
-                endSignal.countDown();
-            }
-        }, executorService);
+		endSignal.await();
+		assertThat(callbackRan, is(true));
+		assertThat(futureTask.get(), is("Task Done"));
+	}
 
-        endSignal.await();
-        assertThat(callbackRan, is(true));
-        assertThat(futureTask.get(),is("Task Done"));
-    }
+	@Test
+	public void testRunListenableFutureWithFutureCallbackSuccess() throws Exception {
+		ListenableFuture<String> futureTask = executorService.submit(new Task(startSignal));
+		FutureCallbackImpl callback = new FutureCallbackImpl();
+		Futures.addCallback(futureTask, callback);
+		startSignal.countDown();
+		endSignal.await();
+		assertThat(callback.getCallbackResult(), is("Task Done successfully"));
+	}
 
-    @Test
-    public void testRunListenableFutureWithFutureCallbackSuccess() throws Exception {
-        ListenableFuture<String> futureTask = executorService.submit(new Task(startSignal));
-        FutureCallbackImpl callback = new FutureCallbackImpl();
-        Futures.addCallback(futureTask, callback);
-        startSignal.countDown();
-        endSignal.await();
-        assertThat(callback.getCallbackResult(), is("Task Done successfully"));
-    }
+	@Test
+	public void testRunListenableFutureWithFutureCallbackFailure() throws Exception {
+		ListenableFuture<String> futureTask = executorService.submit(new Task(null));
+		FutureCallbackImpl callback = new FutureCallbackImpl();
+		Futures.addCallback(futureTask, callback);
+		// startSignal.countDown(); don't call countdown
+		endSignal.await();
+		assertThat(callback.getCallbackResult(), is("java.lang.NullPointerException"));
+	}
 
-    @Test
-    public void testRunListenableFutureWithFutureCallbackFailure() throws Exception {
-        ListenableFuture<String> futureTask = executorService.submit(new Task(null));
-        FutureCallbackImpl callback = new FutureCallbackImpl();
-        Futures.addCallback(futureTask, callback);
-        //startSignal.countDown();  don't call countdown
-        endSignal.await();
-        assertThat(callback.getCallbackResult(), is("java.lang.NullPointerException"));
-    }
+	public class FutureCallbackImpl implements FutureCallback<String> {
 
+		private StringBuilder builder = new StringBuilder();
 
-    public class FutureCallbackImpl implements FutureCallback<String> {
+		@Override
+		public void onSuccess(String result) {
+			builder.append(result).append(" successfully");
+			done();
 
-        private StringBuilder builder = new StringBuilder();
+		}
 
-        @Override
-        public void onSuccess(String result) {
-            builder.append(result).append(" successfully");
-            done();
+		@Override
+		public void onFailure(Throwable t) {
+			builder.append(t.toString());
+			done();
+		}
 
-        }
+		private void done() {
+			endSignal.countDown();
+		}
 
-        @Override
-        public void onFailure(Throwable t) {
-            builder.append(t.toString());
-            done();
-        }
+		public String getCallbackResult() {
+			return builder.toString();
+		}
+	}
 
-        private void done() {
-            endSignal.countDown();
-        }
+	private class Task implements Callable<String> {
+		private CountDownLatch start;
 
-        public String getCallbackResult() {
-            return builder.toString();
-        }
-    }
+		public Task(CountDownLatch start) {
+			this.start = start;
+		}
 
-
-    private class Task implements Callable<String> {
-        private CountDownLatch start;
-
-        public Task(CountDownLatch start) {
-            this.start = start;
-        }
-
-        @Override
-        public String call() throws Exception {
-            this.start.await(1, TimeUnit.SECONDS);
-            Thread.sleep(1000);
-            return "Task Done";
-        }
-    }
-
+		@Override
+		public String call() throws Exception {
+			this.start.await(1, TimeUnit.SECONDS);
+			Thread.sleep(1000);
+			return "Task Done";
+		}
+	}
 
 }
