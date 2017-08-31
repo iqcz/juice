@@ -46,15 +46,15 @@ public class CreditInquiry {
 
 	Scanner input = null;// Notice, this input can not be open once one invoke is done.
 	try {
-	     input = new Scanner(System.in);
+	    input = new Scanner(System.in);
 	    do {// input user request
 		System.out.printf("%n>> ");
 		request = input.nextInt();
 	    } while ((request < 1) || (request > 4));
 	} catch (NoSuchElementException e) {
-	   e.printStackTrace();
+	    e.printStackTrace();
 	    System.err.println("Invalid input. Terminating.");
-	} 
+	}
 
 	return choices[request - 1]; // return enum value for option
     }
@@ -73,7 +73,7 @@ public class CreditInquiry {
 		if (shouldDisplay(accountType, balance)) {
 		    System.out.printf("%-10d%-12s%-12s%.2f%n", accountNumber, firstName, lastName, balance);
 		} else {
-		    if(input.hasNextLine()) { // when read last record, will get the problem.so add this if condition.
+		    if (input.hasNextLine()) { // when read last record, will get the problem.so add this if condition.
 			input.nextLine(); // discard the rest of the current record
 		    }
 		}
