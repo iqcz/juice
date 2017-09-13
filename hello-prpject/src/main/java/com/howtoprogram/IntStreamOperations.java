@@ -1,5 +1,6 @@
 package com.howtoprogram;
 
+import java.util.function.IntPredicate;
 import java.util.stream.IntStream;
 
 public class IntStreamOperations {
@@ -44,5 +45,10 @@ public class IntStreamOperations {
 
 	// sum range of integers from 1 to 10, inclusive
 	System.out.printf("Sum of integers from 1 to 10: %d%n", IntStream.rangeClosed(1, 10).sum());
+	
+	IntPredicate even = value -> value % 2 == 0;
+	IntPredicate greaterThan5 = value -> value > 5;
+
+
     }
 } // end class IntStreamOperations
