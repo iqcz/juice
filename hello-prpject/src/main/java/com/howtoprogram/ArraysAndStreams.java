@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class ArraysAndStreams {
     public static void main(String[] args) {
-	
+
 	Integer[] values = { 2, 9, 5, 0, 3, 7, 1, 4, 8, 6 };
 
 	// display original values
