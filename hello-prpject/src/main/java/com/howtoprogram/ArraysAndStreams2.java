@@ -30,5 +30,7 @@ public class ArraysAndStreams2 {
 		.filter(s -> s.compareToIgnoreCase("n") < 0)
 		.sorted(String.CASE_INSENSITIVE_ORDER.reversed())
 		.collect(Collectors.toList()));
+	
+	// other methods?
     }
 } // end class ArraysAndStreams2
