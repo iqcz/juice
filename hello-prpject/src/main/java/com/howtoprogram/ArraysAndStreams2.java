@@ -2,6 +2,7 @@ package com.howtoprogram;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class ArraysAndStreams2 {
@@ -30,7 +31,5 @@ public class ArraysAndStreams2 {
 		.filter(s -> s.compareToIgnoreCase("n") < 0)
 		.sorted(String.CASE_INSENSITIVE_ORDER.reversed())
 		.collect(Collectors.toList()));
-	
-	// other methods?
     }
 } // end class ArraysAndStreams2
