@@ -56,6 +56,21 @@ public class ProcessingEmployees {
         list.stream()
             .sorted(lastThenFirst.reversed())
             .forEach(System.out::println);
+        
+        // display unique employee last names sorted
+        System.out.printf("%nUnique employee last names:%n");
+        list.stream()
+            .map(Employee::getLastName)
+            .distinct()                
+            .sorted()
+            .forEach(System.out::println);
 
+        // display only first and last names
+        System.out.printf(
+           "%nEmployee names in order by last name then first name:%n");
+        list.stream()
+            .sorted(lastThenFirst)
+            .map(Employee::getName)
+            .forEach(System.out::println);
     }
 }
