@@ -3,8 +3,10 @@ package com.howtoprogram;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class ProcessingEmployees {
     public static void main(String[] args) {
@@ -34,43 +36,37 @@ public class ProcessingEmployees {
 	System.out.printf("%nFirst employee who earns $4000-$6000:%n%s%n",
 		list.stream().filter(fourToSixThousand).findFirst().get());
 
-	
-        // Functions for getting first and last names from an Employee
-        Function<Employee, String> byFirstName = Employee::getFirstName;
-        Function<Employee, String> byLastName = Employee::getLastName;  
+	// Functions for getting first and last names from an Employee
+	Function<Employee, String> byFirstName = Employee::getFirstName;
+	Function<Employee, String> byLastName = Employee::getLastName;
 
-        // Comparator for comparing Employees by first name then last name
-        Comparator<Employee> lastThenFirst =                           
-           Comparator.comparing(byLastName).thenComparing(byFirstName);
+	// Comparator for comparing Employees by first name then last name
+	Comparator<Employee> lastThenFirst = Comparator.comparing(byLastName).thenComparing(byFirstName);
 
-        // sort employees by last name, then first name
-        System.out.printf(
-           "%nEmployees in ascending order by last name then first:%n");
-        list.stream()
-            .sorted(lastThenFirst)
-            .forEach(System.out::println);
+	// sort employees by last name, then first name
+	System.out.printf("%nEmployees in ascending order by last name then first:%n");
+	list.stream().sorted(lastThenFirst).forEach(System.out::println);
 
-        // sort employees in descending order by last name, then first name
-        System.out.printf(
-           "%nEmployees in descending order by last name then first:%n");
-        list.stream()
-            .sorted(lastThenFirst.reversed())
-            .forEach(System.out::println);
-        
-        // display unique employee last names sorted
-        System.out.printf("%nUnique employee last names:%n");
-        list.stream()
-            .map(Employee::getLastName)
-            .distinct()                
-            .sorted()
-            .forEach(System.out::println);
+	// sort employees in descending order by last name, then first name
+	System.out.printf("%nEmployees in descending order by last name then first:%n");
+	list.stream().sorted(lastThenFirst.reversed()).forEach(System.out::println);
 
-        // display only first and last names
-        System.out.printf(
-           "%nEmployee names in order by last name then first name:%n");
-        list.stream()
-            .sorted(lastThenFirst)
-            .map(Employee::getName)
-            .forEach(System.out::println);
+	// display unique employee last names sorted
+	System.out.printf("%nUnique employee last names:%n");
+	list.stream().map(Employee::getLastName).distinct().sorted().forEach(System.out::println);
+
+	// display only first and last names
+	System.out.printf("%nEmployee names in order by last name then first name:%n");
+	list.stream().sorted(lastThenFirst).map(Employee::getName).forEach(System.out::println);
+
+	// group Employees by department
+	System.out.printf("%nEmployees by department:%n");
+	Map<String, List<Employee>> groupedByDepartment = list.stream()
+		.collect(Collectors.groupingBy(Employee::getDepartment));
+	groupedByDepartment.forEach((department, employeesInDepartment) -> {
+	    System.out.println(department);
+	    employeesInDepartment.forEach(employee -> System.out.printf(" %s%n", employee));
+	});
+
     }
 }
