@@ -8,6 +8,11 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+/**
+ * very important class for using lambda expression.
+ * @author i324779
+ *
+ */
 public class ProcessingEmployees {
     public static void main(String[] args) {
 	// initialize array of Employees
