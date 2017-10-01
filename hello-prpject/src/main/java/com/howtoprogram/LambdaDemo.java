@@ -6,6 +6,13 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * 操作过程
+ * Collection -> Stream -> Stream -> Stream -> Collection
+ * 
+ * @author i324779
+ *
+ */
 public class LambdaDemo {
 
     public static void main(String[] args) {
