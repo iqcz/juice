@@ -16,10 +16,9 @@ public class ReduceMethodExample {
 
 	List<String> quotes = Arrays.asList(billyQuotes);
 
-	
 	// Create a temporary collection for our words
 	List<String> words = quotes.stream()
-	        .flatMap(line -> Stream.of(line.split(" ")))
+	        .flatMap(line -> Stream.of(line.split(" +"))) // 此处是一正则表达式
 	        .collect(Collectors.toList());
 	
 	System.out.println(words);
