@@ -7,7 +7,6 @@ import java.util.stream.Stream;
 /**
  * 统计每个单词的平均长度
  * @author i324779
- *
  */
 public class ReduceMethodExample {
 
@@ -33,7 +32,5 @@ public class ReduceMethodExample {
 	        .map(String::length) // method reference
 	        .reduce(0, (x, y) -> {return x + y;})) / wordCount;
 	System.out.println("Average word length: " + aveLength);
-
     }
-
 }
