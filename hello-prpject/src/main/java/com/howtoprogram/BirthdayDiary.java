@@ -16,17 +16,10 @@ public class BirthdayDiary {
 	birthdays = new HashMap<>();
     }
 
-    /**
-     * 
-     * @param name
-     * @param day
-     * @param month
-     * @param year
-     * @return
-     */
     public LocalDate addBirthday(String name, int day, int month, int year) {
 	LocalDate birthday = LocalDate.of(year, month, day);
-	birthdays.put(name, birthday);
+	
+	birthdays.put(name, birthday);// add to map
 	
 	return birthday;
     }
@@ -50,7 +43,14 @@ public class BirthdayDiary {
     public int getDaysUntilBirthday(String name) {
 	Period period = Period.between(LocalDate.now(), birthdays.get(name));
 	
-	return period.getDays();
+	System.out.println(LocalDate.now());
+	System.out.println(birthdays.get(name));
+	
+	int days = period.getDays();
+	
+	System.out.println(days);
+	
+	return days;
     }
 
     public Set<String> getBirthdaysIn(Month month) {
@@ -68,5 +68,26 @@ public class BirthdayDiary {
 	return birthdays.keySet().stream()
 		.mapToInt(p -> getAgeInYear(p, LocalDate.now().getYear()))
 		.sum();
+    }
+    
+    public static void main(String[] args) {
+	BirthdayDiary bd = new BirthdayDiary();
+	
+	LocalDate linzhiling = bd.addBirthday("linzhiling", 29, 11, 1982);
+	LocalDate yizi = bd.addBirthday("yizi", 3, 2, 1992);
+	LocalDate zhangbozhi = bd.addBirthday("zhangbozhi", 9, 1, 1986);
+	
+	// 打印指定某一名字的生日
+	System.out.println("birthday: " + bd.getBirthdayFor("linzhiling"));
+	
+	// 打印生日年份到指定年份的年份数量
+	System.out.println(bd.getAgeInYear("zhangbozhi", 2017));
+	
+	// 打印指定年份的某一人的年龄集合
+	System.out.println(bd.getFriendsOfAgeIn(31, 2017));
+	
+	// TODO
+	System.out.println(bd.getDaysUntilBirthday("yizi"));
+	
     }
 }
