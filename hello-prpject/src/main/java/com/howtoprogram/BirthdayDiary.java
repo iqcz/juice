@@ -1,5 +1,6 @@
 package com.howtoprogram;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.Period;
@@ -43,14 +44,7 @@ public class BirthdayDiary {
     public int getDaysUntilBirthday(String name) {
 	Period period = Period.between(LocalDate.now(), birthdays.get(name));
 	
-	System.out.println(LocalDate.now());
-	System.out.println(birthdays.get(name));
-	
-	int days = period.getDays();
-	
-	System.out.println(days);
-	
-	return days;
+	return  period.getDays();
     }
 
     public Set<String> getBirthdaysIn(Month month) {
@@ -75,7 +69,7 @@ public class BirthdayDiary {
 	
 	LocalDate linzhiling = bd.addBirthday("linzhiling", 29, 11, 1982);
 	LocalDate yizi = bd.addBirthday("yizi", 3, 2, 1992);
-	LocalDate zhangbozhi = bd.addBirthday("zhangbozhi", 9, 1, 1986);
+	LocalDate zhangbozhi = bd.addBirthday("zhangbozhi", 9, 11, 1986);
 	
 	// 打印指定某一名字的生日
 	System.out.println("birthday: " + bd.getBirthdayFor("linzhiling"));
@@ -88,6 +82,9 @@ public class BirthdayDiary {
 	
 	// TODO
 	System.out.println(bd.getDaysUntilBirthday("yizi"));
+	
+	// 查找指定月份出生的人的集合
+	System.out.println(bd.getBirthdaysIn(Month.NOVEMBER));
 	
     }
 }
