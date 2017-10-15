@@ -50,10 +50,11 @@ public class FilterDifferWords {
     /**
      * 	拼装insert语句，使用MYSQL数据库的语法
      * @param differContent 两个文本比较后，第一个文本有，而第二个文本没有的内容。
-     * @return 拼装好insert语句的集合
+     * @return 拼装好insert语句的列表
      */
     private static List<String> spliceSql(Set<String> differContent) {
-	return differContent.stream().flatMap(line -> Stream.of(String.format(
+	return differContent.stream()
+		.flatMap(line -> Stream.of(String.format(
 		"INSERT INTO test(search, replacement, level, expire, create_time) "
 		+ "VALUES ('%s', '*', 0, '2099-12-31 23:59:59', now());\r",
 		line)))
@@ -62,7 +63,7 @@ public class FilterDifferWords {
 
     /**
      * 把列表中的sql语句写入文件中
-     * @param insertSqls 拼装好insert语句的集合
+     * @param insertSqls 拼装好insert语句的列表
      * @throws IOException
      */
     private static void writeToFile(List<String> insertSqls) throws IOException {
