@@ -43,7 +43,8 @@ public class FilterDifferWords {
      */
     private static List<String> loadContentFromFile(Path filePath) throws IOException {
 	return Files.readAllLines(filePath).stream()
-		.flatMap(line -> Stream.of(line.trim())) // 去掉文本中空格
+		.map(String::trim) // 去掉文本中空格
+		.filter(line -> !("".equals(line))) // 过滤空行
 		.collect(Collectors.toList());
     } // end method loadContentFromFile
 
