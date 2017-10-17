@@ -1,3 +1,2 @@
 # juice
-for chengzhi
-come on
+My happy coding farm.
