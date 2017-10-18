@@ -21,6 +21,8 @@ import com.google.common.collect.Sets;
 public class FilterDifferWords {
 
     public static void main(String[] args) throws IOException {
+	
+	// 注意，这里要考虑目录是否存在的问题。
 	Path txtFile = Paths.get("/Users/i324779/Documents/test.txt");
 	List<String> txtContent = loadContentFromFile(txtFile);
 
