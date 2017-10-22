@@ -24,6 +24,10 @@ public class ReduceMethodExample {
 	        .flatMap(line -> Stream.of(line.split(" +"))) // 此处是一正则表达式
 	        .collect(Collectors.toList());
 	
+	// 注意，flatMap与map使用上的区别
+	List<String[]> words2 = quotes.stream().map(line -> line.split(" +")).collect(Collectors.toList());
+	
+	
 	long wordCount = words.size();
 
 	// The cast to double is only needed to prevent Java from using 
@@ -33,4 +37,4 @@ public class ReduceMethodExample {
 	        .reduce(0, (x, y) -> {return x + y;})) / wordCount;
 	System.out.println("Average word length: " + aveLength);
     }
-}
+} // end class ReduceMethodExample
