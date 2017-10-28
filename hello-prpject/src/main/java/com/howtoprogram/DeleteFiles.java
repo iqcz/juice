@@ -11,6 +11,8 @@ public class DeleteFiles {
 
     /**
      * 删除最近修改时间在10天之前的文件
+     * 可以指定删除文件的类型
+     * 以及删除文件的时间
      */
     private void deletePreviousFiles() {
 	Path path = Paths.get("ContentStatistics");
