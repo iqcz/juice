@@ -13,8 +13,11 @@ public class DeleteFiles {
      * 删除最近修改时间在10天之前的文件
      * 可以指定删除文件的类型
      * 以及删除文件的时间
+     *
+     * @param fileType 要删除的文件类型
+     * @param days     指定要删除几天之前的天数
      */
-    private void deletePreviousFiles() {
+    private void deletePreviousFiles(final String fileType, int days) {
 	Path path = Paths.get("ContentStatistics");
 
 	// 创建目录
@@ -33,8 +36,8 @@ public class DeleteFiles {
 		try {
 		    if (!Files.isDirectory(csvFile)) {
 			FileTime fileTime = Files.getLastModifiedTime(csvFile);
-			Instant lastTenDays = Instant.now().minusSeconds(86400 * 10); // 1天(d)=86400秒(s)
-			if (csvFile.toString().contains(".csv")) {
+			Instant lastTenDays = Instant.now().minusSeconds(86400 * days); // 1天(d)=86400秒(s)
+			if (csvFile.toString().contains(fileType)) {
 			    if (fileTime.toInstant().isBefore(lastTenDays)) {
 				LOGGER.info("Deleted file: " + csvFile);
 				Files.deleteIfExists(csvFile);
