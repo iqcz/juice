@@ -9,6 +9,7 @@ import java.time.Instant;
 
 public class DeleteFiles {
 
+    // TODO 添加log jar包。
     /**
      * 删除最近修改时间在10天之前的文件
      * 可以指定删除文件的类型
