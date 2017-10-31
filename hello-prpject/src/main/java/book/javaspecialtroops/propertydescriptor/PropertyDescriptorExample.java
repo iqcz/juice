@@ -16,11 +16,8 @@ public class PropertyDescriptorExample {
 
 		for (Field field : fields) {
 			System.out.println("========>" + field.getName() + "\t" + field.getType());
-
 			PropertyDescriptor pd = new PropertyDescriptor(field.getName(), Node.class);
-
 			printDesc(pd);
-
 		}
 	}
 
