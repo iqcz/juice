@@ -5,6 +5,11 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ *自定义函数式接口以及使用
+ * @author i324779
+ *
+ */
 public class BufferedReaderExample {
 
 	public static void main(String... args) throws FileNotFoundException, IOException {
