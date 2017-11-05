@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * 构造方法的方法引用
+ * @author i324779
+ *
+ */
 public class LambdaForNewInMethodReference {
 
     public static void main(String[] args) {
