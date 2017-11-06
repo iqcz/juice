@@ -26,7 +26,6 @@ public class DeleteFiles {
 	    try {
 		Files.createDirectory(path);
 	    } catch (IOException e) {
-		LOGGER.error("创建目录失败.");
 		e.printStackTrace();
 	    }
 	}
@@ -40,13 +39,11 @@ public class DeleteFiles {
 			Instant lastTenDays = Instant.now().minusSeconds(86400 * days); // 1天(d)=86400秒(s)
 			if (csvFile.toString().contains(fileType)) {
 			    if (fileTime.toInstant().isBefore(lastTenDays)) {
-				LOGGER.info("Deleted file: " + csvFile);
 				Files.deleteIfExists(csvFile);
 			    }
 			}
 		    }
 		} catch (IOException e) {
-		    LOGGER.error("删除文件失败.");
 		    e.printStackTrace();
 		}
 	    });
