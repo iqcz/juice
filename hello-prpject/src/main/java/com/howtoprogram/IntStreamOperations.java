@@ -48,6 +48,8 @@ public class IntStreamOperations {
 	
 	IntPredicate even = value -> value % 2 == 0;
 	IntPredicate greaterThan5 = value -> value > 5;
+	
+	System.out.println(IntStream.of(values).mapToDouble(value -> value * 10).sum());
 
 
     }
