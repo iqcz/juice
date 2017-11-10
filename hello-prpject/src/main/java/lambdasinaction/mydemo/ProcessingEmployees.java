@@ -9,21 +9,19 @@ package lambdasinaction.mydemo;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class ProcessingEmployees {
 
     public static void main(String[] args) {
-    // 定义Employee类数组
-    Employee[] employees = { 
-        new Employee("Jason", "Red", 5000, "IT"), 
-        new Employee("Ashley", "Green", 7600, "IT"),
-        new Employee("Matthew", "Indigo", 3587.5, "Sales"),
-        new Employee("James", "Indigo", 4700.77, "Marketing"), 
-        new Employee("Luke", "Indigo", 6200, "IT"),
-        new Employee("Jason", "Blue", 3200, "Sales"), 
-        new Employee("Wendy", "Brown", 4236.4, "Marketing") };
+	// 定义Employee类数组
+	Employee[] employees = { new Employee("Jason", "Red", 5000, "IT"), new Employee("Ashley", "Green", 7600, "IT"),
+		new Employee("Matthew", "Indigo", 3587.5, "Sales"),
+		new Employee("James", "Indigo", 4700.77, "Marketing"), new Employee("Luke", "Indigo", 6200, "IT"),
+		new Employee("Jason", "Blue", 3200, "Sales"), new Employee("Wendy", "Brown", 4236.4, "Marketing") };
 
 	// 转换成list
 	List<Employee> list = Arrays.asList(employees);
@@ -57,5 +55,13 @@ public class ProcessingEmployees {
 	// 先根据first name 比较，如果相同，再比较 last name。
 	System.out.printf("%nEmployees in descending order by last name then first:%n");
 	list.stream().sorted(lastThenFistComp.reversed()).forEach(System.out::println);
+
+	System.out.printf("%nEmployees by department:%n");
+	Map<String, List<Employee>> groupingByDepartment = list.stream()
+		.collect(Collectors.groupingBy(Employee::getDepartment));
+	groupingByDepartment.forEach((department, employeesInDepartment) -> {
+	    System.out.println(department);
+	    employeesInDepartment.forEach(employee -> System.out.printf(" %s%n", employee));
+	});
     }
 }
