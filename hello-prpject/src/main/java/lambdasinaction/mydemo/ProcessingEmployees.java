@@ -8,6 +8,7 @@ package lambdasinaction.mydemo;
  */
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -71,6 +72,16 @@ public class ProcessingEmployees {
 	
 	employeeCountByDepartment.forEach((department, count) ->{
 	    System.out.printf("%s has %d employee(s)%n", department, count);
+	});
+	
+	// map的foreach使用
+	Map<Integer, String> students = new HashMap<>();
+	students.put(1, "zhangsan");
+	students.put(2, "lisi");
+	students.put(3, "wangwu");
+	
+	students.forEach((id, name) -> {
+	    System.out.println(id + "->" + name);
 	});
     }
 }
