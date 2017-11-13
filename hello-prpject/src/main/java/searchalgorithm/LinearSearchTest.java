@@ -36,7 +36,7 @@ public class LinearSearchTest {
 			int[] data = new int[10]; // create array
 			for (int i = 0; i < data.length; i++) // populate array
 				data[i] = 10 + generator.nextInt(90);
-			
+      
 			System.out.printf("%s%n%n", Arrays.toString(data)); // display array
 
 			// get input from user
