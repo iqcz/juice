@@ -1,4 +1,4 @@
-package searchalgorithm;
+package algorithm.searching;
 
 import java.security.SecureRandom;
 import java.util.Arrays;
