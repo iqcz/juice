@@ -5,11 +5,22 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /**
- * Sequentially searching an array for an item.
+ * Sequentially searching an array for an item. 顺序查找，效率最低的一种查找算法。
+ * 
+ * @author 324779
+ *
  */
 public class LinearSearchTest {
-	
-	// perform a linear search on the data
+
+	/**
+	 * perform a linear search on the data
+	 * 
+	 * @param data
+	 *            数据
+	 * @param searchKey
+	 *            要查找的元素
+	 * @return
+	 */
 	public static int linearSearch(int data[], int searchKey) {
 		// loop through array sequentially
 		for (int index = 0; index < data.length; index++)
@@ -22,12 +33,10 @@ public class LinearSearchTest {
 	public static void main(String[] args) {
 		try (Scanner input = new Scanner(System.in)) {
 			SecureRandom generator = new SecureRandom();
-
 			int[] data = new int[10]; // create array
-
 			for (int i = 0; i < data.length; i++) // populate array
 				data[i] = 10 + generator.nextInt(90);
-
+      
 			System.out.printf("%s%n%n", Arrays.toString(data)); // display array
 
 			// get input from user
