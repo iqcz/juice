@@ -1,5 +1,13 @@
 package lambdasinaction.mydemo;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.Iterator;
+
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.google.common.base.Splitter;
+
 public class EndodeAndDecode {
     // <img height="413"
     // src="http://songshuhui.net/wp-content/uploads/2010/11/network.jpg"
@@ -7,7 +15,7 @@ public class EndodeAndDecode {
 
     // %3Cimg+height%3D%22413%22+src%3D%22http%3A%2F%2Fsongshuhui.net%2Fwp-content%2Fuploads%2F2010%2F11%2Fnetwork.jpg%22+width%3D%22739%22+alt%3D%22
 
-    public JSONObject handleDecode() {
+    public JSONObject handleDecode(String articles) {
 	JSONObject json = new JSONObject();
 	JSONArray bodyJson = new JSONArray();
 
