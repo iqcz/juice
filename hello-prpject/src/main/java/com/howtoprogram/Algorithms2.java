@@ -1,7 +1,8 @@
 package com.howtoprogram;
 
-// Fig. Fig. 16.13: Algorithms2.java
-// Collections methods addAll, frequency and disjoint.
+/**
+ * Collections methods addAll, frequency and disjoint.
+ */
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
