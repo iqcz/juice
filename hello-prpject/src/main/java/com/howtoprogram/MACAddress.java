@@ -20,6 +20,7 @@ public class MACAddress {
 	private static void getLocalMac(InetAddress ia) throws SocketException {
 		// 获取网卡，获取地址
 		byte[] mac = NetworkInterface.getByInetAddress(ia).getHardwareAddress();
+		// TODO error
 		System.out.println("mac数组长度：" + mac.length);
 		StringBuffer sb = new StringBuffer("");
 		for (int i = 0; i < mac.length; i++) {
