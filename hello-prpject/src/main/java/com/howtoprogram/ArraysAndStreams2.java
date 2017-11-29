@@ -16,6 +16,7 @@ public class ArraysAndStreams2 {
 	System.out.printf("strings in uppercase: %s%n",
 		Arrays.stream(strings)
 		.map(String::toUpperCase)
+		.peek(System.out::println)
 		.collect(Collectors.toList()));
 
 	// strings less than "n" (case insensitive) sorted ascending
