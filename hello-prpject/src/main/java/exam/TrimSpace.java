@@ -11,6 +11,7 @@ import java.util.List;
 /** 
  * 使用nio.2 api 读取和写入文件。
  * 程序功能：去除文本中的空格。
+ * 拷贝kindle中的文本时，中间文字会有空格。
  */
 public class TrimSpace {
 
