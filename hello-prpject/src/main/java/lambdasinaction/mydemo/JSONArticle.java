@@ -61,6 +61,8 @@ public class JSONArticle {
 		flattedArticles.append(txt).append(PAGE_START).append(title).append(PAGE_END);
 	    }
 	}
+	
+	// TODO 需要考虑没有分P的情况 也需要拼成json结构，只不过是没有标题和排序
 
 	return flattedArticles.toString();
     } // end method flatArticleList
