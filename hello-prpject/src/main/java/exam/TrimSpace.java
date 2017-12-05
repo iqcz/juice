@@ -28,7 +28,6 @@ public class TrimSpace {
 		String temp = oneLine.replaceAll(" ", "");
 		noSpaceConent.add(temp + "\r\n");
 	    }
-	    
 	}
 	
 	System.out.println(noSpaceConent);
