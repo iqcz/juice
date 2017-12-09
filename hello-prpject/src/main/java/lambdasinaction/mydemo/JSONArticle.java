@@ -31,11 +31,11 @@ public class JSONArticle {
 
     private static final String ENCODE_SPACE = "%20";
     private static final String UTF_8 = "UTF-8";
-    private static String PAGE_START = "[NextPage]";
-    private static String PAGE_END = "[/NextPage]";
+    private static final String PAGE_START = "[NextPage]";
+    private static final String PAGE_END = "[/NextPage]";
 
     /**
-     * 转换包含多P文章列表的 json 结构字符串,最后合为一个字符串
+     * 转换包含多P文章列表的json结构字符串,最后合为一个字符串
      *
      * @param bodyList 文章(包含多P)的json结构的字符串
      * @return 多P文章合为一个字符串
