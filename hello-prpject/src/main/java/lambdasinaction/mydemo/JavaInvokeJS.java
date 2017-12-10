@@ -1,0 +1,46 @@
+package lambdasinaction.mydemo;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
+import javax.script.Bindings;
+import javax.script.Invocable;
+import javax.script.ScriptContext;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
+
+/**
+ *
+ * @author i324779
+ */
+public class JavaInvokeJS {
+
+    public static void main(String[] args) throws FileNotFoundException, ScriptException, NoSuchMethodException {
+	ScriptEngine engine = new ScriptEngineManager().getEngineByName("javascript");
+	Bindings bind = engine.createBindings();
+	bind.put("factor", 0);
+	engine.setBindings(bind, ScriptContext.ENGINE_SCOPE);
+
+	// 输入方式
+	try (Scanner input = new Scanner(System.in);) {
+	    while (input.hasNextInt()) {
+		int first = input.nextInt();
+		int second = input.nextInt();
+
+		System.out.println("输入的参数是：" + first + ", " + second);
+		engine.eval(new FileReader("src/main/java/lambdasinaction/mydemo/model.js"));
+
+		if (engine instanceof Invocable) {
+		    Invocable in = (Invocable) engine;
+		    // 执行 js函数
+		    Double result = (Double) in.invokeFunction("formula", first, second);
+		    System.out.println("运算结果是：" + result.intValue());
+		    
+		    String ids = (String) in.invokeFunction("allArtile");
+		    System.out.println("运算结果是：" + ids);
+		}
+	    }
+	}
+    }
+}
