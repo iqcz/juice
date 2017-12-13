@@ -13,6 +13,12 @@ import javax.script.ScriptException;
 /**
  *
  * @author i324779
+ * 在不用重新启动服务器的情况下加载修改的配置信息：
+ * 主要用途如下：
+ * 1，计算的公式，参数需要修改
+ * 2，返回静态的字符串，
+ * 3，加载配置
+ * 4，...
  */
 public class JavaInvokeJS {
 
