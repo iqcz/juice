@@ -18,7 +18,8 @@ import javax.script.ScriptException;
  * 1，计算的公式，参数需要修改
  * 2，返回静态的字符串，
  * 3，加载配置
- * 4，...
+ * 4，sql语句
+ * 5.
  */
 public class JavaInvokeJS {
 
