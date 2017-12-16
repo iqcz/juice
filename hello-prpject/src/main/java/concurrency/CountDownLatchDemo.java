@@ -31,8 +31,9 @@ public class CountDownLatchDemo {
 	    }
 	};
 	ExecutorService executor = Executors.newFixedThreadPool(NTHREADS);
-	for (int i = 0; i < NTHREADS; i++)
+	for (int i = 0; i < NTHREADS; i++) {
 	    executor.execute(r);
+	}
 	try {
 	    System.out.println("main thread doing something");
 	    Thread.sleep(1000); // sleep for 1 second
