@@ -19,7 +19,7 @@ import javax.script.ScriptException;
  * 2，返回静态的字符串，
  * 3，加载配置
  * 4，sql语句
- * 5.
+ * 5. JSON data etc
  */
 public class JavaInvokeJS {
 
