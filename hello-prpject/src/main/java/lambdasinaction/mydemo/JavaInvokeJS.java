@@ -20,6 +20,7 @@ import javax.script.ScriptException;
  * 3，加载配置
  * 4，sql语句
  * 5. JSON data etc
+ * 6. 工厂方法
  */
 public class JavaInvokeJS {
 
