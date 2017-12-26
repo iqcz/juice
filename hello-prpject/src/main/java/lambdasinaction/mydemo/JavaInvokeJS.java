@@ -21,6 +21,8 @@ import javax.script.ScriptException;
  * 4，sql语句
  * 5. JSON data etc
  * 6. 工厂方法
+ * 7. 活动开始时间和结束时间
+ * 
  */
 public class JavaInvokeJS {
 
