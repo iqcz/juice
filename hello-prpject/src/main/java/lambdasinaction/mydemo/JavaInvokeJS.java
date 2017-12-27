@@ -22,7 +22,7 @@ import javax.script.ScriptException;
  * 5. JSON data etc
  * 6. 工厂方法
  * 7. 活动开始时间和结束时间
- * 
+ * 8. 文件路径
  */
 public class JavaInvokeJS {
 
