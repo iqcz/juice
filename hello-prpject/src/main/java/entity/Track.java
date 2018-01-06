@@ -1,16 +1,15 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package entity;
 
 /**
+ * A single piece of music
  * @author richard
  */
 public final class Track {
     
+    // The name of the track (e.g., “Yellow Submarine”)
     private final String name;
+    
+    // the length of a Track
     private final int length;
 
     public Track(String name, int length) {
