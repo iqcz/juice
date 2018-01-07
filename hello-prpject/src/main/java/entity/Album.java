@@ -57,6 +57,7 @@ public final class Album implements Performance {
     /**
      * @return the musicians
      */
+    @Override
     public Stream<Artist> getMusicians() {
 	return musicians.stream();
     }
