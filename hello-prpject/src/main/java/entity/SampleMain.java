@@ -4,6 +4,8 @@ import static java.util.Arrays.asList;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
+import static java.util.stream.Collectors.toSet;
 
 public class SampleMain {
 
@@ -18,5 +20,11 @@ public class SampleMain {
 		.get();
 	// google autoValue
 	System.out.println(shortestTrack.getName());
+	
+	Set<String> origins = SampleData.sampleShortAlbum.getMusicians()
+                .filter(artist -> artist.getName().startsWith("The"))
+                .map(artist -> artist.getNationality())
+                .collect(toSet());
+	System.out.println(origins);
     }
 }
