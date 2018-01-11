@@ -22,8 +22,8 @@ public class SampleMain {
 	System.out.println(shortestTrack.getName());
 	
 	Set<String> origins = SampleData.sampleShortAlbum.getMusicians()
-                .filter(artist -> artist.getName().startsWith("The"))
-                .map(artist -> artist.getNationality())
+                .filter(artist -> artist.getName().startsWith("John"))
+                .map(Artist::getNationality)
                 .collect(toSet());
 	System.out.println(origins);
     }
