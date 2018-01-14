@@ -14,8 +14,10 @@ public class SampleData {
     public static final Artist georgeHarrison = new Artist("George Harrison", "UK");
     public static final Artist ringoStarr = new Artist("Ringo Starr", "UK");
 
-    public static final List<Artist> membersOfTheBeatles = Arrays.asList(johnLennon, paulMcCartney, georgeHarrison, ringoStarr);
+    public static final List<Artist> membersOfTheBeatles = 
+	    Arrays.asList(johnLennon, paulMcCartney, georgeHarrison, ringoStarr);
 
+    // have members' artists
     public static final Artist theBeatles = new Artist("The Beatles", membersOfTheBeatles, "UK");
 
     public static final Album aLoveSupreme = new Album("A Love Supreme", 
