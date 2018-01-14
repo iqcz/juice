@@ -72,7 +72,9 @@ public final class Artist {
     }
 
     public Artist copy() {
-	List<Artist> members = getMembers().map(Artist::copy).collect(toList());
+	List<Artist> members = getMembers()
+		.map(Artist::copy)
+		.collect(toList());
 	return new Artist(name, members, nationality);
     }
 
