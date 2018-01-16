@@ -26,15 +26,14 @@ public class SampleMain {
                 .map(Artist::getNationality)
                 .collect(toSet());
 	System.out.println(origins);
-	
-	
+
     }
     
     public Set<String> findLongTracks(List<Album> albums) {
 	return albums.stream()
-		.flatMap(album -> album.getTracks())
+		.flatMap(Album::getTracks)
 		.filter(track -> track.getLength() > 60)
-		.map(track -> track.getName())
+		.map(Track::getName)
 		.collect(toSet());
     }
 }
