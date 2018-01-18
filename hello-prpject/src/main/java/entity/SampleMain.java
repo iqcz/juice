@@ -3,6 +3,7 @@ package entity;
 import static java.util.Arrays.asList;
 
 import java.util.Comparator;
+import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Set;
 import static java.util.stream.Collectors.toSet;
@@ -26,6 +27,8 @@ public class SampleMain {
                 .map(Artist::getNationality)
                 .collect(toSet());
 	System.out.println(origins);
+	
+	printTrackLengthStatistics(SampleData.manyTrackAlbum);
 
     }
     
@@ -36,4 +39,22 @@ public class SampleMain {
 		.map(Track::getName)
 		.collect(toSet());
     }
+    
+    /**
+     * It’s a good idea to use the primitive specialized functions wherever possible
+     * because of the performance benefits. 
+     * @param album
+     */
+    public static void printTrackLengthStatistics(Album album) {
+	    IntSummaryStatistics trackLengthStats
+	            = album.getTracks()
+	                   .mapToInt(Track::getLength)
+	                   .summaryStatistics();
+
+	    System.out.printf("Max: %d, Min: %d, Ave: %f, Sum: %d",
+	                      trackLengthStats.getMax(),
+	                      trackLengthStats.getMin(),
+	                      trackLengthStats.getAverage(),
+	                      trackLengthStats.getSum());
+	}
 }
