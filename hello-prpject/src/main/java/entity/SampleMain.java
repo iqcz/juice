@@ -43,6 +43,11 @@ public class SampleMain {
     /**
      * It’s a good idea to use the primitive specialized functions wherever possible
      * because of the performance benefits. 
+     * 
+     * It’s also possible to calculate the individual summary statistics 
+     * if you don’t need all of them through the min, max, average, 
+     * and sum methods, which are all also available on all three primitive specialized Stream variants.
+     * 
      * @param album
      */
     public static void printTrackLengthStatistics(Album album) {
