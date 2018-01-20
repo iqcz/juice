@@ -1,12 +1,13 @@
 package entity;
 
 import static java.util.Arrays.asList;
+import static java.util.stream.Collectors.toSet;
 
 import java.util.Comparator;
 import java.util.IntSummaryStatistics;
 import java.util.List;
+import java.util.OptionalInt;
 import java.util.Set;
-import static java.util.stream.Collectors.toSet;
 
 public class SampleMain {
 
@@ -62,4 +63,19 @@ public class SampleMain {
 	                      trackLengthStats.getAverage(),
 	                      trackLengthStats.getSum());
 	}
+    
+    /**
+     * 基本类型的运算不要使用装箱再拆箱，
+     * API中有专门针对基本类型操作的类，
+     * 例如下面使用的OptionalInt
+     * @param album
+     * @return 最长的音频
+     */
+    public static int printTrackMaxLength(Album album) {
+	 OptionalInt maxLength = album.getTracks()
+		 .mapToInt(Track::getLength)
+		 .max();
+	 
+	 return maxLength.orElse(0);
+    }
 }
