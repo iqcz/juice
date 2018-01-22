@@ -23,6 +23,7 @@ import javax.script.ScriptException;
  * 6. 工厂方法
  * 7. 活动开始时间和结束时间
  * 8. 文件路径
+ * 9. 加载类名，反射调用
  */
 public class JavaInvokeJS {
 
