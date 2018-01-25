@@ -5,8 +5,7 @@ package entity;
  * so you have multiple methods with the same name but different signatures. 
  * This approach poses a problem for parameter-type inference 
  * because it means that there are several types that could be inferred. 
- * In these situations
- * javac will pick the most specific type for you
+ * In these situations javac will pick the most specific type for you
  * @author i324779
  *
  */

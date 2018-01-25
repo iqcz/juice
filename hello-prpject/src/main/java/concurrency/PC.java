@@ -19,6 +19,10 @@ class Shared {
     private char c;
     private volatile boolean writeable = true;
 
+    /**
+     * Producer invoke
+     * @param c
+     */
     synchronized void setSharedChar(char c) {
 	while (!writeable)
 	    try {
@@ -30,6 +34,10 @@ class Shared {
 	notify();
     }
 
+    /**
+     * Consumer invoke
+     * @return
+     */
     synchronized char getSharedChar() {
 	while (writeable)
 	    try {
@@ -42,6 +50,11 @@ class Shared {
     }
 }
 
+/**
+ * Producer thread.
+ * @author i324779
+ *
+ */
 class Producer extends Thread {
     private final Shared s;
 
@@ -49,8 +62,7 @@ class Producer extends Thread {
 	this.s = s;
     }
 
-    @Override
-    public void run() {
+    @Override public void run() {
 	for (char ch = 'A'; ch <= 'Z'; ch++) {
 	    synchronized (s) {
 		s.setSharedChar(ch);
@@ -60,6 +72,11 @@ class Producer extends Thread {
     }
 }
 
+/**
+ * Consumer thread
+ * @author i324779
+ *
+ */
 class Consumer extends Thread {
     private final Shared s;
 
@@ -67,8 +84,7 @@ class Consumer extends Thread {
 	this.s = s;
     }
 
-    @Override
-    public void run() {
+    @Override public void run() {
 	char ch;
 	do {
 	    synchronized (s) {
