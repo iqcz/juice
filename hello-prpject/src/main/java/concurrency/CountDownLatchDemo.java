@@ -4,6 +4,14 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * A countdown latch causes one or more threads to wait at a “gate” 
+ * until another thread opens this gate, at which point these other threads can continue.
+ *  It consists of a count and operations for “causing a thread to wait until the count reaches zero” 
+ *  and “decrementing the count.”
+ * @author i324779
+ *
+ */
 public class CountDownLatchDemo {
     final static int NTHREADS = 3;
 
