@@ -5,6 +5,11 @@ import java.util.List;
 
 import java.util.concurrent.Exchanger;
 
+/**
+ * An exchanger provides a synchronization point where threads can swap objects.
+ * @author i324779
+ *
+ */
 public class ExchangerDemo {
     final static Exchanger<DataBuffer> exchanger = new Exchanger<DataBuffer>();
 
