@@ -6,7 +6,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * The Blocking Queue Equivalent of  PC Application
+ * The Blocking Queue Equivalent of PC Application
  * 
  * @author i324779
  *
