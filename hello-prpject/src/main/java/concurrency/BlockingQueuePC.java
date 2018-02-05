@@ -25,8 +25,8 @@ public class BlockingQueuePC {
 		}
 	    }
 	};
-
 	executor.execute(producer);
+	
 	Runnable consumer = () -> {
 	    char ch = '\0';
 	    do {
