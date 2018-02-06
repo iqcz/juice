@@ -14,6 +14,8 @@ import javax.script.ScriptException;
  *
  * @author i324779
  * 在不用重新启动服务器的情况下加载修改的配置信息：
+ * 注意：不要使用spring的雷加载器加载js文件，不会生效，
+ * 目前来看还是使用IO的方式，注意资源的关闭与释放。
  * 主要用途如下：
  * 1，计算的公式，参数需要修改
  * 2，返回静态的字符串，
@@ -24,6 +26,7 @@ import javax.script.ScriptException;
  * 7. 活动开始时间和结束时间
  * 8. 文件路径
  * 9. 加载类名，反射调用
+ * 10. 
  */
 public class JavaInvokeJS {
 
