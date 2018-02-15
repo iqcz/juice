@@ -5,6 +5,11 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * use annotation and reflection to map db column to DO field.
+ * @author i324779
+ *
+ */
 public class TestMain {
 
     public static void main(String[] args) throws InstantiationException, IllegalAccessException {
