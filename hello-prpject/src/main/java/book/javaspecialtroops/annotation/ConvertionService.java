@@ -68,26 +68,30 @@ public class ConvertionService {
     }
 
     public static Integer getInteger(String value) {
-	if (Strings.isNullOrEmpty(value))
+	if (Strings.isNullOrEmpty(value)) {
 	    return null;
+	}
 	return Integer.valueOf(value);
     }
 
     public static int getInt(String value) {
-	if (Strings.isNullOrEmpty(value))
+	if (Strings.isNullOrEmpty(value)) {
 	    return 0;
+	}
 	return Integer.valueOf(value);
     }
 
     public static Long getLongWrapper(String value) {
-	if (Strings.isNullOrEmpty(value))
+	if (Strings.isNullOrEmpty(value)) {
 	    return null;
+	}
 	return Long.valueOf(value);
     }
 
     public static long getLong(String value) {
-	if (Strings.isNullOrEmpty(value))
+	if (Strings.isNullOrEmpty(value)) {
 	    return 0;
+	}
 	return Long.valueOf(value);
     }
 }
