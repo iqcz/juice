@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+				http://www.directwebremoting.org/schema/spring-dwr  
+				http://www.directwebremoting.org/schema/spring-dwr-2.0.xsd">
+	
+	<bean id="sessionInterceptor" class="com.lee.bsc.interceptor.SessionInterceptor">
+	</bean>
+	
+	<bean id="generalService" class="com.lee.bsc.service.impl.GeneralServiceImpl">
+		<property name="dateFinderDao" ref="dateFinderDao"/>
+		<property name="dataPersisterDao" ref="dataPersisterDao"/>
+	</bean>
+	
+	<bean id="permissionService" class="com.lee.bsc.service.impl.PermissionServiceImpl">
+		<property name="permissionDao" ref="permissionDao"/>
+	</bean>
+	
+	<bean id="balanceSheetService" class="com.lee.bsc.service.impl.BalanceSheetServiceImpl">
+		<property name="generalService" ref="generalService"/>
+		<property name="balanceSheetDao" ref="balanceSheetDao"/>
+	</bean>
+	
+	<!-- below configuration is for dwr + spring integration functionality -->
+	<bean id="DWRDispatcher" class="com.lee.bsc.dwr.DWRDispatcher" scope="prototype">
+		<dwr:remote javascript="dwrDispatcher" />
+	</bean>
+	<bean id="SearchPageBean" class="com.lee.bsc.bean.SearchPageBean">
+		<dwr:remote javascript="searchPageBean" />
+	</bean>
+	
+	<dwr:configuration>
+		<dwr:convert class="com.lee.bsc.bean.SearchPageBean" javascript="searchPageBean" type="bean"/>
+		<dwr:convert class="com.lee.bsc.db.bo.BalanceSheet" javascript="balanceSheet" type="bean" />
+		
+		<dwr:signatures>
+			<![CDATA[
+				import java.util.List;
+				import com.lee.bsc.db.bo.BalanceSheet;
+				
+				searchPageBean.setPageRecords(List<BalanceSheet>);		
+			]]>
+		</dwr:signatures>
+	</dwr:configuration>
+	
+	<dwr:controller id="dwrController" debug="true" />
+</beans>

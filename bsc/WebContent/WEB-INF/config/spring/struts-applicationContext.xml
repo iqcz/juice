@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+				
+	<bean id="sessionInterceptor" class="com.lee.bsc.interceptor.SessionInterceptor"/>
+	
+	<bean id="permissionInterceptor" class="com.lee.bsc.interceptor.PermissionInterceptor">
+		<property name="generalService" ref="generalService"></property>
+		<property name="permissionService" ref="permissionService"></property>
+	</bean>
+
+	<!-- MainMenu -->
+	<bean id="MainMenuAction" class="com.lee.bsc.action.MainMenuAction" scope="prototype">
+		<property name="permissionService" ref="permissionService"></property>
+		<property name="generalService" ref="generalService"></property>
+	</bean>
+	
+	<bean id="BalanceSheetAction" class="com.lee.bsc.action.balanceSheet.BalanceSheetAction">
+		<property name="balanceSheetService" ref="balanceSheetService"></property>
+	</bean>
+	
+	<bean id="KickOutAction" class="com.lee.bsc.action.exception.KickOutAction" scope="prototype">
+	</bean>
+</beans>	

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+				
+	<bean id="placeholderConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>/WEB-INF/config/common/bsc.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="biDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+			<value>jdbc/BI_WEB_ORACLE</value>
+		</property>
+		<property name="resourceRef">
+			<value>true</value>
+		</property>
+	</bean>
+	
+	<bean id="slsSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="biDataSource"/>
+		<property name="mappingLocations">
+			<list>
+				<value>/WEB-INF/config/hbm/BIConfiguration.hbm.xml</value>
+				<value>/WEB-INF/config/hbm/QueryForGeneral.hbm.xml</value>
+				<value>/WEB-INF/config/hbm/User.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.Oracle9Dialect
+				</prop>
+				<prop key="hibernate.show_sql">
+					true
+				</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="dateFinderDao" class="com.lee.bsc.db.dao.impl.DateFinderDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="slsSessionFactory"/>
+		</property>
+	</bean>
+	
+	<bean id="dataPersisterDao" class="com.lee.bsc.db.dao.impl.DataPersisterDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="slsSessionFactory"/>
+		</property>
+	</bean>
+	
+	<bean id="permissionDao" class="com.lee.bsc.db.dao.impl.PermissionDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="slsSessionFactory"/>
+		</property>
+	</bean>
+	
+	<bean id="balanceSheetDao" class="com.lee.bsc.db.dao.impl.BalanceSheetDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="slsSessionFactory"/>
+		</property>
+	</bean>
+	
+	
+</beans>	

@@ -1,0 +1,17 @@
+ <!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<query name="queryBIConfiguration">
+	<![CDATA[
+		from BIConfiguration where key1=? and key2=? and key3=?
+	]]>
+	</query>
+	
+	<query name="queryBIConfigurationEX">
+	<![CDATA[
+		from BIConfiguration where key1 like :key1 and key2 like :key2 and key3 like :key3
+	]]>
+	</query>
+	
+</hibernate-mapping>

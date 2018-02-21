@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	
+<struts>
+	<include file="struts-default.xml"/>
+	
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="false" />
+	
+	
+	<package name="struts2" extends="struts-default"> 
+		<interceptors>
+			<interceptor name="sessionInterceptor" class="sessionInterceptor"/>
+			<interceptor name="permissionInterceptor" class="permissionInterceptor"/>
+			
+			<interceptor-stack name="biwebInterceptor">
+				<interceptor-ref name="defaultStack"/>
+				<interceptor-ref name="sessionInterceptor"/>
+				<interceptor-ref name="permissionInterceptor"/>
+			</interceptor-stack>
+			
+			<interceptor-stack name="jobmonitorInterceptor">
+				<interceptor-ref name="defaultStack"/>
+				<interceptor-ref name="sessionInterceptor"/>
+			</interceptor-stack>
+		</interceptors>	
+		
+		<default-interceptor-ref name="biwebInterceptor"/>
+		
+		<global-results>
+			<result name="login" type="redirect">/sminfoagent/froms/logout.html?action=login</result>
+			<result name="main" type="redirect">MainMenu.action</result>
+			
+			<!-- for local testing 
+			<result name="login" type="redirect">dummylogout.html?action=lgoin</result>
+			-->
+		</global-results>
+		
+		<!-- dummy main menu action -->
+		<action name="MainMenu" class="MainMenuAction">
+			<result name="input">/jsp/MainMenu.jsp</result>
+			<result name="success">/jsp/MainMenu.jsp</result>
+			<result name="error">/jsp/MainMenu.jsp</result>
+		</action>
+		
+		<!-- Balance sheet. -->
+		<action name="BalanceSheet" class="BalanceSheetAction">
+			<result name="success">/jsp/balanceSheet/BalanceSheet.jsp</result>
+			<result name="error">/jsp/balanceSheet/BalanceSheet.jsp</result>
+		</action>
+		
+		<action name="InitKickOut" class="KickOutAction" method="executeInit">
+			<result name="success">/jsp/KickOut.jsp</result>
+		</action>
+		
+		<action name="KickOut" class="KickOutAction" method="executeKickOut">
+			<result name="input">/index.html</result>
+			<result name="success">/jsp/MainMenu.jsp</result>
+			<result name="error">/jsp/index.html</result>
+		</action>
+		
+		
+		<!-- chain -->
+		<!-- param -->
+		
+	</package>
+
+</struts>
