@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+  version="3.0"
+  metadata-complete="true">
+	<display-name>BIWeb_Struts2</display-name>
+	
+	<!-- Init spring container -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/config/spring/applicationContext.xml</param-value>
+	</context-param>
+	
+	<listener>
+		<listener-class>com.lee.bsc.listener.BIWebListener</listener-class>
+	</listener>
+	
+	<filter>
+		<filter-name>CharSetEncodingFilter</filter-name>
+		<filter-class>com.lee.bsc.filter.BIWebEncodingFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharSetEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	
+	<!-- Define Struts2's FilterDispatcher Filter -->
+	<filter>
+		<filter-name>struts2</filter-name>
+	 		<filter-class>com.lee.bsc.filter.BIWebFilterDispatcher</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- Site Minder Servlet -->
+	<servlet>
+		<servlet-name>SMAuthUser</servlet-name>
+		<servlet-class>com.lee.bsc.action.AuthUser</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SMAuthUser</servlet-name>
+		<url-pattern>/AuthUser</url-pattern>
+	</servlet-mapping>
+	
+	<!-- DWR Servlet  -->
+	<servlet>
+		<servlet-name>dwr</servlet-name>
+		<servlet-class>org.directwebremoting.spring.DwrSpringServlet</servlet-class>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<init-param>
+			<param-name>org.directwebremoting.extend.Remoter</param-name>
+			<param-value>com.lee.bsc.dwr.DWRSessionFilter</param-value>
+		</init-param>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>dwr</servlet-name>
+		<url-pattern>/dwr/*</url-pattern>
+	</servlet-mapping>
+	
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+	
+	<resource-ref>
+		<res-ref-name>jdbc/BI_WEB_ORACLE</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+</web-app>
