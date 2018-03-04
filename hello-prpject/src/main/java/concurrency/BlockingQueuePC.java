@@ -7,6 +7,7 @@ import java.util.concurrent.Executors;
 
 /**
  * The Blocking Queue Equivalent of PC Application
+ * but not guarantee first produce and last consumer.
  * 
  * @author i324779
  *
