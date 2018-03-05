@@ -2,6 +2,7 @@ package concurrency;
 
 /**
  * 使用volatile修饰标记标量
+ * 使用属性来控制线程结束的方式。
  * @author i324779
  *
  */
