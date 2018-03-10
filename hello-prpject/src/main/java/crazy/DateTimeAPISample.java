@@ -17,6 +17,7 @@ public class DateTimeAPISample {
 	ZonedDateTime zoneDateTime = ZonedDateTime.of(now, ZoneId.of("Asia/Shanghai"));
 	System.out.println(zoneDateTime.toEpochSecond());
 	
+	// yesterday
 	System.out.println(zoneDateTime.toEpochSecond() - 86400); // seconds in one day.
     }
 }
