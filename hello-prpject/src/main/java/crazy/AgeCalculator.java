@@ -6,6 +6,11 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
+/**
+ * 根据指定格式的出生日期，计算出到现在为止过去的年，月，日的数目。
+ * @author i324779
+ *
+ */
 public class AgeCalculator {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d");
 
