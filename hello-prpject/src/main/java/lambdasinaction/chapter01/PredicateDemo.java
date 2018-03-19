@@ -2,7 +2,7 @@ package lambdasinaction.chapter01;
 
 import java.util.function.Predicate;
 
-public class PredicateDemo1 {
+public class PredicateDemo {
     public static void main(String[] args) {
 	Predicate<String> numbersOnly = (input) -> {
 	    for (int i = 0; i < input.length(); i++) {
