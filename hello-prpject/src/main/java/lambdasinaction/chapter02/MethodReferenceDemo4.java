@@ -3,6 +3,8 @@ package lambdasinaction.chapter02;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Vector;
 import java.util.function.Supplier;
 
 /**
@@ -17,6 +19,12 @@ import java.util.function.Supplier;
 
 public class MethodReferenceDemo4 {
 
+    /**
+     * the implementing classes of the collection
+     * @param supplier
+     * @param numbers
+     * @return
+     */
     public static Collection<Integer> arrayToCollection(Supplier<Collection<Integer>> supplier, Integer[] numbers) {
 	Collection<Integer> collection = supplier.get();
 	
