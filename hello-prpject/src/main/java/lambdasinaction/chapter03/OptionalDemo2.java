@@ -76,12 +76,16 @@ public class OptionalDemo2 {
 	}
 
 	// shorter way
-	String city = company1.flatMap(Company::getOffice).flatMap(Office::getAddress).flatMap(Address::getCity)
+	String city = company1.flatMap(Company::getOffice)
+		.flatMap(Office::getAddress)
+		.flatMap(Address::getCity)
 		.orElse("City not found");
 	System.out.println("City: " + city);
 
 	// only print if city is not null
-	company1.flatMap(Company::getOffice).flatMap(Office::getAddress).flatMap(Address::getCity)
+	company1.flatMap(Company::getOffice)
+		.flatMap(Office::getAddress)
+		.flatMap(Address::getCity)
 		.ifPresent(System.out::println);
     }
 }
