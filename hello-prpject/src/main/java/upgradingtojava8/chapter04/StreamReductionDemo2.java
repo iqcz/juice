@@ -12,6 +12,7 @@ import java.util.stream.Stream;
  *
  */
 public class StreamReductionDemo2 {
+    
     class Order {
 	public int orderId;
 	public double value;
@@ -37,7 +38,9 @@ public class StreamReductionDemo2 {
 		&& order.orderDate.getYear() == yearMonth.getYear();
 
 	Stream<Order> stream = Stream.of(orders);
-	return stream.filter(orderInGivenMonth).mapToDouble((order) -> order.value).reduce(0, (a, b) -> a + b);
+	return stream.filter(orderInGivenMonth)
+		.mapToDouble((order) -> order.value)
+		.reduce(0, (a, b) -> a + b);
     }
 
     public static void main(String[] args) {
