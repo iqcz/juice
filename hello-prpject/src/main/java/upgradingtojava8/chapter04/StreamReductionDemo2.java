@@ -30,6 +30,7 @@ public class StreamReductionDemo2 {
 		new Order(1, 88.09, LocalDate.of(2014, Month.DECEMBER, 29)),
 		new Order(1, 10.29, LocalDate.of(2014, Month.DECEMBER, 30)),
 		new Order(1, 100.49, LocalDate.of(2014, Month.NOVEMBER, 22)) };
+	
 	return orders;
     }
 
@@ -46,6 +47,7 @@ public class StreamReductionDemo2 {
     public static void main(String[] args) {
 	StreamReductionDemo2 demo = new StreamReductionDemo2();
 	Order[] orders = demo.getOrders();
+	
 	double totalSalesForMonth = demo.calculateSalesTotal(orders, YearMonth.of(2014, Month.NOVEMBER));
 	System.out.printf("Sales for Nov 2014 : $%2.2f\n", totalSalesForMonth);
 
