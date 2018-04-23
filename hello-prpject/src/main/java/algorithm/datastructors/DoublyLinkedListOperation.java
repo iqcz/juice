@@ -14,6 +14,7 @@ import java.util.Objects;
  * @version 1.0
  */
 public class DoublyLinkedListOperation {
+    public static final String SEPARATOR = "->";
 
     /**
      * Traverse the doubly linked list.
@@ -28,7 +29,7 @@ public class DoublyLinkedListOperation {
             headNode = headNode.getNextNode();
         }
 
-        return Joiner.on("->").join(data);
+        return Joiner.on(SEPARATOR).join(data);
     } // end method traverse
 
     /**
