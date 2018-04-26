@@ -6,7 +6,7 @@ import java.lang.reflect.Field;
 
 /**
  * PropertyDescriptor usage.
- * @author Phideon
+ * @author phideon
  *
  */
 public class PropertyDescriptorExample {
