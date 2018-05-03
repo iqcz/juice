@@ -37,6 +37,7 @@ public class StreamMapDemo {
 	double avgAge = periods.mapToLong((period) -> period.toTotalMonths())
 		.average()
 		.getAsDouble() / 12;
+	
 	return avgAge;
     }
 

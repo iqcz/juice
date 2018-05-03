@@ -11,7 +11,6 @@ public class StreamFilterDemo1 {
 	Predicate<String> notCommentOrEmptyLine = 
 		(line) -> line.trim().length() > 0 && !line.trim().startsWith("#");
 	
-	
 	try (FileReader fr = new FileReader("example.txt"); 
 		BufferedReader br = new BufferedReader(fr)) {
 	    Stream<String> lines = br.lines();
