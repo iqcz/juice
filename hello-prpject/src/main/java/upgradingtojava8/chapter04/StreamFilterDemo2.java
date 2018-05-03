@@ -17,7 +17,6 @@ public class StreamFilterDemo2 {
 	
 	// notice: walk method
 	try (Stream<Path> list = Files.walk(parent)) {
-
 	    list.filter(p -> p.toString().endsWith(".java")).forEach(System.out::println);
 	} catch (IOException ex) {
 	    ex.printStackTrace();

@@ -41,6 +41,7 @@ public class StreamReductionDemo1 {
 		}
 	    }
 	});
+	
 	return theOrder;
     }
 
