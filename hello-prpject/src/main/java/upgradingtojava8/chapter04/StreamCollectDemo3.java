@@ -1,6 +1,7 @@
 package upgradingtojava8.chapter04;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -10,6 +11,10 @@ import java.util.stream.Stream;
 public class StreamCollectDemo3 {
 
     public static void main(String[] args) {
+	
+	List<String> names = Arrays.asList("wang", "li", "zhao");
+	System.out.println(names);
+	
 	AtomicInteger counter = new AtomicInteger();
 
 	Supplier<List<String>> supplier = () -> {
