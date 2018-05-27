@@ -11,13 +11,10 @@ import java.util.stream.IntStream;
 public class BigThanNumbersCount {
 
     public static void main(String[] args) {
-	// Integer[] nums = {2, 4, 5 ,6 , 7, 90,122};
 	int[] nums = { 2, 4, 5, 6, 7, 90, 122 };
-	System.out.println("---");
-	// long count = Stream.of(nums).filter(e -> e > 5).count();
 
 	long count = IntStream.of(nums).filter(e -> e > 5).count();
-
+	
 	System.out.println(count);
     }
 
