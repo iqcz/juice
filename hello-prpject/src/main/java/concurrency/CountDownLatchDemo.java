@@ -18,9 +18,9 @@ public class CountDownLatchDemo {
     public static void main(String[] args) {
 	final CountDownLatch startSignal = new CountDownLatch(1);
 	final CountDownLatch doneSignal = new CountDownLatch(NTHREADS);
+	
 	Runnable r = new Runnable() {
-	    @Override
-	    public void run() {
+	    @Override public void run() {
 		try {
 		    report("entered run()");
 		    startSignal.await(); // wait until told to ...
@@ -35,7 +35,8 @@ public class CountDownLatchDemo {
 	    }
 
 	    void report(String s) {
-		System.out.println(System.currentTimeMillis() + ": " + Thread.currentThread() + ": " + s);
+		System.out.println(System.currentTimeMillis() + ": " 
+			+ Thread.currentThread() + ": " + s);
 	    }
 	};
 	ExecutorService executor = Executors.newFixedThreadPool(NTHREADS);
