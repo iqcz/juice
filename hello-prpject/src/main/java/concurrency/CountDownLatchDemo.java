@@ -35,14 +35,15 @@ public class CountDownLatchDemo {
 	    }
 
 	    void report(String s) {
-		System.out.println(System.currentTimeMillis() + ": " 
-			+ Thread.currentThread() + ": " + s);
+		System.out.println(System.currentTimeMillis() + ": " + Thread.currentThread() + ": " + s);
 	    }
 	};
+	
 	ExecutorService executor = Executors.newFixedThreadPool(NTHREADS);
 	for (int i = 0; i < NTHREADS; i++) {
 	    executor.execute(r);
 	}
+	
 	try {
 	    System.out.println("main thread doing something");
 	    Thread.sleep(1000); // sleep for 1 second
