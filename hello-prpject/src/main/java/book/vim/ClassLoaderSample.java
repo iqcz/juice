@@ -2,7 +2,6 @@ package book.vim;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Objects;
 
 /**
  * 比较两个类是否“相等”，只有在两个类是由同一个类加载器加载的前提下才有意义。
@@ -31,12 +30,10 @@ public class ClassLoaderSample {
                     is.read(b);
 
                     return this.defineClass(name, b, 0, b.length);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (ClassNotFoundException e) {
+                } catch (IOException | ClassNotFoundException e) {
                     e.printStackTrace();
                 } finally {
-                    if(is != null) {
+                    if (is != null) {
                         try {
                             is.close();
                         } catch (IOException e) {
