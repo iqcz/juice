@@ -9,21 +9,21 @@ public class CharMatcherExample {
                 + "we want on one line";
 
         // replaceFrom 只是替换一个空格或换行，或tab等
-        String str1 = CharMatcher.BREAKING_WHITESPACE.replaceFrom(stringWithLinebreaks, " ");
+        String str1 = CharMatcher.breakingWhitespace().replaceFrom(stringWithLinebreaks, " ");
         System.out.println(str1);
 
         System.out.println("--------------------");
 
         // collapseFrom 替换多个空格或tab。
         String tabsAndSpaces = "String  with      spaces     and           tabs";
-        String str2 = CharMatcher.WHITESPACE.collapseFrom(tabsAndSpaces, '|');
+        String str2 = CharMatcher.whitespace().collapseFrom(tabsAndSpaces, '|');
         System.out.println(str2);
 
         System.out.println("--------------------");
 
         // 只保留数字的字符串
         String lettersAndNumbers = "foo989yxbar234";
-        String str3 = CharMatcher.JAVA_DIGIT.retainFrom(lettersAndNumbers);
+        String str3 = CharMatcher.javaDigit().retainFrom(lettersAndNumbers);
         System.out.println(str3);
 
         System.out.println("--------------------");

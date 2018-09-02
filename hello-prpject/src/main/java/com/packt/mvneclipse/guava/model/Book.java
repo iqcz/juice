@@ -1,5 +1,6 @@
 package com.packt.mvneclipse.guava.model;
 
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import com.google.common.collect.ComparisonChain;
 import static com.google.common.base.Preconditions.*;
@@ -48,18 +49,18 @@ public class Book implements Comparable<Book> {
 
     @Override
     public String toString() {
-        return Objects.toStringHelper(this)
+        return MoreObjects.toStringHelper(this)
                 .omitNullValues()
                 .add("title", title)
                 .add("author", author)
                 .add("publisher", publisher)
-                .add("price",price)
+                .add("price", price)
                 .add("isbn", isbn).toString();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(title, author, publisher, isbn,price);
+        return Objects.hashCode(title, author, publisher, isbn, price);
     }
 
     @Override
