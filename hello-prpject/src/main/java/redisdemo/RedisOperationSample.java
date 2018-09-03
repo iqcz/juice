@@ -7,7 +7,7 @@ import java.util.Set;
 import redis.clients.jedis.Jedis;
 
 /**
- * @author LiYanxue <liyanxue@kuaishou.com>
+ * @author LiYanxue
  * Created on 2018-09-01
  */
 public class RedisOperationSample {
