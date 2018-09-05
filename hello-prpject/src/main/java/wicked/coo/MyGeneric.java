@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class MyGeneric<T> {
 
-    SecureRandom random = new SecureRandom();
+    private SecureRandom random = new SecureRandom();
 
     private ArrayList<T> list;
 

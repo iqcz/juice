@@ -14,13 +14,13 @@ import java.util.stream.Stream;
 public class ObtainStreamDemo {
 
     public static void main(String[] args) {
-	Path path = Paths.get(".");
-	try (Stream<Path> list = Files.list(path)) {
-	    // Consumer functional function as parameter,
-	    // which has one parameter, and returns no result(void).
-	    list.forEach(System.out::println);
-	} catch (IOException ex) {
-	    ex.printStackTrace();
-	}
+        Path path = Paths.get(".");
+        try (Stream<Path> list = Files.list(path)) {
+            // Consumer functional function as parameter,
+            // which has one parameter, and returns no result(void).
+            list.forEach(System.out::println);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 }
