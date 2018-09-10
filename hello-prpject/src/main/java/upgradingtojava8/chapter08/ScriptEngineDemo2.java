@@ -9,17 +9,15 @@ import javax.script.ScriptException;
 
 public class ScriptEngineDemo2 {
 
-    public static void main(String ...args) {
-	ScriptEngineManager factory = new ScriptEngineManager();
+    public static void main(String... args) {
+        ScriptEngineManager factory = new ScriptEngineManager();
         ScriptEngine engine = factory.getEngineByName("nashorn");
         // evaluate JavaScript file
-        
+
         try {
-	    engine.eval(new FileReader("jjstest/test1.js"));
-	} catch (FileNotFoundException e) {
-	    e.printStackTrace();
-	} catch (ScriptException e) {
-	    e.printStackTrace();
-	}
+            engine.eval(new FileReader("jjstest/test1.js"));
+        } catch (FileNotFoundException | ScriptException e) {
+            e.printStackTrace();
+        }
     }
 }
