@@ -11,6 +11,9 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
+/**
+ * 使用Stream方式实现同位词算法。
+ */
 public class Anagrams {
 
     public static void main(String[] args) throws IOException {
