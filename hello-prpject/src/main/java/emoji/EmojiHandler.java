@@ -10,9 +10,10 @@ public class EmojiHandler {
         String rst = EmojiParser.parseToUnicode(aliaes);
         System.out.println(rst);
 
-
         String str = "An 😀awesome 😃string with a few 😉emojis!";
         String result = EmojiParser.parseToAliases(str);
         System.out.println(result);
+
+        // todo other methods to use.
     }
 }
