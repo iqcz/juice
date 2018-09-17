@@ -1,5 +1,8 @@
 package algorithm.datastructors;
 
+import static algorithm.datastructors.DoublyLinkedListOperation.reverse;
+import static algorithm.datastructors.DoublyLinkedListOperation.traverse;
+
 /**
  * Main method.
  * @author LiYanxue
@@ -7,16 +10,15 @@ package algorithm.datastructors;
  * @version 1.0
  */
 public class Main {
+
     public static void main(String... args) {
         DoublyLinkedList doublyLinkedList = initList();
 
-        System.out.printf("Traverse list: %s%n",
-            DoublyLinkedListOperation.traverse(doublyLinkedList));
+        System.out.printf("Traverse list: %s%n", traverse(doublyLinkedList));
 
-        DoublyLinkedList reversedList = DoublyLinkedListOperation.reverse(doublyLinkedList);
+        DoublyLinkedList reversedList = reverse(doublyLinkedList);
 
-        System.out.printf("Reverse list: %s%n",
-            DoublyLinkedListOperation.traverse(reversedList));
+        System.out.printf("Reverse list: %s%n", traverse(reversedList));
     } // end method main
 
     /**

@@ -14,6 +14,7 @@ import com.google.common.base.Joiner;
  * @version 1.0
  */
 public class DoublyLinkedListOperation {
+
     public static final String SEPARATOR = "->";
 
     /**
