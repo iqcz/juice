@@ -13,10 +13,6 @@ public class DoublyLinkedList {
     private DoublyLinkedList previousNode;
     private DoublyLinkedList nextNode;
 
-    public DoublyLinkedList() {
-
-    }
-
     public DoublyLinkedList(int data) {
         this.data = data;
     }
@@ -28,7 +24,6 @@ public class DoublyLinkedList {
     public void setData(int data) {
         this.data = data;
     }
-
 
     public DoublyLinkedList getPreviousNode() {
         return previousNode;
