@@ -13,34 +13,34 @@ public class UserDO {
     private String empId;
 
     public String getUserName() {
-	return userName;
+        return userName;
     }
 
     public void setUserName(String userName) {
-	this.userName = userName;
+        this.userName = userName;
     }
 
     public String getUserTitle() {
-	return userTitle;
+        return userTitle;
     }
 
     public void setUserTitle(String userTitle) {
-	this.userTitle = userTitle;
+        this.userTitle = userTitle;
     }
 
     public int getLoginTimes() {
-	return loginTimes;
+        return loginTimes;
     }
 
     public void setLoginTimes(int loginTimes) {
-	this.loginTimes = loginTimes;
+        this.loginTimes = loginTimes;
     }
 
     public String getEmpId() {
-	return empId;
+        return empId;
     }
 
     public void setEmpId(String empId) {
-	this.empId = empId;
+        this.empId = empId;
     }
 }
