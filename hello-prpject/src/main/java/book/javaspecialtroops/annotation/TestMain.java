@@ -13,27 +13,29 @@ import java.util.List;
 public class TestMain {
 
     public static void main(String[] args) throws InstantiationException, IllegalAccessException {
-	@SuppressWarnings({ "serial" })
-	List<HashMap<String, String>> list = Arrays.asList(new HashMap<String, String>() {
-	    {
-		put("name", "li");
-		put("title", "shuai");
-	    }
-	}, new HashMap<String, String>() {
-	    {
-		put("name", "wang");
-		put("title", "mei");
-	    }
-	});
-	List<UserDO> users = new ArrayList<UserDO>(list.size());
-	for (HashMap<String, String> row : list) {
-	    users.add(ConvertionService.convertMapToBean(row, UserDO.class));
-	}
-	System.out.println();
+        @SuppressWarnings({ "serial" })
+        List<HashMap<String, String>> list = Arrays.asList(new HashMap<String, String>() {
 
-	// 这里可以将users列表输出
-	users.forEach(user -> {
-	    System.out.println(user.getUserName() + ", " + user.getUserTitle());
-	});
+            {
+                put("name", "li");
+                put("title", "shuai");
+            }
+        }, new HashMap<String, String>() {
+
+            {
+                put("name", "wang");
+                put("title", "mei");
+            }
+        });
+        List<UserDO> users = new ArrayList<UserDO>(list.size());
+        for (HashMap<String, String> row : list) {
+            users.add(ConvertionService.convertMapToBean(row, UserDO.class));
+        }
+        System.out.println();
+
+        // 这里可以将users列表输出
+        users.forEach(user -> {
+            System.out.println(user.getUserName() + ", " + user.getUserTitle());
+        });
     }
 }
