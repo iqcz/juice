@@ -11,12 +11,13 @@ public class ThreadJoinTest {
     private final static int COUNTER = 100000001;
 
     static class Computer extends Thread {
+
         private int start;
         private int end;
         private int result;
         private int[] array;
 
-        public Computer(int[] array, int start, int end) {
+        Computer(int[] array, int start, int end) {
             this.array = array;
             this.start = start;
             this.end = end;
@@ -32,7 +33,7 @@ public class ThreadJoinTest {
             }
         }
 
-        public int getResult() {
+        private int getResult() {
             return result;
         }
     } // end class Computer
