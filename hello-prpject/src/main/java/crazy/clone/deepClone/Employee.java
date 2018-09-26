@@ -2,70 +2,70 @@ package crazy.clone.deepClone;
 
 public class Employee implements Cloneable {
 
-	private String name;
-	private int age;
-	private Address address;
+    private String name;
+    private int age;
+    private Address address;
 
-/** constructor start **/
-	public Employee() {
-	}
+    /** constructor start **/
+    public Employee() {
+    }
 
-	public Employee(String name, int age, Address address) {
-		this.name = name;
-		this.age = age;
-		this.address = address;
-	}
-	/** constructor end **/
-	
-/** getter and setter method start **/	
-	public String getName() {
-		return name;
-	}
+    public Employee(String name, int age, Address address) {
+        this.name = name;
+        this.age = age;
+        this.address = address;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    /** constructor end **/
 
-	public int getAge() {
-		return age;
-	}
+    /** getter and setter method start **/
+    public String getName() {
+        return name;
+    }
 
-	public void setAge(int age) {
-		this.age = age;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public Address getAddress() {
-		return address;
-	}
+    public int getAge() {
+        return age;
+    }
 
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-/** getter and setter method end **/	
-	
-	
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Name: " + name).append(",")
-				.append("Age: " + age).append(".\n")
-				.append("Adderss: " + address);
-		
-		return builder.toString();
-	}
+    public void setAge(int age) {
+        this.age = age;
+    }
 
-	@Override
-	protected Employee clone() {
-		Employee employee = null;
+    public Address getAddress() {
+        return address;
+    }
 
-		try {
-			employee = (Employee) super.clone();
-		} catch (CloneNotSupportedException e) {
-			e.printStackTrace();
-		}
-		employee.address = (Address) address.clone(); // 这句话相当关键和重要
-		
-		return employee;
-	}
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    /** getter and setter method end **/
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Name: " + name).append(",").append("Age: " + age).append(".\n")
+                .append("Adderss: " + address);
+
+        return builder.toString();
+    }
+
+    @Override
+    protected Employee clone() {
+        Employee employee = null;
+
+        try {
+            employee = (Employee) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        employee.address = (Address) address.clone(); // 这句话相当关键和重要
+
+        return employee;
+    }
 
 }
