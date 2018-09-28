@@ -8,6 +8,7 @@ import java.nio.file.attribute.FileTime;
 import java.time.Instant;
 
 public class DeleteFiles {
+    private static final int SECONDS_OF_DAY = 86400;
 
     // TODO 添加log jar包。
     /**
@@ -19,37 +20,37 @@ public class DeleteFiles {
      * @param days     指定要删除几天之前的天数
      */
     private void deletePreviousFiles(final String fileType, int days) {
-	Path path = Paths.get("ContentStatistics");
+        Path path = Paths.get("ContentStatistics");
 
-	// 创建目录
-	if (!Files.exists(path)) {
-	    try {
-		Files.createDirectory(path);
-	    } catch (IOException e) {
-		e.printStackTrace();
-	    }
-	}
+        // 创建目录
+        if (!Files.exists(path)) {
+            try {
+                Files.createDirectory(path);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
-	try {
-	    // object for iterating through a directory's contents
-	    Files.newDirectoryStream(path).forEach(csvFile -> {
-		try {
-		    if (!Files.isDirectory(csvFile)) {
-			FileTime fileTime = Files.getLastModifiedTime(csvFile);
-			Instant lastTenDays = Instant.now().minusSeconds(86400 * days); // 1天(d)=86400秒(s)
-			if (csvFile.toString().contains(fileType)) {
-			    if (fileTime.toInstant().isBefore(lastTenDays)) {
-				Files.deleteIfExists(csvFile);
-			    }
-			}
-		    }
-		} catch (IOException e) {
-		    e.printStackTrace();
-		}
-	    });
-	} catch (IOException e) {
-	    e.printStackTrace();
-	}
+        try {
+            // object for iterating through a directory's contents
+            Files.newDirectoryStream(path).forEach(csvFile -> {
+                try {
+                    if (!Files.isDirectory(csvFile)) {
+                        FileTime fileTime = Files.getLastModifiedTime(csvFile);
+                        Instant lastTenDays = Instant.now().minusSeconds(SECONDS_OF_DAY * days); // 1天(d)=86400秒(s)
+                        if (csvFile.toString().contains(fileType)) {
+                            if (fileTime.toInstant().isBefore(lastTenDays)) {
+                                Files.deleteIfExists(csvFile);
+                            }
+                        }
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     } // end method deletePreviousFiles
 
 }
