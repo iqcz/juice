@@ -17,7 +17,7 @@ public class ListTest {
 
         // add colors2 elements to list2
         String[] colors2 = { "gold", "white", "brown", "blue", "gray", "silver" };
-        List<String> list2 = new LinkedListx<>();
+        List<String> list2 = new LinkedList<>();
 
         for (String color : colors2) {
             list2.add(color);
