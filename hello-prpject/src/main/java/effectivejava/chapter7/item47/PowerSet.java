@@ -36,7 +36,7 @@ public class PowerSet {
     }
 
     public static void main(String[] args) {
-        Set s = new HashSet(Arrays.asList(1, 2, 3, 4, 5));
+        Set<Integer> s = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5));
         System.out.println(PowerSet.of(s));
     }
 }
