@@ -13,9 +13,9 @@ import java.util.function.BinaryOperator;
 public class BinaryOperatorDemo {
 
     public static void main(String[] args) {
-	BinaryOperator<String> sameType = (str1, str2) -> str1 + ", " + str2 + ".";
+        BinaryOperator<String> sameType = (str1, str2) -> str1 + ", " + str2 + ".";
 
-	System.out.println(sameType.apply("Hello", "yaya"));
+        System.out.println(sameType.apply("Hello", "yaya"));
     }
 
 }
