@@ -21,6 +21,7 @@ public class BinarySearchTest {
 
         // loop to search for element
         do {
+            /*
             // print remaining elements of array
             System.out.print(remainingElements(data, low, high));
 
@@ -29,6 +30,8 @@ public class BinarySearchTest {
                 System.out.print("   ");
             }
             System.out.println(" * "); // indicate current middle
+            */
+
 
             // if the element is found at the middle
             if (key == data[middle]) {
