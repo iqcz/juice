@@ -12,13 +12,13 @@ import java.util.stream.Stream;
 public class BigThanNumbersCount {
 
     public static void main(String[] args) {
-	int[] nums = { 2, 4, 5, 6, 7, 90, 122 };
-	long count = IntStream.of(nums).filter(e -> e > 5).count();
-	System.out.println(count);
+        int[] nums = { 2, 4, 5, 6, 7, 90, 122 };
+        long count = IntStream.of(nums).filter(e -> e > 5).count();
+        System.out.println(count);
 
-	Stream<String> stream1 = Stream.of("January", "Christie");
-	Stream<String> stream2 = Stream.of("Okanagan", "Sydney", "Alpha");
-	Stream.concat(stream1, stream2).sorted().forEach(System.out::println);
+        Stream<String> stream1 = Stream.of("January", "Christie");
+        Stream<String> stream2 = Stream.of("Okanagan", "Sydney", "Alpha");
+        Stream.concat(stream1, stream2).sorted().forEach(System.out::println);
     }
 
 }
