@@ -14,7 +14,7 @@ import java.util.concurrent.Executors;
  */
 public class CountDownLatchDemo {
 
-    final static int NTHREADS = 3; // TODO how to evaluate this number?
+    private static final int NTHREADS = 3; // TODO how to evaluate this number?
 
     public static void main(String[] args) {
         final CountDownLatch startSignal = new CountDownLatch(1);
