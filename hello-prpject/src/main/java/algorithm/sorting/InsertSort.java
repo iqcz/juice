@@ -28,8 +28,8 @@ public class InsertSort {
         int[] arr = { 3, 1, 6, 4, 9, 12, 7 };
         int[] afterArr = insertionSort(arr);
 
-        for (int i = 0; i < afterArr.length; i++) {
-            System.out.println(afterArr[i]);
+        for (int element : afterArr) {
+            System.out.println(element);
         }
     }
 }
