@@ -6,8 +6,8 @@ package algorithm;
  */
 public class JiTu {
 
-    static int chicken;
-    static int rabbit;
+    private static int chicken;
+    private static int rabbit;
 
     public static int qiongju(int head, int foot) {
         int retValue = 0;
