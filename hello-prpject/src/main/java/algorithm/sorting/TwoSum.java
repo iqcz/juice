@@ -21,9 +21,9 @@ class TwoSum {
     public static void main(String[] args) {
         TwoSum so = new TwoSum();
 
-        int[] nums = { 2, 7, 11, 15 };
+        int[] nums = { 2, 7, 11, 15, 45, 16, 90 };
 
-        int[] indexs = so.twoSum(nums, 13);
+        int[] indexs = so.twoSum(nums, 27);
 
         for (int element : indexs) {
             System.out.println(element);
