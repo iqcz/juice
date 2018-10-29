@@ -39,6 +39,7 @@ public class DefaultThreadPool<Job extends Runnable> implements ThreadPool<Job> 
         initializeWorkers(workerNum);
     }
 
+    @Override
     public void execute(Job job) {
         if (job != null) {
             // 添加一个线程，然后进行通知
@@ -49,12 +50,14 @@ public class DefaultThreadPool<Job extends Runnable> implements ThreadPool<Job> 
         }
     }
 
+    @Override
     public void shutdown() {
         for (Worker worker : workers) {
             worker.shutdown();
         }
     }
 
+    @Override
     public void addWorkers(int num) {
         synchronized (jobs) {
             // 限制新增的Worker数量不能超过最大值
@@ -66,6 +69,7 @@ public class DefaultThreadPool<Job extends Runnable> implements ThreadPool<Job> 
         }
     }
 
+    @Override
     public void removeWorkers(int num) {
         synchronized (jobs) {
             if (num >= this.workerNum) {
@@ -81,6 +85,7 @@ public class DefaultThreadPool<Job extends Runnable> implements ThreadPool<Job> 
         }
     }
 
+    @Override
     public int getJobSize() {
         return jobs.size();
     }
