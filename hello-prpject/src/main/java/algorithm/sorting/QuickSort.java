@@ -1,5 +1,7 @@
 package algorithm.sorting;
 
+import java.util.Objects;
+
 public class QuickSort {
 
     public static int[] quickSort(int[] array, int start, int end) {
@@ -23,7 +25,7 @@ public class QuickSort {
     private static int partition(int[] array, int start, int end) {
         int pivot = (int) (start + Math.random() * (end - start + 1));
         int smallIndex = start - 1;
-        swap(array, pivot, end);
+        //        swap(array, pivot, end);
         for (int i = start; i <= end; i++) {
             if (array[i] <= array[end]) {
                 smallIndex++;
@@ -50,7 +52,7 @@ public class QuickSort {
         }
         int[] afterArr = quickSort(arr, 0, arr.length - 1);
 
-        for (int element : afterArr) {
+        for (int element : Objects.requireNonNull(afterArr)) {
             System.out.printf("%d ", element);
         }
     }

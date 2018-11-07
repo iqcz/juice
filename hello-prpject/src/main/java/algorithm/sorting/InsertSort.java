@@ -15,6 +15,7 @@ public class InsertSort {
             current = array[i + 1];
             int preIndex = i;
             while (preIndex >= 0 && current < array[preIndex]) {
+                // 如果该元素（已排序）大于新元素，将该元素移到下一位置；
                 array[preIndex + 1] = array[preIndex];
                 preIndex--;
             }
@@ -24,12 +25,31 @@ public class InsertSort {
         return array;
     }
 
+    /**
+     * 另一种插入排序的写法
+     * @param array
+     * @return
+     */
+    public static int[] insertionSort2(int[] array) {
+        for (int i = 1; i < array.length; i++) {
+            int tmp = array[i];
+            int j = i;
+            for (; j > 0 && tmp < array[j - 1]; j--) {
+                array[j] = array[j - 1];
+            }
+            array[j] = tmp;
+        }
+
+        return array;
+    }
+
     public static void main(String[] args) {
         int[] arr = { 3, 1, 6, 4, 9, 12, 7 };
-        int[] afterArr = insertionSort(arr);
+        //        int[] afterArr = insertionSort(arr);
+        int[] afterArr = insertionSort2(arr);
 
         for (int element : afterArr) {
-            System.out.println(element);
+            System.out.printf("%d, ", element);
         }
     }
 }
