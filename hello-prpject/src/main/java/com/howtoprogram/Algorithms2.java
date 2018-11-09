@@ -33,8 +33,9 @@ public class Algorithms2 {
         System.out.printf("%nAfter addAll, list2 contains: ");
 
         // display elements in list2
-        for (String s : list2)
+        for (String s : list2) {
             System.out.printf("%s ", s);
+        }
 
         // get frequency of "red"
         int frequency = Collections.frequency(list2, "red");
