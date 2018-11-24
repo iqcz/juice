@@ -28,7 +28,7 @@ public class SelectionSort {
             // swap smallest element into position
             swap(data, i, smallest);
             // output pass of algorithm
-            printPass(data, i + 1, smallest);
+           // printPass(data, i + 1, smallest);
         }
     } // end method selectionSort
 

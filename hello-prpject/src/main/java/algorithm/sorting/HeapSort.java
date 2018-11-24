@@ -2,28 +2,32 @@ package algorithm.sorting;
 
 public class HeapSort {
 
-    static final int SIZE = 10;
+    private static final int SIZE = 10;
 
-    static void heapSort(int a[], int n) //堆排序
-    {
+    //堆排序
+    static void heapSort(int a[], int n) {
         int i, j, h, k;
         int t;
 
-        for (i = n / 2 - 1; i >= 0; i--) //将a[0,n-1]建成大根堆
-        {
-            while (2 * i + 1 < n) //第i个结点有右子树
-            {
+        //将a[0,n-1]建成大根堆
+        for (i = n / 2 - 1; i >= 0; i--) {
+            //第i个结点有右子树
+            while (2 * i + 1 < n) {
                 j = 2 * i + 1;
                 if ((j + 1) < n) {
-                    if (a[j] < a[j + 1]) //右左子树小于右子树，则需要比较右子树
-                        j++; //序号增加1，指向右子树
+                    //右左子树小于右子树，则需要比较右子树
+                    if (a[j] < a[j + 1])
+                        //序号增加1，指向右子树
+                        j++;
                 }
-                if (a[i] < a[j]) //比较i与j为序号的数据
-                {
-                    t = a[i]; //交换数据
+                //比较i与j为序号的数据
+                if (a[i] < a[j]) {
+                    //交换数据
+                    t = a[i];
                     a[i] = a[j];
                     a[j] = t;
-                    i = j; //堆被破坏，需要重新调整
+                    //堆被破坏，需要重新调整
+                    i = j;
                 } else //比较左右子结点均大则堆未破坏，不再需要调整
                 {
                     break;
