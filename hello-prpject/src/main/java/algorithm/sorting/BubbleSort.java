@@ -1,5 +1,8 @@
 package algorithm.sorting;
 
+/**
+ * 两两比较，邻居好说话
+ */
 public class BubbleSort {
 
     public static int[] bubbleSort(int[] arr) {
@@ -7,11 +10,12 @@ public class BubbleSort {
             return arr;
         }
 
-        for (int i = 0; i < arr.length; i++) {
+        // 外层循环只趟数  
+        for (int i = 0; i < arr.length - 1; i++) {
             for (int j = 0; j < arr.length - 1 - i; j++) {
                 if (arr[j] > arr[j + 1]) {
                     int temp;
-                    temp = arr[j];
+                        temp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
                 }
@@ -25,7 +29,7 @@ public class BubbleSort {
         int[] afterArr = bubbleSort(arr);
 
         for (int i = 0; i < afterArr.length; i++) {
-            System.out.println(afterArr[i]);
+            System.out.printf("%d, ", afterArr[i]);
         }
 
     }
