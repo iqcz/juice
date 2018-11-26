@@ -2,6 +2,9 @@ package algorithm.sorting;
 
 /**
  * 插入排序
+ * 假设第一个元素是有序的，然后从下一个元素开始，和有序的元素比较。
+ * 如果要排序的元素小于已排序的元素，继续前移，一直移到大于排序元素的后面。
+ *
  */
 public class InsertSort {
 
@@ -35,6 +38,7 @@ public class InsertSort {
             int tmp = array[i];
             int j = i;
             for (; j > 0 && tmp < array[j - 1]; j--) {
+                // 向后移
                 array[j] = array[j - 1];
             }
             array[j] = tmp;
