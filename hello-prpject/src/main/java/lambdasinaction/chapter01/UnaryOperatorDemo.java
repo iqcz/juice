@@ -12,8 +12,8 @@ import java.util.function.UnaryOperator;
 public class UnaryOperatorDemo {
 
     public static void main(String[] args) {
-	UnaryOperator<String> appendSomething = str -> str + "->end";
+        UnaryOperator<String> appendSomething = str -> str + "->end";
 
-	System.out.println(appendSomething.apply("Ready to "));
+        System.out.println(appendSomething.apply("Ready to "));
     }
 }
