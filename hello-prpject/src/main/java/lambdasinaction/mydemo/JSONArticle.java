@@ -27,6 +27,7 @@ import com.google.common.base.Strings;
  * 前端需要解密两次.
  */
 public class JSONArticle {
+
     private static final Logger log = LoggerFactory.getLogger(JSONArticle.class);
 
     private static final String ENCODE_SPACE = "%20";
@@ -93,7 +94,8 @@ public class JSONArticle {
 
                 articleJson.put("orderId", i);
                 // Java加密会把空格转化为『+』,在这里做替换.
-                articleJson.put("title", URLEncoder.encode(title, UTF_8).replace("+", ENCODE_SPACE));
+                articleJson.put("title",
+                        URLEncoder.encode(title, UTF_8).replace("+", ENCODE_SPACE));
                 articleJson.put("txt", URLEncoder.encode(txt, UTF_8).replace("+", ENCODE_SPACE));
 
                 bodyJson.add(articleJson);
