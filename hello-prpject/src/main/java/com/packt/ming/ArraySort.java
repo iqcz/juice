@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * @author i324779
+ */
 public class ArraySort {
 
     public static void main(String[] args) {
@@ -18,7 +21,8 @@ public class ArraySort {
         Runnable run1 = () -> System.out.println("Thread is running.");
 
         // 使用代码快初始化 list 的 value
-        List<String> extensions = new ArrayList<String>() {
+        List<String> extensions = new ArrayList<>() {
+
             private static final long serialVersionUID = 2028514244500563526L;
             {
                 add("action");
