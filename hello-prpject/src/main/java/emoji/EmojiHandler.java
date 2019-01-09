@@ -15,5 +15,15 @@ public class EmojiHandler {
         System.out.println(result);
 
         // todo other methods to use.
+
+        String specialEmoji = "AAA\ud83e\udd65ZZZ😉";
+
+        String removedEmoji = EmojiParser.removeAllEmojis(specialEmoji);
+        System.out.println(removedEmoji);
+
+        // 框架处理不了的表情，转换为Unicode在字符串替换
+        specialEmoji.replace("\ud83e\udd65", "")  // 替换emoji中椰子coconut表情
+                .replace("\ud83e\udda2", ""); // 替换emoji中天鹅swan表情
+
     }
 }
