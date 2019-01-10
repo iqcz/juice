@@ -14,8 +14,8 @@ public class StreamMapDemo {
 
     class Employee {
 
-        public String name;
-        public LocalDate birthday;
+        private String name;
+        private LocalDate birthday;
 
         public Employee(String name, LocalDate birthday) {
             this.name = name;
