@@ -1,12 +1,13 @@
 package crazy.jdbc;
 
+import java.util.List;
+
 /**
  * 使用JdbcTemplate中的PreparedStatement对SQL进行注入防范的使用方法。
  * @author i324779
  *
  */
 public class JdbcTemplateSample {
-    /*
     public Pagination getUsers(User user, String ip, int pageNo, int pageSize) {
     	StringBuffer sql = new StringBuffer(
     		"SELECT d.*,group_name from jc_group c , (SELECT a.user_id as id,a.username,a.email,a.foreign_num as isForeignNum,a.user_group_level,a.group_id,b.last_login_time as ltime,b.login_count as lcount,b.register_ip as rip,b.last_login_ip as lip, a.is_disabled FROM ac_user a ,ac_user_manage_ext b where a.user_id=b.user_id ");
@@ -62,5 +63,18 @@ public class JdbcTemplateSample {
     	    }
     	}, new BeanPropertyRowMapper<>(User.class));
     }
-    */
+
+    @Override
+    public void findAcVideoSource(String oldAliKey, String newAliKey) {
+        List<String> tableNames = jdbcTemplate.queryForList("select table_name from information_schema.tables " +
+                " where table_schema = 'system32' " +
+                " and table_type = 'BASE TABLE' " +
+                " and table_name like 'ac_video_source%' " +
+                " and length(table_name) <= 20 " +
+                " and table_rows > 0", String.class);
+
+        tableNames.stream()
+                .filter(tableName -> jdbcTemplate.queryForList("select video_id from ? where url = ?", tableName, oldAliKey).size() > 0)
+                .forEach(tableName -> jdbcTemplate.update("update ? set url = ? where url = ?", tableName, newAliKey, oldAliKey));
+    }
 }
