@@ -11,12 +11,12 @@ import java.text.DecimalFormat;
 public class FormatNumbers {
 
 	public static void main(String[] args) {
-		String pattern = "#,###.##";
+        String pattern = "#,###.##";
 
-		DecimalFormat format = new DecimalFormat(pattern);
-		String result1 = format.format(1234.56789);
+        DecimalFormat format = new DecimalFormat(pattern);
+        String result1 = format.format(1234.56789);
 
-		System.out.println(result1);
+        System.out.println(result1);
 	}
 
 }
