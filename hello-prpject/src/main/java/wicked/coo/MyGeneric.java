@@ -9,12 +9,12 @@ import java.util.ArrayList;
  */
 public class MyGeneric<T> {
 
-    private SecureRandom random = new SecureRandom();
+    private final SecureRandom random = new SecureRandom();
 
-    private ArrayList<T> list;
+    private final ArrayList<T> list;
 
     public MyGeneric() {
-        list = new ArrayList<T>();
+        list = new ArrayList<>();
     }
 
     public static void main(String[] args) {
