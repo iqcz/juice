@@ -1,8 +1,14 @@
 package emoji;
 
+import java.util.Collection;
+
 import com.vdurmont.emoji.EmojiParser;
 
 public class EmojiHandler {
+
+    public static void rong(Collection<String> zr) {
+        zr.forEach(System.out::println);
+    }
 
     public static void main(String[] args) {
 
@@ -22,8 +28,7 @@ public class EmojiHandler {
         System.out.println(removedEmoji);
 
         // 框架处理不了的表情，转换为Unicode在字符串替换
-        specialEmoji.replace("\ud83e\udd65", "")  // 替换emoji中椰子coconut表情
+        specialEmoji.replace("\ud83e\udd65", "") // 替换emoji中椰子coconut表情
                 .replace("\ud83e\udda2", ""); // 替换emoji中天鹅swan表情
-
     }
 }
