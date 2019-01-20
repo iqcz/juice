@@ -13,7 +13,7 @@ import java.util.Scanner;
  */
 public class AgeCalculator {
 
-    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d");
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d");
 
     public Period calculateAge(LocalDate birthday) {
         LocalDate today = LocalDate.now();
@@ -29,7 +29,7 @@ public class AgeCalculator {
             String input = scanner.nextLine();
             try {
                 birthday = LocalDate.parse(input, formatter);
-                //		birthday = LocalDate.parse(input);
+                // birthday = LocalDate.parse(input);
                 return birthday;
             } catch (DateTimeParseException e) {
                 System.out.println("Error! Please try again");
