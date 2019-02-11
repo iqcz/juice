@@ -3,6 +3,7 @@ package lambdasinaction.mydemo;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 
 import org.slf4j.Logger;
@@ -31,7 +32,6 @@ public class JSONArticle {
     private static final Logger log = LoggerFactory.getLogger(JSONArticle.class);
 
     private static final String ENCODE_SPACE = "%20";
-    private static final String UTF_8 = "UTF-8";
     private static final String PAGE_START = "[NextPage]";
     private static final String PAGE_END = "[/NextPage]";
 
@@ -41,7 +41,7 @@ public class JSONArticle {
      * @param bodyList 文章(包含多P)的json结构的字符串
      * @return 多P文章合为一个字符串
      */
-    public static String flatArticleList(String bodyList) throws UnsupportedEncodingException {
+    public static String flatArticleList(String bodyList) {
         bodyList = bodyList.replaceAll("&quot;", "\"");
         StringBuilder flattedArticles = new StringBuilder();
 
@@ -54,9 +54,9 @@ public class JSONArticle {
             // 序号
             String orderId = article.getString("orderId");
             // 文章标题
-            String title = URLDecoder.decode(article.getString("title"), UTF_8);
+            String title = URLDecoder.decode(article.getString("title"), StandardCharsets.UTF_8);
             // 文章正文
-            String txt = URLDecoder.decode(article.getString("txt"), UTF_8);
+            String txt = URLDecoder.decode(article.getString("txt"), StandardCharsets.UTF_8);
 
             if (!Strings.isNullOrEmpty(txt)) {
                 flattedArticles.append(txt).append(PAGE_START).append(title).append(PAGE_END);
@@ -95,14 +95,14 @@ public class JSONArticle {
                 articleJson.put("orderId", i);
                 // Java加密会把空格转化为『+』,在这里做替换.
                 articleJson.put("title",
-                        URLEncoder.encode(title, UTF_8).replace("+", ENCODE_SPACE));
-                articleJson.put("txt", URLEncoder.encode(txt, UTF_8).replace("+", ENCODE_SPACE));
+                        URLEncoder.encode(title, StandardCharsets.UTF_8).replace("+", ENCODE_SPACE));
+                articleJson.put("txt", URLEncoder.encode(txt, StandardCharsets.UTF_8).replace("+", ENCODE_SPACE));
 
                 bodyJson.add(articleJson);
             }
         }
         json.put("bodyList", bodyJson);
 
-        return URLEncoder.encode(json.toJSONString(), UTF_8).replace("+", ENCODE_SPACE);
+        return URLEncoder.encode(json.toJSONString(), StandardCharsets.UTF_8).replace("+", ENCODE_SPACE);
     } // end method transferArticleJson
 } // end method JSONArticle
