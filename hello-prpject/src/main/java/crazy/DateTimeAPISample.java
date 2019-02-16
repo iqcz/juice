@@ -11,6 +11,8 @@ import java.time.ZonedDateTime;
  */
 public class DateTimeAPISample {
 
+    private static final int SECOND_IN_ONE_DAY = 86400;
+
     public static void main(String[] args) {
 
         LocalDateTime now = LocalDateTime.now().withHour(0).withMinute(0).withSecond(0);
@@ -18,6 +20,6 @@ public class DateTimeAPISample {
         System.out.println(zoneDateTime.toEpochSecond());
 
         // yesterday
-        System.out.println(zoneDateTime.toEpochSecond() - 86400); // seconds in one day.
+        System.out.println(zoneDateTime.toEpochSecond() - SECOND_IN_ONE_DAY);
     }
 }
