@@ -2,19 +2,32 @@ package concurrency;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.FutureTask;
+
+/**
+ * FutureTask执行多任务计算的使用场景
+ *
+ * 利用FutureTask和ExecutorService，可以用多线程的方式提交计算任务，
+ * 主线程继续执行其他任务，当主线程需要子线程的计算结果时，
+ * 在异步获取子线程的执行结果。
+ *
+ * @author i324779
+ */
 public class FutureTaskForMultiCompute {
 
     public static void main(String[] args) {
-
         FutureTaskForMultiCompute inst = new FutureTaskForMultiCompute();
         // 创建任务集合
-        List<FutureTask<Integer>> taskList = new ArrayList<FutureTask<Integer>>();
+        List<FutureTask<Integer>> taskList = new ArrayList<>();
         // 创建线程池
         ExecutorService exec = Executors.newFixedThreadPool(5);
         for (int i = 0; i < 10; i++) {
             // 传入Callable对象创建FutureTask对象
-            FutureTask<Integer> ft = new FutureTask<Integer>(inst.new ComputeTask(i, "" + i));
+            FutureTask<Integer> ft = new FutureTask<>(inst.new ComputeTask(i, "" + i));
             taskList.add(ft);
             // 提交给线程池执行任务，也可以通过exec.invokeAll(taskList)一次性提交所有任务;
             exec.submit(ft);
@@ -27,10 +40,8 @@ public class FutureTaskForMultiCompute {
         for (FutureTask<Integer> ft : taskList) {
             try {
                 //FutureTask的get方法会自动阻塞,直到获取计算结果为止
-                totalResult = totalResult + ft.get();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (ExecutionException e) {
+                totalResult += ft.get();
+            } catch (InterruptedException | ExecutionException e) {
                 e.printStackTrace();
             }
         }
@@ -38,13 +49,12 @@ public class FutureTaskForMultiCompute {
         // 关闭线程池
         exec.shutdown();
         System.out.println("多任务计算后的总结果是:" + totalResult);
-
     }
 
     private class ComputeTask implements Callable<Integer> {
 
-        private Integer result = 0;
-        private String taskName = "";
+        private Integer result;
+        private String taskName;
 
         public ComputeTask(Integer iniResult, String taskName) {
             result = iniResult;
@@ -58,8 +68,6 @@ public class FutureTaskForMultiCompute {
 
         @Override
         public Integer call() throws Exception {
-            // TODO Auto-generated method stub
-
             for (int i = 0; i < 100; i++) {
                 result = +i;
             }
