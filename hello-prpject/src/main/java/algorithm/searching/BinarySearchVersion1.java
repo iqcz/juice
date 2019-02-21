@@ -30,11 +30,31 @@ public class BinarySearchVersion1 {
         return location;
     }
 
-
+    /**
+     * 使用递归进行二分法查找
+     *
+     * @param a 待查找的数组
+     * @param low 查找开始位置
+     * @param high 查找结束位置
+     * @param data 要查找的数据
+     * @return 查找元素的下标索引
+     */
+    static int binarySearchRecursive(int[] a, int low, int high, int data) {
+        // 避免溢出
+        int mid = low + (high - low) / 2;
+        if (a[mid] == data) {
+            return mid;
+        } else if (a[mid] < data) {
+            return binarySearchRecursive(a, mid + 1, high, data);
+        } else {
+            return binarySearchRecursive(a, low, mid - 1, data);
+        }
+    }
 
     public static void main(String[] args) {
-        int[] data = {2, 4, 6, 8, 10, 12, 16, 18, 20};
-        
+        int[] data = { 2, 4, 6, 8, 10, 12, 16, 18, 20 };
+
         System.out.println(standardBinarySearch(data, 18));
+        System.out.println(binarySearchRecursive(data, 0, data.length, 18));
     }
 }
