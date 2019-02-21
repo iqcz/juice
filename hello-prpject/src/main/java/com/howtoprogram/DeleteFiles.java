@@ -7,7 +7,11 @@ import java.nio.file.Paths;
 import java.nio.file.attribute.FileTime;
 import java.time.Instant;
 
+/**
+ * @author i324779
+ */
 public class DeleteFiles {
+
     private static final int SECONDS_OF_DAY = 86400;
 
     // TODO 添加log jar包。
@@ -37,7 +41,8 @@ public class DeleteFiles {
                 try {
                     if (!Files.isDirectory(csvFile)) {
                         FileTime fileTime = Files.getLastModifiedTime(csvFile);
-                        Instant lastTenDays = Instant.now().minusSeconds(SECONDS_OF_DAY * days); // 1天(d)=86400秒(s)
+                        // 1天(d)=86400秒(s)
+                        Instant lastTenDays = Instant.now().minusSeconds(SECONDS_OF_DAY * days);
                         if (csvFile.toString().contains(fileType)) {
                             if (fileTime.toInstant().isBefore(lastTenDays)) {
                                 Files.deleteIfExists(csvFile);
