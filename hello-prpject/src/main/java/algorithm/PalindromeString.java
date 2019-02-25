@@ -10,7 +10,7 @@ public class PalindromeString {
 
     /**
      * 判断回文字符串
-     * @param str 要判断的字符产
+     * @param str 要判断的字符串
      * @return 是否是回文字符串
      */
     public static boolean isPalindrome(String str) {
