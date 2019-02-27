@@ -31,5 +31,4 @@ public class CircleNumber {
         // 判断反值是否与原值相等
         return invertValue == oldValue;
     }
-
 }
