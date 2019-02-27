@@ -2,6 +2,8 @@ package algorithm.sorting;
 
 /**
  * 两两比较，邻居好说话
+ *
+ * 改进方案：1.增加标识位；2.一次冒两个泡
  * @author i324779
  */
 public class BubbleSort {
@@ -12,7 +14,7 @@ public class BubbleSort {
         }
 
         // 外层循环只趟数
-        for (int i = 0; i < arr.length - 1; i++) {
+        for (int i = 0; i < arr.length -5 1; i++) {
             for (int j = 0; j < arr.length - 1 - i; j++) {
                 if (arr[j] > arr[j + 1]) {
                     int temp;

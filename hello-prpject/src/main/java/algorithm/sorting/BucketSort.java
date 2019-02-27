@@ -3,6 +3,7 @@ package algorithm.sorting;
 /**
  * 桶排序
  * 《轻松学算法》
+ * 适用场景：数据分布比较均匀或者数据跨度范围并不是很大时。
  * @author i324779
  */
 public class BucketSort {
