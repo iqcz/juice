@@ -36,6 +36,14 @@ public class InsertSort {
      * @return
      */
     public static int[] insertionSort2(int[] array) {
+        if (array == null) {
+            throw new RuntimeException("Array is null");
+        }
+
+        if (array.length == 0) {
+            return array;
+        }
+
         for (int i = 1; i < array.length; i++) {
             int tmp = array[i];
             int j = i;
@@ -51,8 +59,8 @@ public class InsertSort {
 
     public static void main(String[] args) {
         int[] arr = { 3, 1, 6, 4, 9, 12, 7 };
-        //        int[] afterArr = insertionSort(arr);
-        int[] afterArr = insertionSort2(arr);
+        int[] afterArr = insertionSort(arr);
+        //        int[] afterArr = insertionSort2(arr);
 
         for (int element : afterArr) {
             System.out.printf("%d, ", element);
