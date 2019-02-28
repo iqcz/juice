@@ -37,9 +37,11 @@ public class BinarySearchVersion1 {
      * @param low 查找开始位置
      * @param high 查找结束位置
      * @param data 要查找的数据
-     * @return 查找元素的下标索引
+     * @return 查找元素的下标
      */
-    static int binarySearchRecursive(int[] a, int low, int high, int data) {
+    public static int binarySearchRecursive(int[] a, int low, int high, int data) {
+        // 精确的位置
+        // P = low + (key -a[low]) / (a[high - a [low]) * (high - low)
         // 避免溢出
         int mid = low + (high - low) / 2;
         if (a[mid] == data) {
