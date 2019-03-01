@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 /**
  * 数据类型：栈
+ * 适用场景：1. 逆序输出；2. 语法检查，符号成对出现；3， 数制转换；
  */
 public class MyStack {
 
