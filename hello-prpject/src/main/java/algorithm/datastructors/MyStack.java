@@ -1,44 +1,80 @@
 package algorithm.datastructors;
 
+import java.util.Arrays;
+
 /**
  * 数据类型：栈
  */
 public class MyStack {
 
+    private static final int DEFAULT_SIZE = 10;
+
     /**
      * 底层是一个数组实现
      */
     private long[] arr;
-    private int top;
+
+    /**
+     * equals top
+     *  */
+    private int size;
 
     public MyStack() {
-        arr = new long[10];
-        top = -1;
+        arr = new long[DEFAULT_SIZE];
     }
 
     public MyStack(int maxSize) {
         arr = new long[maxSize];
-        top = -1;
     }
 
     public void push(int value) {
-        arr[++top] = value;
+        // 扩容
+        if (size == arr.length) {
+            arr = Arrays.copyOf(arr, size * 2);
+        }
+        arr[size++] = value;
     }
 
     public long pop() {
-        return arr[top--];
+        long value = this.peek();
+        size--;
+        return value;
     }
 
     public long peek() {
-        return arr[top];
+        if (size == 0) {
+            throw new IndexOutOfBoundsException("Stack is empty.");
+        }
+        return arr[size - 1];
     }
 
     public boolean isEmpty() {
-        return top == -1;
+        return size == 0;
     }
 
     public boolean isFull() {
-        return top == arr.length - 1;
+        return size == arr.length;
+    }
+
+    public int size() {
+        return this.size;
+    }
+
+    public static void main(String[] args) {
+        MyStack stack = new MyStack(1);
+        stack.push(1);
+        stack.push(2);
+        System.out.println(stack.size());
+
+        stack.push(3);
+        System.out.println(stack.size());
+
+        System.out.println(stack.peek());
+        System.out.println(stack.size());
+
+        System.out.println(stack.pop());
+        System.out.println(stack.pop());
+        System.out.println(stack.size());
     }
 
 }

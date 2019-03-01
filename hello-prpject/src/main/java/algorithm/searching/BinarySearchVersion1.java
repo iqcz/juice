@@ -2,6 +2,7 @@ package algorithm.searching;
 
 /**
  * 三路比较方法的基本二分法查找
+ * @author i324779
  */
 public class BinarySearchVersion1 {
 
