@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.datastructors;
 
 /**
  * 单向链表
