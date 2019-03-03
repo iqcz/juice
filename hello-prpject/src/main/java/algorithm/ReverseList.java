@@ -1,5 +1,7 @@
 package algorithm;
 
+import algorithm.datastructors.ListNode;
+
 /**
  * @author i324779
  */
