@@ -58,11 +58,36 @@ public class ListNodeOperation {
     public int isLinkedListLengthEven(ListNode head) {
         while (head != null && head.getNext() != null) {
             head = head.getNext().getNext();
-            if (head == null) {
-                return 0;
-            } else {
-                return 1;
-            }
         }
+        if (head == null) {
+            return 0;
+        } else {
+            return 1;
+        }
+    }
+
+    /**
+     * 合并两个有序链表为一个新的有序链表。
+     * @param node1
+     * @param node2
+     * @return
+     */
+    public ListNode mergeList(ListNode node1, ListNode node2) {
+        if (node1 == null) {
+            return node2;
+        }
+        if (node2 == null) {
+            return node1;
+        }
+
+        ListNode result;
+        if (node1.getData() <= node2.getData()) {
+            result = node1;
+            result.setNext(mergeList(node1.getNext(), node2));
+        } else {
+            result = node2;
+            result.setNext(mergeList(node2.getNext(), node1));
+        }
+        return result;
     }
 }
