@@ -8,18 +8,19 @@ import java.util.concurrent.Future;
 public class CallableAndFuture {
 
     public static void main(String[] args) {
-	ExecutorService threadPool = Executors.newSingleThreadExecutor();
+        ExecutorService threadPool = Executors.newSingleThreadExecutor();
 
-	// 启动线程
-	Future<String> future = threadPool.submit(() -> "Hello, world");
-	
-	try {
-	    System.out.println("waiting thread to finish.");
-	    System.out.println(future.get()); // 等待线程结束，并获取返回结果
-	    
-	    threadPool.shutdown();
-	} catch (InterruptedException | ExecutionException e) {
-	    e.printStackTrace();
-	}
+        // 启动线程
+        Future<String> future = threadPool.submit(() -> "Hello, world");
+
+        try {
+            System.out.println("waiting thread to finish.");
+            // 等待线程结束，并获取返回结果
+            System.out.println(future.get());
+
+            threadPool.shutdown();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 }
