@@ -90,4 +90,60 @@ public class ListNodeOperation {
         }
         return result;
     }
+
+    /**
+     * 逆置单向链表。
+     * @param head 表头
+     * @return 逆置后的单向链表。
+     */
+    ListNode reverseList(ListNode head) {
+        ListNode temp = null;
+        ListNode nextNode;
+
+        while (head != null) {
+            nextNode = head.getNext();
+            head.setNext(temp);
+            temp = head;
+            head = nextNode;
+        }
+
+        return temp;
+    }
+
+    /**
+     * 找到链表的倒数第n个结点
+     * 使用一次链表扫描解决问题。
+     * 使用两个指针pNthNode和pTemp。
+     * 首先，两个指针都指向链表的头结点。仅当pTemp（沿着链表）进行了n次移动后，
+     * pNthNode才开始移动。然后两个指针同时移动直至tTemp到达表尾。
+     * 这时pNthNode指针所指的结点就是所求的结点，也就是链表的倒数第n个结点。
+     * @param head
+     * @param nthNode
+     * @return
+     */
+    ListNode nthNodeFromEnd(ListNode head, int nthNode) {
+        ListNode pTemp = head;
+        ListNode pNnthNode = null;
+
+        for (int count = 1; count < nthNode; count++) {
+            if (pTemp != null) {
+                pTemp = pTemp.getNext();
+            }
+        }
+
+        while (pTemp != null) {
+            if (pNnthNode == null) {
+                pNnthNode = head;
+            } else {
+                pNnthNode = pNnthNode.getNext();
+            }
+
+            pTemp = pTemp.getNext();
+        }
+        if (pNnthNode != null) {
+            return pNnthNode;
+        }
+
+        return null;
+    }
 }
