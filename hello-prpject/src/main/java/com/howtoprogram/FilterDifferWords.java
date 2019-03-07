@@ -13,29 +13,30 @@ import java.util.stream.Stream;
 import com.google.common.collect.Sets;
 
 /**
- * Created by 324779.
  * 比较两个文件中文本内容的不同，把第一个文本中不同的部分挑选出来，
  * 拼成对应的insert语句，
  * 最后写入文件中。
+ * @author i324779
  */
 public class FilterDifferWords {
 
     public static void main(String[] args) throws IOException {
-	
-	// 注意，这里要考虑目录是否存在的问题。
-	Path txtFile = Paths.get("/Users/i324779/Documents/test.txt");
-	List<String> txtContent = loadContentFromFile(txtFile);
 
-	Path csvFile = Paths.get("/Users/i324779/Documents/test.csv");
-	List<String> csvContent = loadContentFromFile(csvFile);
-	
-	// List 转换为Set是为了文本内容去重
-	// 使用Google Guava工具中的Sets类
-	Set<String> differContent = Sets.difference(new HashSet<>(txtContent), new HashSet<>(csvContent));
+        // 注意，这里要考虑目录是否存在的问题。
+        Path txtFile = Paths.get("/Users/i324779/Documents/test.txt");
+        List<String> txtContent = loadContentFromFile(txtFile);
 
-	List<String> insertSqls = spliceSql(differContent);
+        Path csvFile = Paths.get("/Users/i324779/Documents/test.csv");
+        List<String> csvContent = loadContentFromFile(csvFile);
 
-	writeToFile(insertSqls);
+        // List 转换为Set是为了文本内容去重
+        // 使用Google Guava工具中的Sets类
+        Set<String> differContent = Sets.difference(new HashSet<>(txtContent),
+                new HashSet<>(csvContent));
+
+        List<String> insertSqls = spliceSql(differContent);
+
+        writeToFile(insertSqls);
     } // end method main
 
     /**
@@ -44,10 +45,9 @@ public class FilterDifferWords {
      * @throws IOException
      */
     private static List<String> loadContentFromFile(Path filePath) throws IOException {
-	return Files.readAllLines(filePath).stream()
-		.map(String::trim) // 去掉文本中空格
-		.filter(line -> !("".equals(line))) // 过滤空行
-		.collect(Collectors.toList());
+        return Files.readAllLines(filePath).stream().map(String::trim) // 去掉文本中空格
+                .filter(line -> !("".equals(line))) // 过滤空行
+                .collect(Collectors.toList());
     } // end method loadContentFromFile
 
     /**
@@ -56,12 +56,13 @@ public class FilterDifferWords {
      * @return 拼装好insert语句的列表
      */
     private static List<String> spliceSql(Set<String> differContent) {
-	return differContent.stream()
-		.flatMap(line -> Stream.of(String.format(
-		"INSERT INTO test(search, replacement, level, expire, create_time) "
-		+ "VALUES ('%s', '*', 0, '2099-12-31 23:59:59', now());\r",
-		line)))
-		.collect(Collectors.toList());
+        return differContent.stream()
+                .flatMap(
+                        line -> Stream.of(String.format(
+                                "INSERT INTO test(search, replacement, level, expire, create_time) "
+                                        + "VALUES ('%s', '*', 0, '2099-12-31 23:59:59', now());\r",
+                                line)))
+                .collect(Collectors.toList());
     } // end method spliceSql
 
     /**
@@ -70,8 +71,8 @@ public class FilterDifferWords {
      * @throws IOException
      */
     private static void writeToFile(List<String> insertSqls) throws IOException {
-	Path sqlFile = Paths.get("/Users/i324779/Documents/insertSql.txt");
-	Files.write(sqlFile, insertSqls);
+        Path sqlFile = Paths.get("/Users/i324779/Documents/insertSql.txt");
+        Files.write(sqlFile, insertSqls);
     } // end method writeToFile
-    
+
 } // end class FilterDifferWords

@@ -1,12 +1,12 @@
 package entity;
 
+import static java.util.Collections.unmodifiableList;
+import static java.util.stream.Collectors.toList;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
-
-import static java.util.Collections.unmodifiableList;
-import static java.util.stream.Collectors.toList;
 
 /**
  * A single release of music, comprising several tracks
@@ -24,34 +24,34 @@ public final class Album implements Performance {
     private List<Artist> musicians;
 
     public Album(String name, List<Track> tracks, List<Artist> musicians) {
-	Objects.requireNonNull(name);
-	Objects.requireNonNull(tracks);
-	Objects.requireNonNull(musicians);
+        Objects.requireNonNull(name);
+        Objects.requireNonNull(tracks);
+        Objects.requireNonNull(musicians);
 
-	this.name = name;
-	this.tracks = new ArrayList<>(tracks);
-	this.musicians = new ArrayList<>(musicians);
+        this.name = name;
+        this.tracks = new ArrayList<>(tracks);
+        this.musicians = new ArrayList<>(musicians);
     }
 
     /**
      * @return the name
      */
     public String getName() {
-	return name;
+        return name;
     }
 
     /**
      * @return the tracks
      */
     public Stream<Track> getTracks() {
-	return tracks.stream();
+        return tracks.stream();
     }
 
     /**
      * Used in imperative code examples that need to iterate over a list
      */
     public List<Track> getTrackList() {
-	return unmodifiableList(tracks);
+        return unmodifiableList(tracks);
     }
 
     /**
@@ -59,24 +59,24 @@ public final class Album implements Performance {
      */
     @Override
     public Stream<Artist> getMusicians() {
-	return musicians.stream();
+        return musicians.stream();
     }
 
     /**
      * Used in imperative code examples that need to iterate over a list
      */
     public List<Artist> getMusicianList() {
-	return unmodifiableList(musicians);
+        return unmodifiableList(musicians);
     }
 
     public Artist getMainMusician() {
-	return musicians.get(0);
+        return musicians.get(0);
     }
 
     public Album copy() {
-	List<Track> tracks = getTracks().map(Track::copy).collect(toList());
-	List<Artist> musicians = getMusicians().map(Artist::copy).collect(toList());
-	return new Album(name, tracks, musicians);
+        List<Track> tracks = getTracks().map(Track::copy).collect(toList());
+        List<Artist> musicians = getMusicians().map(Artist::copy).collect(toList());
+        return new Album(name, tracks, musicians);
     }
 
 }
