@@ -32,7 +32,7 @@ public class ProcessingEmployees {
 
         // 打印全部的Employee信息
         System.out.println("Complete Employee List: ");
-        list.stream().forEach(System.out::println);
+        list.forEach(System.out::println);
 
         System.out.println("-------------------------------");
 
@@ -85,8 +85,6 @@ public class ProcessingEmployees {
         students.put(2, "lisi");
         students.put(3, "wangwu");
 
-        students.forEach((id, name) -> {
-            System.out.println(id + "->" + name);
-        });
+        students.forEach((id, name) -> System.out.println(id + "->" + name));
     }
 }

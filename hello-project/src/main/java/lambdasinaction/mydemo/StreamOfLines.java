@@ -21,7 +21,7 @@ public class StreamOfLines {
         // count occurrences of each word in a Stream<String> sorted by word
         Map<String, Long> wordCounts = Files.lines(Paths.get("StreamOfLines.txt"))
                 .map(line -> line.replaceAll("(?!')\\p{P}", ""))
-                .flatMap(line -> pattern.splitAsStream(line)).collect(Collectors
+                .flatMap(pattern::splitAsStream).collect(Collectors
                         .groupingBy(String::toLowerCase, TreeMap::new, Collectors.counting()));
 
         // display the words grouped by starting letter
