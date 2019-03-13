@@ -20,12 +20,18 @@ public class BucketSort {
         if (array != null && array.length > 1) {
             for (int element : array) {
                 buckets[element]++;
+                System.out.printf("%d -> %d\n", element, buckets[element]);
             }
         }
     }
 
+    /**
+     * 从大到小排序
+     */
     public void print() {
+        // 倒序输出
         for (int i = buckets.length - 1; i >= 0; i--) {
+            // 元素中的值为几，就说明有多少个相同值的元素，就输出几遍
             for (int j = 0; j < buckets[i]; j++) {
                 System.out.printf("%d, ", i);
             }
@@ -38,5 +44,4 @@ public class BucketSort {
         bucketSort.sort();
         bucketSort.print();
     }
-
 }
