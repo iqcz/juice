@@ -2,6 +2,9 @@ package algorithm.sorting;
 
 import java.util.Objects;
 
+/**
+ * @author i324779
+ */
 public class QuickSort {
 
     public static int[] quickSort(int[] array, int start, int end) {
