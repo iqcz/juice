@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.string;
 
 /**
  * 判断是否是回文字符串，其特点是正读反读都是一样的。

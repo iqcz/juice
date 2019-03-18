@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.string;
 
 /**
  * 《轻松学算法》P297
