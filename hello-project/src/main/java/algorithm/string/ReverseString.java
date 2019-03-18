@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.string;
 
 /** 反转字符串
  * @author i324779
