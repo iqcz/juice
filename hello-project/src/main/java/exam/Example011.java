@@ -8,17 +8,17 @@ package exam;
 public class Example011 {
 
     static boolean f(char c) {
-	System.out.print(c);
+        System.out.print(c);
 
-	return true;
+        return true;
     }
 
     public static void main(String[] args) {
-	int i = 0;
-	for (f('A'); f('B') && (i < 2); f('C')) {
-	    i++;
-	    f('D');
-	}
+        int i = 0;
+        for (f('A'); f('B') && (i < 2); f('C')) {
+            i++;
+            f('D');
+        }
     }
 
 }

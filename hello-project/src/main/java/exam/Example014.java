@@ -9,38 +9,38 @@ package exam;
  */
 public class Example014 {
 
-	public static void selectSort(int[] a) {
-		int i;
-		int j;
-		int tmp = 0;
-		int flag = 0;
-		int n = a.length;
-		
-		for (i = 0; i < n; i++) {
-			tmp = a[i];
-			flag = i;
+    public static void selectSort(int[] a) {
+        int i;
+        int j;
+        int tmp = 0;
+        int flag = 0;
+        int n = a.length;
 
-			for (j = i + 1; j < n; j++) {
-				if (a[j] < tmp) {
-					tmp = a[j];
-					flag = j;
-				}
-			}
+        for (i = 0; i < n; i++) {
+            tmp = a[i];
+            flag = i;
 
-			if (flag != i) {
-				a[flag] = a[i];
-				a[i] = tmp;
-			}
-		}
-	}
+            for (j = i + 1; j < n; j++) {
+                if (a[j] < tmp) {
+                    tmp = a[j];
+                    flag = j;
+                }
+            }
 
-	public static void main(String[] args) {
-		int i = 0;
-		int[] a = { 1, 8, 5, 2, 4, 9, 7 };
-		selectSort(a);
+            if (flag != i) {
+                a[flag] = a[i];
+                a[i] = tmp;
+            }
+        }
+    }
 
-		for (i = 0; i < a.length; i++) {
-			System.out.printf("%d, ", a[i]);
-		}
-	}
+    public static void main(String[] args) {
+        int i = 0;
+        int[] a = { 1, 8, 5, 2, 4, 9, 7 };
+        selectSort(a);
+
+        for (i = 0; i < a.length; i++) {
+            System.out.printf("%d, ", a[i]);
+        }
+    }
 }
