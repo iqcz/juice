@@ -13,22 +13,22 @@ public class Example013 {
 
     public static void main(String[] args) throws InterruptedException {
 
-	final Lock lock = new ReentrantLock();
-	lock.lock();
+        final Lock lock = new ReentrantLock();
+        lock.lock();
 
-	Thread t1 = new Thread(() -> {
-	    try {
-		lock.lockInterruptibly();
-//		lock.lock();
-//		lock.tryLock()?
-	    } catch (InterruptedException e) {
-		e.printStackTrace();
-	    }
-	});
+        Thread t1 = new Thread(() -> {
+            try {
+                lock.lockInterruptibly();
+                // lock.lock();
+                // lock.tryLock()?
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
 
-	t1.start();
-	t1.interrupt();
-	Thread.sleep(1);
+        t1.start();
+        t1.interrupt();
+        Thread.sleep(1);
     }
 
 }
