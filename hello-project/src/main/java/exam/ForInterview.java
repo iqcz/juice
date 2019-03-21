@@ -15,16 +15,16 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class ForInterview {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		List<String> names = new ArrayList<>();
-		
-		Set<String> schools = new HashSet<>();
-		
-		Map<Integer, String> map = new HashMap<>();
-		
-		Map<Integer, String> conMap = new ConcurrentHashMap<>();
-		
-	}
+        List<String> names = new ArrayList<>();
+
+        Set<String> schools = new HashSet<>();
+
+        Map<Integer, String> map = new HashMap<>();
+
+        Map<Integer, String> conMap = new ConcurrentHashMap<>();
+
+    }
 
 }

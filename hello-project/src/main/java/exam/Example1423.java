@@ -19,15 +19,16 @@ package exam;
  *
  */
 class BaseI {
+
     int num = 1;
 
     public BaseI() {
-	this.print();
-	num = 2;
+        this.print();
+        num = 2;
     }
 
     public void print() {
-	System.out.println("Base.num = " + num);
+        System.out.println("Base.num = " + num);
     }
 }
 
@@ -36,20 +37,20 @@ public class Example1423 extends BaseI {
     int num = 3;
 
     public Example1423() {
-	this.print();
+        this.print();
 
-	num = 4;
+        num = 4;
     }
 
     // 去掉这个复写方法，运行看效果
     @Override
     public void print() {
-	System.out.println("Sub.num = " + num);
+        System.out.println("Sub.num = " + num);
     }
 
     public static void main(String[] args) {
-	BaseI b = new Example1423();
-	System.out.println(b.num);
+        BaseI b = new Example1423();
+        System.out.println(b.num);
     }
 
 }
