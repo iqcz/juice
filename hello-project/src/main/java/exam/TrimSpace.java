@@ -17,24 +17,24 @@ public class TrimSpace {
 
     public static void main(String[] args) throws IOException {
 
-	Path path = Paths.get("kindle.txt");
-	
-	List<String> content = Files.readAllLines(path);
-	List<String> noSpaceConent =new ArrayList<>();
-	
-	for(int i = 0; i < content.size();i++) {
-	    String oneLine = content.get(i);
-	    if(oneLine.contains(" ")){
-		String temp = oneLine.replaceAll(" ", "");
-		noSpaceConent.add(temp + "\r\n");
-	    }
-	}
-	
-	System.out.println(noSpaceConent);
-	
-	Path outputPath = Paths.get("NewKindle.txt");
-	
-	Files.write(outputPath, noSpaceConent, Charset.defaultCharset());
+        Path path = Paths.get("kindle.txt");
+
+        List<String> content = Files.readAllLines(path);
+        List<String> noSpaceConent = new ArrayList<>();
+
+        for (int i = 0; i < content.size(); i++) {
+            String oneLine = content.get(i);
+            if (oneLine.contains(" ")) {
+                String temp = oneLine.replaceAll(" ", "");
+                noSpaceConent.add(temp + "\r\n");
+            }
+        }
+
+        System.out.println(noSpaceConent);
+
+        Path outputPath = Paths.get("NewKindle.txt");
+
+        Files.write(outputPath, noSpaceConent, Charset.defaultCharset());
     }
 
 }

@@ -8,29 +8,29 @@ package exam;
 public class PrimeCheck {
 
     public static void main(String[] args) {
-	PrimeCheck pc = new PrimeCheck();
-	
-	System.out.println(pc.isPrime(11));
+        PrimeCheck pc = new PrimeCheck();
+
+        System.out.println(pc.isPrime(11));
     }
 
     public boolean isPrime(long n) {
-	if (n <= 1) {
-	    return false;
-	}
-	if (n == 2) {
-	    return true;
-	}
-	if (n % 2 == 0) {
-	    return false;
-	}
-	for (long i = 3; i < n; i += 2) {
-	    if (n % i == 0) {
-		return false;
-	    }
-	}
-	return true;
+        if (n <= 1) {
+            return false;
+        }
+        if (n == 2) {
+            return true;
+        }
+        if (n % 2 == 0) {
+            return false;
+        }
+        for (long i = 3; i < n; i += 2) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
-    
+
     /**
      * 减少了循环次数
      * @param n
@@ -54,11 +54,11 @@ public class PrimeCheck {
         }
         return true;
     }
-    
+
     // TODO 还有更快的方式
     public boolean isPrimeFaster(long n) {
-	return false;
-	
+        return false;
+
     }
 
 }
