@@ -10,11 +10,11 @@ package exam;
 class A {
 
     public int f(int a) {
-	return a + 1;
+        return a + 1;
     }
 
     public int f(int a, char c) {
-	return 77;
+        return 77;
     }
 
 }
@@ -23,16 +23,16 @@ public class Example1101 extends A {
 
     @Override
     public int f(int a, char c) {
-	return a + 2;
+        return a + 2;
     }
 
     public static void main(String[] args) {
-	Example1101 b = new Example1101();
-	System.out.println(b.f(0));
-	System.out.println(b.f(1, '3'));
+        Example1101 b = new Example1101();
+        System.out.println(b.f(0));
+        System.out.println(b.f(1, '3'));
 
-	A a = new A();
-	System.out.println(a.f(1, '4'));
+        A a = new A();
+        System.out.println(a.f(1, '4'));
 
     }
 
