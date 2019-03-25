@@ -14,20 +14,19 @@ public class TestMain {
 
     public static void main(String[] args) throws InstantiationException, IllegalAccessException {
         @SuppressWarnings({ "serial" })
-        List<HashMap<String, String>> list = Arrays.asList(new HashMap<String, String>() {
-
+        List<HashMap<String, String>> list = Arrays.asList(new HashMap<>(8) {
             {
                 put("name", "li");
                 put("title", "shuai");
             }
-        }, new HashMap<String, String>() {
+        }, new HashMap<>(8) {
 
             {
                 put("name", "wang");
                 put("title", "mei");
             }
         });
-        List<UserDO> users = new ArrayList<UserDO>(list.size());
+        List<UserDO> users = new ArrayList<>(list.size());
         for (HashMap<String, String> row : list) {
             users.add(ConvertionService.convertMapToBean(row, UserDO.class));
         }
