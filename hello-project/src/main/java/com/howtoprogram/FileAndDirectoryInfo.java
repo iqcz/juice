@@ -8,43 +8,47 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class FileAndDirectoryInfo {
+
     public static void main(String[] args) throws IOException {
-	Path path = null;
-	
-	try (Scanner input = new Scanner(System.in);) {
-	    System.out.println("Enter file or directory name:");
+        Path path = null;
 
-	    // create Path object based on user input
-	    path = Paths.get(input.nextLine());
-	} catch (Exception e) {
-	    e.printStackTrace();
-	}
+        try (Scanner input = new Scanner(System.in);) {
+            System.out.println("Enter file or directory name:");
 
-	if (Files.exists(path)) { // if path exists, output info about it
+            // create Path object based on user input
+            path = Paths.get(input.nextLine());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-	    // _a
-	    // display file (or directory) information
-	    System.out.printf("%n%s exists%n", path.getFileName());
-	    System.out.printf("%s a directory%n", Files.isDirectory(path) ? "Is" : "Is not");
-	    System.out.printf("%s an absolute path%n", path.isAbsolute() ? "Is" : "Is not");
-	    System.out.printf("Last modified: %s%n", Files.getLastModifiedTime(path));
-	    System.out.printf("Size: %s%n", Files.size(path));
-	    System.out.printf("Path: %s%n", path);
-	    System.out.printf("Absolute path: %s%n", path.toAbsolutePath());
-	    // _z
-	    
-	    if (Files.isDirectory(path)) {// output directory listing
+        if (Files.exists(path)) { // if path exists, output info about it
 
-		System.out.printf("%nDirectory contents:%n");
+            // _a
+            // display file (or directory) information
+            System.out.printf("%n%s exists%n", path.getFileName());
+            System.out.printf("%s a directory%n", Files.isDirectory(path) ? "Is" : "Is not");
+            System.out.printf("%s an absolute path%n", path.isAbsolute() ? "Is" : "Is not");
+            System.out.printf("Last modified: %s%n", Files.getLastModifiedTime(path));
+            System.out.printf("Size: %s%n", Files.size(path));
+            System.out.printf("Path: %s%n", path);
+            System.out.printf("Absolute path: %s%n", path.toAbsolutePath());
+            // _z
 
-		// object for iterating through a directory's contents
-		DirectoryStream<Path> directoryStream = Files.newDirectoryStream(path);
+            // output directory listing
+            if (Files.isDirectory(path)) {
 
-		for (Path p : directoryStream) // 遍历一层的目录，不会递归遍历
-		    System.out.println(p);
-	    }
-	} else {// not file or directory, output error message
-	    System.out.printf("%s does not exist%n", path);
-	}
+                System.out.printf("%nDirectory contents:%n");
+
+                // object for iterating through a directory's contents
+                DirectoryStream<Path> directoryStream = Files.newDirectoryStream(path);
+
+                // 遍历一层的目录，不会递归遍历
+                for (Path p : directoryStream) {
+                    System.out.println(p);
+                }
+            }
+        } else { // not file or directory, output error message
+            System.out.printf("%s does not exist%n", path);
+        }
     } // end method main
 } // end class FileAndDirectoryInfo
