@@ -39,7 +39,7 @@ public class IntStreamOperations {
         System.out.println();
 
         // odd values multiplied by 10 and displayed in sorted order
-        System.out.printf("Odd values multiplied by 10 displayed in sorted order: ");
+        System.out.print("Odd values multiplied by 10 displayed in sorted order: ");
         IntStream.of(values).filter(value -> value % 2 != 0).map(value -> value * 10).sorted()
                 .forEach(value -> System.out.printf("%d ", value));
         System.out.println();
