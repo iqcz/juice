@@ -42,16 +42,19 @@ public class FilterDifferWords {
     /**
      * @param filePath 文件路径
      * @return 读取文件中内容到列表中。
-     * @throws IOException
+     * @throws IOException 如果找不到文件路径则抛出此异常
      */
     private static List<String> loadContentFromFile(Path filePath) throws IOException {
-        return Files.readAllLines(filePath).stream().map(String::trim) // 去掉文本中空格
-                .filter(line -> !("".equals(line))) // 过滤空行
+        return Files.readAllLines(filePath).stream()
+                // 去掉文本中空格
+                .map(String::trim)
+                // 过滤空行
+                .filter(line -> !("".equals(line)))
                 .collect(Collectors.toList());
     } // end method loadContentFromFile
 
     /**
-     * 	拼装insert语句，使用MYSQL数据库的语法
+     * 拼装insert语句，使用MYSQL数据库的语法
      * @param differContent 两个文本比较后，第一个文本有，而第二个文本没有的内容。
      * @return 拼装好insert语句的列表
      */
