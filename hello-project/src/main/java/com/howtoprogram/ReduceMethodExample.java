@@ -18,8 +18,8 @@ public class ReduceMethodExample {
 
         List<String> quotes = Arrays.asList(billyQuotes);
 
-        // Create a temporary collection for our words
-        List<String> words = quotes.stream().flatMap(line -> Stream.of(line.split(" +"))) // 此处是一正则表达式
+        // Create a temporary collection for our words，this place is regex expression.
+        List<String> words = quotes.stream().flatMap(line -> Stream.of(line.split(" +")))
                 .collect(Collectors.toList());
 
         // 注意，flatMap与map使用上的区别
@@ -28,12 +28,10 @@ public class ReduceMethodExample {
 
         long wordCount = words.size();
 
-        // The cast to double is only needed to prevent Java from using 
+        // The cast to double is only needed to prevent Java from using
         // integer division
-        double aveLength = ((double) words.stream().map(String::length) // method reference
-                .reduce(0, (x, y) -> {
-                    return x + y;
-                })) / wordCount;
+        double aveLength = ((double) words.stream().map(String::length)
+                .reduce(0, (x, y) -> x + y)) / wordCount;
         System.out.println("Average word length: " + aveLength);
     }
 } // end class ReduceMethodExample

@@ -1,10 +1,10 @@
 package com.howtoprogram;
 
-import java.util.List;
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * 可以使用Set来处理具有重复元素的List。
@@ -12,29 +12,29 @@ import java.util.Collection;
  *
  */
 public class SetExample {
-    
-    public static void main(String[] args) {
-	// create and display a List<String>
-	String[] colors = { "red", "white", "blue", "green", 
-		"gray", "orange", "tan", "white", "cyan", 
-		"peach", "gray", "orange" };
-	
-	List<String> list = Arrays.asList(colors);
-	System.out.printf("List: %s%n", list);
 
-	// eliminate duplicates then print the unique values
-	printNonDuplicates(list);
+    public static void main(String[] args) {
+        // create and display a List<String>
+        String[] colors = { "red", "white", "blue", "green", "gray", "orange", "tan", "white",
+                "cyan", "peach", "gray", "orange" };
+
+        List<String> list = Arrays.asList(colors);
+        System.out.printf("List: %s%n", list);
+
+        // eliminate duplicates then print the unique values
+        printNonDuplicates(list);
     }
 
     // create a Set from a Collection to eliminate duplicates
     private static void printNonDuplicates(Collection<String> values) {
-	Set<String> set = new HashSet<>(values);
+        Set<String> set = new HashSet<>(values);
 
-	System.out.printf("%nNonduplicates are: ");
+        System.out.printf("%nNonduplicates are: ");
 
-	for (String value : set)
-	    System.out.printf("%s ", value);
+        for (String value : set) {
+            System.out.printf("%s ", value);
+        }
 
-	System.out.println();
+        System.out.println();
     }
 } // end class SetTest
