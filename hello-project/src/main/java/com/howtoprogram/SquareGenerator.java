@@ -15,27 +15,27 @@ public class SquareGenerator implements IntSupplier {
 
     @Override
     public synchronized int getAsInt() {
-	int thisCurrent = current * current;
-	current++;
+        int thisCurrent = current * current;
+        current++;
 
-	return thisCurrent;
+        return thisCurrent;
     }
 
     public static void main(String[] args) {
-	IntStream squars = IntStream.generate(new SquareGenerator());
+        IntStream squars = IntStream.generate(new SquareGenerator());
 
-	PrimitiveIterator.OfInt stepThrough = squars.iterator();
+        PrimitiveIterator.OfInt stepThrough = squars.iterator();
 
-	for (int i = 0; i < 10; i++) {
-	    System.out.println(stepThrough.nextInt());
-	}
+        for (int i = 0; i < 10; i++) {
+            System.out.println(stepThrough.nextInt());
+        }
 
-	System.out.println("First iterator done...");
+        System.out.println("First iterator done...");
 
-	// We can go on as long as we like...
-	for (int i = 0; i < 10; i++) {
-	    System.out.println(stepThrough.nextInt());
-	}
+        // We can go on as long as we like...
+        for (int i = 0; i < 10; i++) {
+            System.out.println(stepThrough.nextInt());
+        }
     }
 
 }
