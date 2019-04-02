@@ -23,7 +23,10 @@ public class BlockingQueuePC {
                 try {
                     bq.put(ch);
                     System.out.printf("%c produced by " + "producer.%n", ch);
-                } catch (InterruptedException ie) {}
+                } catch (InterruptedException ignored) {
+                    // according to effective java 3th,
+                    // document the ignored reason.
+                }
             }
         };
         executor.execute(producer);
