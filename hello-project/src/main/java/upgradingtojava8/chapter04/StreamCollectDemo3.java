@@ -22,7 +22,7 @@ public class StreamCollectDemo3 {
 
             return new ArrayList<>() {
                 private static final long serialVersionUID = -688012119325500423L;
-                int id = counter.getAndIncrement();
+                private int id = counter.getAndIncrement();
 
                 @Override
                 public boolean add(String e) {
