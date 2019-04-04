@@ -13,9 +13,10 @@ public class RandomIntStream {
 
         // roll a die 6,000,000 times and summarize the results
         System.out.printf("%-6s%s%n", "Face", "Frequency");
-        random.ints(100, 1, 100).boxed() // boxed方法的作用：
-                // Java does not allow primitive values in collections, 
-                // so to summarize the results in a Map, 
+        // boxed方法的作用：
+        random.ints(100, 1, 100).boxed()
+                // Java does not allow primitive values in collections,
+                // so to summarize the results in a Map,
                 // we must first convert the IntStream to a Stream<Integer>.
                 // We do this by calling IntStream method boxed.
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
