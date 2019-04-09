@@ -14,9 +14,7 @@ public class Chapter1 extends MusicChapter {
      * @return
      */
     public List<String> getNamesOfArtists_Lambda() {
-	return artists.stream()
-		.map(artist -> artist.getName())
-		.collect(Collectors.toList());
+        return artists.stream().map(artist -> artist.getName()).collect(Collectors.toList());
     }
 
     /**
@@ -24,9 +22,7 @@ public class Chapter1 extends MusicChapter {
      * @return
      */
     public List<String> getNamesOfArtists_MethodReference() {
-	return artists.stream()
-		.map(Artist::getName)
-		.collect(Collectors.toList());
+        return artists.stream().map(Artist::getName).collect(Collectors.toList());
     }
 
     /**
@@ -34,9 +30,8 @@ public class Chapter1 extends MusicChapter {
     * @return
     */
     public List<Artist> artistsLivingInLondon() {
-	return artists.stream().
-		filter(artist -> "London".equals(artist.getNationality()))
-		.collect(Collectors.toList());
+        return artists.stream().filter(artist -> "London".equals(artist.getNationality()))
+                .collect(Collectors.toList());
     }
 
 }
