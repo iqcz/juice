@@ -27,7 +27,7 @@ public class BubbleSort {
         return arr;
     }
 
-    public static void bubbleSort1(int[] arr) {
+    public static int[] bubbleSort1(int[] arr) {
 
         int temp;
         //表示趟数，一共arr.length-1次。
@@ -40,11 +40,13 @@ public class BubbleSort {
                 }
             }
         }
+
+        return arr;
     }
 
     public static void main(String[] args) {
         int[] arr = { 3, 1, 6, 4, 9, 12, 7 };
-        int[] afterArr = bubbleSort(arr);
+        int[] afterArr = bubbleSort1(arr);
 
         for (int i1 : afterArr) {
             System.out.printf("%d, ", i1);
