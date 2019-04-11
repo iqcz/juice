@@ -146,4 +146,29 @@ public class ListNodeOperation {
 
         return null;
     }
+
+    /**
+     * 给定两个有序单链表的头指针head1 和head2， 打印两个链表的公共部分。
+     * @param head1 有序链表1
+     * @param head2 有序链表2
+     */
+    public void printCommonPart(ListNode head1, ListNode head2) {
+        if (head1 == null || head2 == null) {
+            System.out.println("Node is null");
+            return;
+        }
+
+        System.out.println("Common Part: ");
+        while (head1 != null && head2 != null) {
+            if (head1.getData() < head2.getData()) {
+                head1 = head1.getNext();
+            } else if (head1.getData() > head2.getData()) {
+                head2 = head2.getNext();
+            } else {
+                System.out.println(head1.getData());
+                head1 = head1.getNext();
+                head2 = head2.getNext();
+            }
+        }
+    }
 }
