@@ -8,7 +8,7 @@ import java.util.Objects;
 public class QuickSort {
 
     public static int[] quickSort(int[] array, int start, int end) {
-        if (array.length < 1 || start < 0 || end >= array.length || start > end) {
+        if (start < 0 || end >= array.length || start > end) {
             return null;
         }
 
@@ -47,7 +47,6 @@ public class QuickSort {
     }
 
     public static void main(String[] args) {
-
         int[] arr = new int[10];
 
         for (int i = 0; i < arr.length; i++) {
