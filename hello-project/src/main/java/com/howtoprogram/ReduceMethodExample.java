@@ -31,7 +31,7 @@ public class ReduceMethodExample {
         // The cast to double is only needed to prevent Java from using
         // integer division
         double aveLength = ((double) words.stream().map(String::length)
-                .reduce(0, (x, y) -> x + y)) / wordCount;
+                .reduce(0, Integer::sum)) / wordCount;
         System.out.println("Average word length: " + aveLength);
     }
 } // end class ReduceMethodExample
