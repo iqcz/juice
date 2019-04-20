@@ -30,7 +30,8 @@ public class StreamReductionDemo1 {
 
     public Optional<Order> getLatestLargestOrder(Order[] orders) {
         Stream<Order> stream = Stream.of(orders);
-        Optional<Order> theOrder = stream.reduce((a, b) -> {
+
+        return stream.reduce((a, b) -> {
             if (a.value > b.value) {
                 return a;
             } else if (a.value < b.value) {
@@ -43,8 +44,6 @@ public class StreamReductionDemo1 {
                 }
             }
         });
-
-        return theOrder;
     }
 
     public static void main(String[] args) {
