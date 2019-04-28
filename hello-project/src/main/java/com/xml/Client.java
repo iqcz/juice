@@ -5,8 +5,10 @@ package com.xml;
  */
 public class Client {
     public static void main(String[] args) {
-        String name = XmlUtil.getName();
+        Sharp sharp = (Sharp) XmlUtil.getBean();
 
-        System.out.println(name);
+        sharp.setName("Sharp");
+
+        System.out.println(sharp.getName());
     }
 }

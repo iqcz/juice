@@ -19,8 +19,9 @@ import org.xml.sax.SAXException;
  */
 public class XmlUtil {
 
-    public static String getName() {
-        String name = "";
+    public static Object getBean() {
+        Object object = "";
+
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         try {
             DocumentBuilder builder = dbFactory.newDocumentBuilder();
@@ -31,12 +32,18 @@ public class XmlUtil {
             NodeList nodeList = document.getElementsByTagName("name");
             Node classNode = nodeList.item(0).getFirstChild();
 
-            name = classNode.getNodeValue().trim();
+            String name = classNode.getNodeValue().trim();
 
-        } catch (ParserConfigurationException | IOException | SAXException e) {
+            Class clazz = Class.forName(name);
+
+            object = clazz.newInstance();
+
+        } catch (ParserConfigurationException | IOException
+                | SAXException | ClassNotFoundException
+                | InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
 
-        return name;
+        return object;
     }
 }
