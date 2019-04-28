@@ -1,5 +1,8 @@
 package algorithm.datastructors;
 
+/**
+ * @author i324779
+ */
 public class DoubleNode {
 
     private int value;
