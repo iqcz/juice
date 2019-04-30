@@ -2,6 +2,7 @@ package com.xml;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -36,11 +37,10 @@ public class XmlUtil {
 
             Class clazz = Class.forName(name);
 
-            object = clazz.newInstance();
-
+            object = clazz.getConstructor().newInstance();
         } catch (ParserConfigurationException | IOException
-                | SAXException | ClassNotFoundException
-                | InstantiationException | IllegalAccessException e) {
+                | SAXException | ClassNotFoundException | InstantiationException
+                | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
             e.printStackTrace();
         }
 
