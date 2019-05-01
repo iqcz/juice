@@ -10,6 +10,9 @@ import java.util.Set;
 
 import com.google.common.base.Strings;
 
+/**
+ * @author i324779
+ */
 public class ConvertionService {
 
     private static List<Field> findFields(Class<?> clazz) {

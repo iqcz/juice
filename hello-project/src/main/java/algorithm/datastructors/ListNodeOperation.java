@@ -2,6 +2,7 @@ package algorithm.datastructors;
 
 /**
  * 单链表的一些操作
+ *
  * @author i324779
  */
 public class ListNodeOperation {
@@ -11,6 +12,7 @@ public class ListNodeOperation {
      * 使用两个指针。让第一个指针的移动速度是另一个的两倍。
      * 当第一个指针到达表尾时，另一个指针则指向中间节点。
      * Note：如果链表节点数为奇数，则第（n/2）个节点为中间节点。
+     *
      * @param head
      * @return
      */
@@ -36,6 +38,7 @@ public class ListNodeOperation {
 
     /**
      * 从表尾开始输出链表。
+     *
      * @param head
      */
     void printListFromEnd(ListNode head) {
@@ -52,6 +55,7 @@ public class ListNodeOperation {
      * 使用一个在链表中每次向后移动两个节点的指针。
      * 最后，如果指针值为null，那么聊表长度为偶数；
      * 否则指针指向表尾节点，链表长度为奇数。
+     *
      * @param head
      * @return
      */
@@ -68,6 +72,7 @@ public class ListNodeOperation {
 
     /**
      * 合并两个有序链表为一个新的有序链表。
+     *
      * @param node1
      * @param node2
      * @return
@@ -93,6 +98,7 @@ public class ListNodeOperation {
 
     /**
      * 逆置单向链表。
+     *
      * @param head 表头
      * @return 逆置后的单向链表。
      */
@@ -117,6 +123,7 @@ public class ListNodeOperation {
      * 首先，两个指针都指向链表的头结点。仅当pTemp（沿着链表）进行了n次移动后，
      * pNthNode才开始移动。然后两个指针同时移动直至tTemp到达表尾。
      * 这时pNthNode指针所指的结点就是所求的结点，也就是链表的倒数第n个结点。
+     *
      * @param head
      * @param nthNode
      * @return
@@ -149,6 +156,7 @@ public class ListNodeOperation {
 
     /**
      * 给定两个有序单链表的头指针head1 和head2， 打印两个链表的公共部分。
+     *
      * @param head1 有序链表1
      * @param head2 有序链表2
      */
@@ -170,5 +178,26 @@ public class ListNodeOperation {
                 head2 = head2.getNext();
             }
         }
+    }
+
+    /**
+     * 判断是否有环
+     * @param head 链表头结点
+     * @return 是否有环
+     */
+    public static boolean isCycle(ListNode head) {
+        ListNode p1 = head;
+        ListNode p2 = head;
+
+        while (p2 != null && p2.getNext() != null) {
+            p1 = p1.getNext();
+            p2 = p2.getNext().getNext();
+
+            if (p1 == p2) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
