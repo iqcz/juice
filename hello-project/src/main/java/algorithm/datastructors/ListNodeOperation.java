@@ -182,6 +182,7 @@ public class ListNodeOperation {
 
     /**
      * 判断是否有环
+     *
      * @param head 链表头结点
      * @return 是否有环
      */
@@ -199,5 +200,28 @@ public class ListNodeOperation {
         }
 
         return false;
+    }
+
+    /**
+     * 逐对逆置链表
+     * @param head
+     * @return
+     */
+    ListNode reversePairRecursice(ListNode head) {
+        ListNode temp;
+        if (head == null || head.getNext() == null) {
+            // 应该返回什么值比较好呢？
+            return null;
+        }
+
+        temp = head.getNext();
+        head.setNext(temp.getNext());
+        temp.setNext(head);
+        head = temp;
+
+        // 链表余下部分继续递归调用该方法
+        head.getNext().setNext(reverseList(head.getNext().getNext()));
+
+        return head;
     }
 }
