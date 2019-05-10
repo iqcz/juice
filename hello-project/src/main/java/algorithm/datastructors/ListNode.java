@@ -10,6 +10,9 @@ public class ListNode {
 
     private ListNode next;
 
+    public ListNode() {
+    }
+
     public ListNode(int data) {
         this.data = data;
     }
