@@ -147,11 +147,7 @@ public class ListNodeOperation {
 
             pTemp = pTemp.getNext();
         }
-        if (pNnthNode != null) {
-            return pNnthNode;
-        }
-
-        return null;
+        return pNnthNode;
     }
 
     /**
@@ -208,21 +204,52 @@ public class ListNodeOperation {
      * @param head
      * @return
      */
-    ListNode reversePairRecursice(ListNode head) {
-        ListNode temp;
+    private void reversePairRecursive(ListNode head) {
         if (head == null || head.getNext() == null) {
-            // 应该返回什么值比较好呢？
-            return null;
+            return;
         }
 
-        temp = head.getNext();
-        head.setNext(temp.getNext());
-        temp.setNext(head);
-        head = temp;
+        ListNode cur = head.getNext();
+        ListNode pre = head;
+        ListNode next;
 
-        // 链表余下部分继续递归调用该方法
-        head.getNext().setNext(reverseList(head.getNext().getNext()));
+        while (cur != null && cur.getNext() != null) {
+            next = cur.getNext().getNext();
+            pre.setNext(cur.getNext());
+            cur.getNext().setNext(cur);
+            cur.setNext(next);
+            pre = cur;
+            cur = next;
+        }
 
-        return head;
+    }
+
+    public static void main(String[] args) {
+        ListNodeOperation operation = new ListNodeOperation();
+        int i = 1;
+        ListNode head = new ListNode();
+        head.setNext(null);
+        ListNode tmp;
+        ListNode cur = head;
+
+        for (; i < 8; i++) {
+            tmp = new ListNode();
+            tmp.setData(i);
+            tmp.setNext(null);
+            cur.setNext(tmp);
+            cur = tmp;
+        }
+
+        System.out.println("顺序输出：");
+        for (cur = head.getNext(); cur != null; cur = cur.getNext()) {
+            System.out.print(cur.getData() + " ");
+        }
+
+        operation.reversePairRecursive(head);
+
+        System.out.println("\n逆序输出：");
+        for (cur = head.getNext(); cur != null; cur = cur.getNext()) {
+            System.out.print(cur.getData() + " ");
+        }
     }
 }
