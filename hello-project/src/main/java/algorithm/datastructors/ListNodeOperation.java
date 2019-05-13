@@ -1,5 +1,7 @@
 package algorithm.datastructors;
 
+import java.util.Stack;
+
 /**
  * 单链表的一些操作
  *
@@ -223,6 +225,32 @@ public class ListNodeOperation {
         }
 
     }
+
+    /**
+     * 判断一个链表是否为回文结构
+     *
+     * @param head 单链表的头结点
+     * @return true：回文结构；false：不是回文结构
+     */
+    public boolean isPalindrome(ListNode head) {
+        Stack<ListNode> stack = new Stack<>();
+        ListNode cur = head;
+
+        while (cur != null) {
+            stack.push(cur);
+            cur = cur.getNext();
+        }
+
+        while (head != null) {
+            if (head.getData() != stack.pop().getData()) {
+                return false;
+            }
+            head = head.getNext();
+        }
+
+        return true;
+    }
+
 
     public static void main(String[] args) {
         ListNodeOperation operation = new ListNodeOperation();
