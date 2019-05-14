@@ -9,8 +9,8 @@ import java.util.Stack;
  */
 public class TwoStacksQueue {
 
-    public Stack<Integer> stackPush;
-    public Stack<Integer> stackPop;
+    private Stack<Integer> stackPush;
+    private Stack<Integer> stackPop;
 
     public TwoStacksQueue() {
         stackPush = new Stack<>();
@@ -33,6 +33,10 @@ public class TwoStacksQueue {
         this.pushToPop();
     }
 
+    /**
+     * 出队操作 deQueue
+     * @return
+     */
     public int poll() {
         if (stackPush.empty() && stackPop.empty()) {
             throw new RuntimeException("Queue is empty.");
