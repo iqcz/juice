@@ -4,6 +4,9 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
+/**
+ * @author i324779
+ */
 public class ScriptEngineDemo1 {
 
     public static void main(String... args) {
