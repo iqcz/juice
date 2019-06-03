@@ -36,14 +36,14 @@ public class MethodReferenceDemo4 {
 
     public static void main(String[] args) {
         Integer[] array = { 1, 8, 5 };
-        Collection<Integer> col1 = arrayToCollection(ArrayList<Integer>::new, array);
+        Collection<Integer> col1 = arrayToCollection(ArrayList::new, array);
         System.out.println("Natural order");
         col1.forEach(System.out::println);
 
         System.out.println("=======================");
 
         System.out.println("Ascending order");
-        Collection<Integer> col2 = arrayToCollection(HashSet<Integer>::new, array);
+        Collection<Integer> col2 = arrayToCollection(HashSet::new, array);
         col2.forEach(System.out::println);
     }
 }
