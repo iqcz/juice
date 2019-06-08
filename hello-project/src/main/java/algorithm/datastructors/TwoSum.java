@@ -1,5 +1,8 @@
 package algorithm.datastructors;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 和为指定值的两个数
  * 思路
@@ -34,7 +37,7 @@ public class TwoSum {
     }
 
     public static void findByHash(int[] arr, int sum) {
-        Hashtable<Integer, Integer> hashMap = new Hashtable<>();
+        Map<Integer, Integer> hashMap = new HashMap<>();
         for (int i = 0; i < arr.length; i++) {
             hashMap.put(arr[i], i);
         }
