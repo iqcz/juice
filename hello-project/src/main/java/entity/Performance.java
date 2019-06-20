@@ -1,9 +1,12 @@
 package entity;
 
-import java.util.stream.Stream;
-
 import static java.util.stream.Stream.concat;
 
+import java.util.stream.Stream;
+
+/**
+ * @author i324779
+ */
 public interface Performance {
 
     String getName();
@@ -12,8 +15,8 @@ public interface Performance {
 
     // TODO: test
     default Stream<Artist> getAllMusicians() {
-	return getMusicians()
-		.flatMap(artist -> concat(Stream.of(artist), artist.getMembers()));
+        return getMusicians()
+                .flatMap(artist -> concat(Stream.of(artist), artist.getMembers()));
     }
 
 }

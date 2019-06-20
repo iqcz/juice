@@ -11,17 +11,24 @@ import java.util.stream.Stream;
 /**
  * Domain class for a popular music artist.
  * An individual or group who creates music
+ *
  * @author Richard Warburton
  */
 public final class Artist {
 
-    // The name of the artist
+    /**
+     * The name of the artist
+     */
     private String name;
 
-    // A set of other artists who comprise this group (e.g., “John Lennon”); this field might be empty
+    /**
+     * A set of other artists who comprise this group (e.g., “John Lennon”); this field might be empty
+     */
     private List<Artist> members;
 
-    // The primary location of origin of the group (e.g., “Liverpool”).
+    /**
+     * The primary location of origin of the group (e.g., “Liverpool”).
+     */
     private String nationality;
 
     public Artist(String name, String nationality) {
