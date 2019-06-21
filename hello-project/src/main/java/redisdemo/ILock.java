@@ -4,6 +4,7 @@ import redis.clients.jedis.Jedis;
 
 /**
  * redis实现的分布式锁
+ * @author i324779
  */
 public interface ILock {
 
