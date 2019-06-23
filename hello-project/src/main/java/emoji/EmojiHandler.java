@@ -1,14 +1,8 @@
 package emoji;
 
-import java.util.Collection;
-
 import com.vdurmont.emoji.EmojiParser;
 
 public class EmojiHandler {
-
-    public static void rong(Collection<String> zr) {
-        zr.forEach(System.out::println);
-    }
 
     public static void main(String[] args) {
 
