@@ -22,6 +22,9 @@ public class CharsetsTest {
         }
 
         byte[] bytes2 = "foobarbaz".getBytes(Charsets.UTF_8);
+        System.out.println(Charsets.UTF_8.name());
+        System.out.println(Charsets.UTF_8.displayName());
+        System.out.println(Charsets.UTF_8.aliases());
 
         assertThat(bytes, is(bytes2));
     }
