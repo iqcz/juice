@@ -61,6 +61,5 @@ public class TableTest {
         table.containsColumn(2);
         table.containsRow(1);
         table.containsValue("Rook");
-
     }
 }
