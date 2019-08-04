@@ -19,6 +19,7 @@ public class BucketSort {
     public void sort() {
         if (array != null && array.length > 1) {
             for (int element : array) {
+                // 进行计数
                 buckets[element]++;
                 System.out.printf("%d -> %d\n", element, buckets[element]);
             }
@@ -32,6 +33,7 @@ public class BucketSort {
         // 倒序输出
         for (int i = buckets.length - 1; i >= 0; i--) {
             // 元素中的值为几，就说明有多少个相同值的元素，就输出几遍
+            // 出现了几次就将桶的编号打印几次
             for (int j = 0; j < buckets[i]; j++) {
                 System.out.printf("%d, ", i);
             }
