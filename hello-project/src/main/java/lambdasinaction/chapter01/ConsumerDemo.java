@@ -20,7 +20,8 @@ public class ConsumerDemo {
             return sb.toString();
         };
 
-        int lineLength = 60; // characters
+        // characters
+        int lineLength = 60;
         Consumer<String> printCentered = (input) -> {
             int length = input.length();
             String spaces = spacer.apply((lineLength - length) / 2);

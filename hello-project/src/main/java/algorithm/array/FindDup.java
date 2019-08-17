@@ -10,7 +10,7 @@ import java.util.HashMap;
 public class FindDup {
 
     /**
-     * hash 法
+     * hash
      * @param array
      * @return
      */
