@@ -22,6 +22,36 @@ public class ListNodeBasicOperation {
         return length;
     }
 
+    ListNode insertList(ListNode headNode, ListNode nodeToInsert, int position) {
+        // 若链表为空，插入新结点
+        if (headNode == null) {
+            return nodeToInsert;
+        }
+        int size = listLength(headNode);
+        if (position > size + 1 || position < 1) {
+            System.out.println("Position of node to insert is invalid. The valid inputs are 1 to " + (size + 1));
+        }
+
+        // 在链表开头插入
+        if (position == 1) {
+            nodeToInsert.setNext(headNode);
+            return nodeToInsert;
+        } else {
+            // 在中间或是末尾插入
+            ListNode previousNode = headNode;
+            int count = 1;
+            while (count < position - 1) {
+                previousNode = previousNode.getNext();
+                count++;
+            }
+            ListNode currentNode = previousNode.getNext();
+            nodeToInsert.setNext(currentNode.getNext());
+            previousNode.setNext(nodeToInsert);
+        }
+
+        return headNode;
+    }
+
     private static ListNode constructListNode() {
         int i = 1;
         ListNode head = new ListNode();
