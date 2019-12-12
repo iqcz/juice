@@ -52,6 +52,33 @@ public class ListNodeBasicOperation {
         return headNode;
     }
 
+    ListNode deleteList(ListNode headNode, int position) {
+        int size = listLength(headNode);
+        if (position > size || position < 1) {
+            System.out.println("Position of node to delete is invalid. The valid inpusts are 1 " + "to" + size);
+            return headNode;
+        }
+
+        // 删除单向链表的表头结点
+        if (position == 1) {
+            ListNode currentNode = headNode.getNext();
+            headNode = null;
+            return currentNode;
+        } else {
+            ListNode previousNode = headNode.getNext();
+            int count = 1;
+            while (count < position) {
+                previousNode = previousNode.getNext();
+                count++;
+            }
+            ListNode currentNode = previousNode.getNext();
+            previousNode.setNext(currentNode.getNext());
+            currentNode = null;
+        }
+
+        return headNode;
+    }
+
     private static ListNode constructListNode() {
         int i = 1;
         ListNode head = new ListNode();
