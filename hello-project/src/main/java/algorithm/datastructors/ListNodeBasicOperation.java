@@ -52,7 +52,7 @@ public class ListNodeBasicOperation {
         return headNode;
     }
 
-    ListNode deleteList(ListNode headNode, int position) {
+    ListNode deleteNodeFromList(ListNode headNode, int position) {
         int size = listLength(headNode);
         if (position > size || position < 1) {
             System.out.println("Position of node to delete is invalid. The valid inpusts are 1 " + "to" + size);
@@ -77,6 +77,23 @@ public class ListNodeBasicOperation {
         }
 
         return headNode;
+    }
+
+    /**
+     *  将当前结点保存在临时变量中，然后释放当前结点。
+     *  释放完当前结点后，移动到下一个结点并将其保存在临时变量中，
+     *  然后不断重复该过程直到释放所有结点。
+     * @param headNode
+     */
+    public void deleteList(ListNode headNode) {
+        ListNode auxilaryNode;
+        ListNode iterator = headNode;
+        while (iterator != null) {
+            auxilaryNode = iterator.getNext();
+            iterator = null;
+            iterator = auxilaryNode;
+        }
+
     }
 
     private static ListNode constructListNode() {
