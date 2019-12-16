@@ -29,6 +29,7 @@ public class CLLNodeBasicOperation {
 
     /**
      * 输出循环链表的内容
+     *
      * @param headNode
      */
     void printCircularListData(CLLNode headNode) {
@@ -41,6 +42,27 @@ public class CLLNodeBasicOperation {
             }
         }
         System.out.println("(" + cllNode.getData() + ")headNode");
+    }
+
+    /**
+     * 在循环链表末尾插入新结点
+     * @param headNode
+     * @param nodeToInsert
+     */
+    void insertAtEndInList(CLLNode headNode, CLLNode nodeToInsert) {
+        CLLNode currentNode = headNode;
+        while (currentNode.getNext() != headNode) {
+            currentNode.setNext(currentNode.getNext());
+        }
+        // 初始化其 next 指针指向该结点自身
+        nodeToInsert.setNext(nodeToInsert);
+
+        if (headNode == null) {
+            headNode = nodeToInsert;
+        } else {
+            nodeToInsert.setNext(headNode);
+            currentNode.setNext(nodeToInsert);
+        }
     }
 
 }
