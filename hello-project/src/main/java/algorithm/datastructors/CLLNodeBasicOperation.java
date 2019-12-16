@@ -9,6 +9,7 @@ public class CLLNodeBasicOperation {
 
     /**
      * 计算循环链表的长度
+     *
      * @param headNode
      * @return
      */
@@ -25,4 +26,21 @@ public class CLLNodeBasicOperation {
         }
         return length;
     }
+
+    /**
+     * 输出循环链表的内容
+     * @param headNode
+     */
+    void printCircularListData(CLLNode headNode) {
+        CLLNode cllNode = headNode;
+        while (cllNode != null) {
+            System.out.println(cllNode.getData() + "->");
+            cllNode = cllNode.getNext();
+            if (cllNode == headNode) {
+                break;
+            }
+        }
+        System.out.println("(" + cllNode.getData() + ")headNode");
+    }
+
 }
