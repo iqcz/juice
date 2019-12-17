@@ -46,6 +46,7 @@ public class CLLNodeBasicOperation {
 
     /**
      * 在循环链表末尾插入新结点
+     *
      * @param headNode
      * @param nodeToInsert
      */
@@ -62,6 +63,27 @@ public class CLLNodeBasicOperation {
         } else {
             nodeToInsert.setNext(headNode);
             currentNode.setNext(nodeToInsert);
+        }
+    }
+
+    /**
+     * 在循环链表的表头插入结点
+     *
+     * @param headNode
+     * @param nodeToInsert
+     */
+    void insertAtBeginInCLL(CLLNode headNode, CLLNode nodeToInsert) {
+        CLLNode currentNode = headNode;
+        while (currentNode.getNext() != headNode) {
+            currentNode.setNext(currentNode.getNext());
+        }
+        nodeToInsert.setNext(nodeToInsert);
+        if (headNode == null) {
+            headNode = nodeToInsert;
+        } else {
+            nodeToInsert.setNext(headNode);
+            currentNode.setNext(nodeToInsert);
+            headNode = nodeToInsert;
         }
     }
 
