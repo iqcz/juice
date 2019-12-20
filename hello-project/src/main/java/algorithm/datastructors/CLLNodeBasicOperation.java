@@ -89,6 +89,7 @@ public class CLLNodeBasicOperation {
 
     /**
      * 删除循环链表中的最后一个结点
+     *
      * @param headNode
      */
     void deleteLastNode(CLLNode headNode) {
@@ -107,7 +108,27 @@ public class CLLNodeBasicOperation {
 
         tmp.setNext(headNode);
         currentNode = null;
+    }
 
+    /**
+     * 删除循环链表中的第一个结点
+     * @param headNode
+     */
+    void deleteFirstNode(CLLNode headNode) {
+        CLLNode tmp = headNode;
+        CLLNode currentNode = headNode;
+
+        if (headNode == null) {
+            System.out.println("Empty");
+            return;
+        }
+
+        while (currentNode.getNext() != headNode) {
+            currentNode.setNext(currentNode.getNext());
+        }
+
+        currentNode.setNext(headNode.getNext());
+        headNode = headNode.getNext();
     }
 
 }
