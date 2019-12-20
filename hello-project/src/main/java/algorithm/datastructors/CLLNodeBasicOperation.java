@@ -87,4 +87,27 @@ public class CLLNodeBasicOperation {
         }
     }
 
+    /**
+     * 删除循环链表中的最后一个结点
+     * @param headNode
+     */
+    void deleteLastNode(CLLNode headNode) {
+        CLLNode tmp = headNode;
+        CLLNode currentNode = headNode;
+
+        if (headNode == null) {
+            System.out.println("Empty");
+            return;
+        }
+
+        while (currentNode.getNext() != headNode) {
+            tmp = currentNode;
+            currentNode = currentNode.getNext();
+        }
+
+        tmp.setNext(headNode);
+        currentNode = null;
+
+    }
+
 }
