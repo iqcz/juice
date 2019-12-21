@@ -126,6 +126,9 @@ public class ListNodeOperation {
      * pNthNode才开始移动。然后两个指针同时移动直至tTemp到达表尾。
      * 这时pNthNode指针所指的结点就是所求的结点，也就是链表的倒数第n个结点。
      *
+     * 只用一次链表扫描解决该问题。
+     * 还可以使用蛮力法，散列表等方式。
+     *
      * @param head
      * @param nthNode
      * @return
@@ -251,6 +254,31 @@ public class ListNodeOperation {
         return true;
     }
 
+    /**
+     * 在有序链表中插入一个节点
+     *
+     * maybe have bug.
+     * @param headNode
+     * @param newNode
+     * @return
+     */
+    ListNode insertInSortedList(ListNode headNode, ListNode newNode) {
+        ListNode current = headNode;
+        ListNode tmp = headNode;
+        if (headNode == null) {
+            return newNode;
+        }
+
+        // 遍历链表，直到找到比新结点中数据值更大的结点
+        while (current != null && current.getData() < newNode.getData()) {
+            tmp = current;
+            current = current.getNext();
+        }
+        // 在该结点前插入新结点
+        newNode.setNext(current);
+        tmp.setNext(newNode);
+        return headNode;
+    }
 
     public static void main(String[] args) {
         ListNodeOperation operation = new ListNodeOperation();
