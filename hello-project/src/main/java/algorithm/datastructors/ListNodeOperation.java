@@ -280,6 +280,14 @@ public class ListNodeOperation {
         return headNode;
     }
 
+    /**
+     * 约瑟夫环
+     * N 个人想选出一个领头人，他们排成一个环，沿着环每数到第 M 个人就从环中排除该人，
+     * 并从下一个人开始重新数。找出最后留在环中的人。
+     *
+     * @param args
+     */
+
     public static void main(String[] args) {
         ListNodeOperation operation = new ListNodeOperation();
         int i = 1;
