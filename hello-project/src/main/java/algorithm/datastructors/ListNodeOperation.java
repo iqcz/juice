@@ -9,6 +9,9 @@ import java.util.Stack;
  */
 public class ListNodeOperation {
 
+    private int n;
+    private int m;
+
     /**
      * 找到链表的中间节点
      * 使用两个指针。让第一个指针的移动速度是另一个的两倍。
@@ -284,9 +287,19 @@ public class ListNodeOperation {
      * 约瑟夫环
      * N 个人想选出一个领头人，他们排成一个环，沿着环每数到第 M 个人就从环中排除该人，
      * 并从下一个人开始重新数。找出最后留在环中的人。
-     *
-     * @param args
      */
+    ListNode getJosephusPosition(int n, int m) {
+        ListNode p, q;
+        // 建立一个包含所有人的循环链表
+        p.setData(1);
+        q = p;
+        for (int i = 2; i < n; ++i) {
+            p = p.getNext();
+            p.setData(i);
+        }
+        p.setNext(q);
+
+    }
 
     public static void main(String[] args) {
         ListNodeOperation operation = new ListNodeOperation();
