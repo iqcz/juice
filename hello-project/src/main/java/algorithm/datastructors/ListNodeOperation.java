@@ -128,7 +128,7 @@ public class ListNodeOperation {
      * 首先，两个指针都指向链表的头结点。仅当pTemp（沿着链表）进行了n次移动后，
      * pNthNode才开始移动。然后两个指针同时移动直至tTemp到达表尾。
      * 这时pNthNode指针所指的结点就是所求的结点，也就是链表的倒数第n个结点。
-     *
+     * <p>
      * 只用一次链表扫描解决该问题。
      * 还可以使用蛮力法，散列表等方式。
      *
@@ -259,8 +259,9 @@ public class ListNodeOperation {
 
     /**
      * 在有序链表中插入一个节点
-     *
+     * <p>
      * maybe have bug.
+     *
      * @param headNode
      * @param newNode
      * @return
@@ -288,8 +289,9 @@ public class ListNodeOperation {
      * N 个人想选出一个领头人，他们排成一个环，沿着环每数到第 M 个人就从环中排除该人，
      * 并从下一个人开始重新数。找出最后留在环中的人。
      */
-    ListNode getJosephusPosition(int n, int m) {
-        ListNode p, q;
+    void getJosephusPosition(int n, int m) {
+        ListNode p = new ListNode(1);
+        ListNode q;
         // 建立一个包含所有人的循环链表
         p.setData(1);
         q = p;
@@ -297,8 +299,18 @@ public class ListNodeOperation {
             p = p.getNext();
             p.setData(i);
         }
+        // 设置表尾结点的后继指向第一个结点，构建出循环链表
         p.setNext(q);
+        // 如果链表中选手数大于1，淘汰第 m 个选手
+        for (int count = n; count > 1; --count) {
+            for (int i = 0; i < m; ++i) {
+                p = p.getNext();
+            }
+            // 从链表中删除被淘汰选手的结点
+            p.setNext(p.getNext().getNext());
+        }
 
+        System.out.println("Last player left standing (Josephus Position) is " + p.getData());
     }
 
     public static void main(String[] args) {
