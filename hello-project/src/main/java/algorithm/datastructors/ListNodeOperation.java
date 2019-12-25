@@ -1,5 +1,6 @@
 package algorithm.datastructors;
 
+import java.util.List;
 import java.util.Stack;
 
 /**
@@ -311,6 +312,33 @@ public class ListNodeOperation {
         }
 
         System.out.println("Last player left standing (Josephus Position) is " + p.getData());
+    }
+
+    /**
+     * 找分数结点
+     *
+     * @param head
+     * @param k
+     * @return
+     */
+    ListNode fractionListNode(ListNode head, int k) {
+        ListNode fractionListNode = null;
+        int i = 0;
+        if (k <= 0) {
+            return null;
+        }
+
+        for (; head != null; head = head.getNext()) {
+            if (i % k == 0) {
+                if (fractionListNode != null) {
+                    fractionListNode = head;
+                } else {
+                    fractionListNode = head.getNext();
+                }
+            }
+            i++;
+        }
+        return fractionListNode;
     }
 
     public static void main(String[] args) {
