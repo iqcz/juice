@@ -2,16 +2,24 @@ package algorithm.datastructors;
 
 public class MyQueue {
 
-    // 底层使用数组实现
+    /**
+     * 底层使用数组实现
+     */
     private long[] arr;
 
-    // 有效数据的大小
+    /**
+     * 有效数据的大小
+     */
     private int elements;
 
-    // 队头
+    /**
+     * 队头
+     */
     private int front;
 
-    // 队尾
+    /**
+     * 队尾
+     */
     private int end;
 
     public MyQueue() {
