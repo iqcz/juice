@@ -1,7 +1,5 @@
 package com.packt.mvneclipse.javainanutshell;
 
-import java.util.Map;
-
 //import org.apache.struts2.dispatcher.ServletDispatcherResult;
 //
 //import com.opensymphony.xwork2.ActionInvocation;
@@ -12,14 +10,13 @@ import java.util.Map;
  * 更加强大的日志拦截器
  *
  * @author LiYanxue
- *
  */
-public class LoggerInterceptor/* implements Interceptor */{
+public class LoggerInterceptor/* implements Interceptor */ {
 
-     /**
-      *
-      */
-     private static final long serialVersionUID = 7128757235275604447L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 7128757235275604447L;
 
 //     @Override
 //     public void destroy() {
