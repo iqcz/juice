@@ -1,0 +1,86 @@
+1¡¢
+MYSQL£º
+CREATE TABLE T_Person (FName VARCHAR(20),FAge INT,FRemark VARCHAR(20),PRIMARY KEY (FName)); 	CREATE TABLE T_Debt (FNumber VARCHAR(20),FAmount DECIMAL(10,2) NOT NULL,
+FPerson VARCHAR(20),PRIMARY KEY (FNumber),
+FOREIGN KEY (FPerson) REFERENCES T_Person(FName)) ;
+MSSQLServer£º
+CREATE TABLE T_Person (FName VARCHAR(20),FAge INT,FRemark VARCHAR(20),PRIMARY KEY (FName)); 	CREATE TABLE T_Debt (FNumber VARCHAR(20),FAmount NUMERIC(10,2) NOT NULL,
+FPerson VARCHAR(20),PRIMARY KEY (FNumber),
+FOREIGN KEY (FPerson) REFERENCES T_Person(FName)) ;
+Oracle£º
+CREATE TABLE T_Person (FName VARCHAR2(20),FAge NUMBER (10) ,FRemark VARCHAR2(20),PRIMARY KEY (FName)) ;
+CREATE TABLE T_Debt (FNumber VARCHAR2(20),FAmount NUMERIC(10,2) NOT NULL,
+FPerson VARCHAR2(20),PRIMARY KEY (FNumber),
+FOREIGN KEY (FPerson) REFERENCES T_Person(FName)) ;
+DB2£º
+CREATE TABLE T_Person (FName VARCHAR(20) NOT NULL,FAge INT,FRemark VARCHAR(20),PRIMARY KEY (FName)); 	CREATE TABLE T_Debt (FNumber VARCHAR(20) NOT NULL,FAmount DECIMAL(10,2) NOT NULL,
+FPerson VARCHAR(20),PRIMARY KEY (FNumber),
+FOREIGN KEY (FPerson) REFERENCES T_Person(FName)) ;
+
+2¡¢
+INSERT INTO T_Person(FName,FAge,FRemark) VALUES('Tom',18,'USA') 
+3¡¢
+INSERT INTO T_Person(FName,FAge,FRemark) VALUES('Jim',20,'USA');
+INSERT INTO T_Person(FName,FAge,FRemark) VALUES('Lili',22,'China') ;
+INSERT INTO T_Person(FName,FAge,FRemark) VALUES('XiaoWang',17,' China') ;
+
+4¡¢
+INSERT INTO T_Person(FAge,FName,FRemark) VALUES(21,'Kimisushi','Korea')
+5¡¢
+INSERT INTO T_Person(FAge,FName) VALUES(22,'LXF')
+6¡¢
+INSERT INTO T_Person VALUES('luren1',23,'China')
+7¡¢
+INSERT INTO T_Debt (FNumber, FPerson) VALUES ('1', 'Jim')
+INSERT INTO T_Debt (FNumber,FAmount, FPerson) VALUES ('1',200, 'Jim')
+8¡¢
+INSERT INTO T_Debt (FNumber,FAmount, FPerson) VALUES ('1',300, 'Jim')
+INSERT INTO T_Debt (FNumber,FAmount, FPerson) VALUES ('2',300, 'Jim')
+9¡¢
+INSERT INTO T_Debt (FNumber,FAmount, FPerson) VALUES ('3',100, 'Jerry')
+INSERT INTO T_Debt (FNumber,FAmount, FPerson) VALUES ('3',100, 'Tom')
+10¡¢
+UPDATE T_Person
+SET FRemark = 'SuperMan'
+11¡¢
+UPDATE T_Person 
+SET FRemark = 'Sonic',
+FAge=25
+12¡¢
+UPDATE T_Person 
+SET FAge = 12
+WHERE FNAME='Tom'
+13¡¢
+UPDATE T_Person 
+SET FRemark = 'BlaBla'
+WHERE FAge =25
+
+14¡¢
+UPDATE T_Person 
+SET FAge = 22
+WHERE FName ='jim' OR FName='LXF'
+15¡¢
+UPDATE T_Debt set FAmount = NULL WHERE FPerson='Tom'
+UPDATE T_Debt set FAmount =123 WHERE FPerson='Tom'
+16¡¢
+UPDATE T_Debt set FNumber = '2' WHERE FPerson='Tom'
+UPDATE T_Debt set FNumber = '8' WHERE FPerson='Tom'
+17¡¢
+UPDATE T_Debt set FPerson = 'Merry' WHERE FNumber='1'
+18¡¢
+UPDATE T_Debt set FPerson = 'Lili' WHERE FNumber='1'
+19¡¢
+DELETE FROM T_Debt;
+DELETE FROM T_Person; 
+20¡¢
+INSERT INTO T_Person(FName,FAge,FRemark) VALUES('Jim',20,'USA');
+INSERT INTO T_Person(FName,FAge,FRemark) VALUES('Lili',22,'China') ;
+INSERT INTO T_Person(FName,FAge,FRemark) VALUES('XiaoWang',17,' China ') ;
+INSERT INTO T_Person(FName,FAge,FRemark) VALUES('Sam',16,'China') ;
+INSERT INTO T_Person(FName,FAge,FRemark) VALUES('BlueFin',12,'Mars') ;
+
+21¡¢
+DELETE FROM T_Person WHERE FAge > 20 or FRemark = 'Mars' 
+22¡¢
+DROP TABLE T_Debt;
+DROP TABLE T_Person;

@@ -1,0 +1,847 @@
+初始化
+MYSQL:
+CREATE TABLE T_Person (FIdNumber VARCHAR(20),
+FName VARCHAR(20),FBirthDay DATETIME,
+FRegDay DATETIME,FWeight DECIMAL(10,2))
+MSSQLServer:
+CREATE TABLE T_Person (FIdNumber VARCHAR(20),
+FName VARCHAR(20),FBirthDay DATETIME,
+FRegDay DATETIME,FWeight NUMERIC(10,2))
+Oracle:
+CREATE TABLE T_Person (FIdNumber VARCHAR2(20),
+FName VARCHAR2(20),FBirthDay DATE,
+FRegDay DATE,FWeight NUMERIC(10,2))
+DB2:
+CREATE TABLE T_Person (FIdNumber VARCHAR(20),
+FName VARCHAR(20),FBirthDay DATE,
+FRegDay DATE,FWeight DECIMAL(10,2))
+
+MYSQL、MSSQLServer、DB2：
+INSERT INTO T_Person(FIdNumber,FName,FBirthDay,FRegDay,FWeight) 
+VALUES ('123456789120','Tom','1981-03-22','1998-05-01',56.67);
+INSERT INTO T_Person(FIdNumber,FName,FBirthDay,FRegDay,FWeight) 
+VALUES ('123456789121','Jim','1987-01-18','1999-08-21',36.17);
+INSERT INTO T_Person(FIdNumber,FName,FBirthDay,FRegDay,FWeight) 
+VALUES ('123456789122','Lily','1987-11-08','2001-09-18',40.33);
+INSERT INTO T_Person(FIdNumber,FName,FBirthDay,FRegDay,FWeight) 
+VALUES ('123456789123','Kelly','1982-07-12','2000-03-01',46.23);
+INSERT INTO T_Person(FIdNumber,FName,FBirthDay,FRegDay,FWeight) 
+VALUES ('123456789124','Sam','1983-02-16','1998-05-01',48.68);
+INSERT INTO T_Person(FIdNumber,FName,FBirthDay,FRegDay,FWeight) 
+VALUES ('123456789125','Kerry','1984-08-07','1999-03-01',66.67);
+INSERT INTO T_Person(FIdNumber,FName,FBirthDay,FRegDay,FWeight) 
+VALUES ('123456789126','Smith','1980-01-09','2002-09-23',51.28);
+INSERT INTO T_Person(FIdNumber,FName,FBirthDay,FRegDay,FWeight) 
+VALUES ('123456789127','BillGates','1972-07-18','1995-06-19',60.32);
+
+Oracle：
+INSERT INTO T_Person(FIdNumber,FName,FBirthDay,FRegDay,FWeight) 
+VALUES ('123456789120','Tom',TO_DATE('1981-03-22', 'YYYY-MM-DD HH24:MI:SS'),
+TO_DATE('1998-05-01', 'YYYY-MM-DD HH24:MI:SS'),56.67);
+INSERT INTO T_Person(FIdNumber,FName,FBirthDay,FRegDay,FWeight) 
+VALUES ('123456789121','Jim',TO_DATE('1987-01-18', 'YYYY-MM-DD HH24:MI:SS'),
+TO_DATE('1999-08-21', 'YYYY-MM-DD HH24:MI:SS'),36.17);
+INSERT INTO T_Person(FIdNumber,FName,FBirthDay,FRegDay,FWeight) 
+VALUES ('123456789122','Lily',TO_DATE('1987-11-08', 'YYYY-MM-DD HH24:MI:SS'),
+TO_DATE('2001-09-18', 'YYYY-MM-DD HH24:MI:SS'),40.33);
+INSERT INTO T_Person(FIdNumber,FName,FBirthDay,FRegDay,FWeight) 
+VALUES ('123456789123','Kelly',TO_DATE('1982-07-12', 'YYYY-MM-DD HH24:MI:SS'),
+TO_DATE('2000-03-01', 'YYYY-MM-DD HH24:MI:SS'),46.23);
+INSERT INTO T_Person(FIdNumber,FName,FBirthDay,FRegDay,FWeight) 
+VALUES ('123456789124','Sam',TO_DATE('1983-02-16', 'YYYY-MM-DD HH24:MI:SS'),
+TO_DATE('1998-05-01', 'YYYY-MM-DD HH24:MI:SS'),48.68);
+INSERT INTO T_Person(FIdNumber,FName,FBirthDay,FRegDay,FWeight) 
+VALUES ('123456789125','Kerry',TO_DATE('1984-08-07', 'YYYY-MM-DD HH24:MI:SS'),
+TO_DATE('1999-03-01', 'YYYY-MM-DD HH24:MI:SS'),66.67);
+INSERT INTO T_Person(FIdNumber,FName,FBirthDay,FRegDay,FWeight) 
+VALUES ('123456789126','Smith',TO_DATE('1980-01-09', 'YYYY-MM-DD HH24:MI:SS'),
+TO_DATE('2002-09-23', 'YYYY-MM-DD HH24:MI:SS'),51.28);
+INSERT INTO T_Person(FIdNumber,FName,FBirthDay,FRegDay,FWeight) 
+VALUES ('123456789127','BillGates',TO_DATE('1972-07-18', 'YYYY-MM-DD HH24:MI:SS'),
+TO_DATE('1995-06-19', 'YYYY-MM-DD HH24:MI:SS'),60.32);
+
+5.1.1
+SELECT  FWeight - 50,ABS(FWeight - 50) , ABS(-5.38)  FROM T_Person  
+
+5.1.2
+SELECT FWeight,POWER(FWeight,-0.5),POWER(FWeight,2),
+POWER(FWeight,3),POWER(FWeight,4) FROM T_Person	
+
+5.1.3
+SELECT FWeight,SQRT(FWeight) FROM T_Person
+
+5.1.4
+SELECT RAND() 
+
+SELECT RAND(9527)
+
+SELECT dbms_random.value FROM dual
+
+SELECT dbms_random.value(60,100) FROM dual
+
+SELECT dbms_random.normal FROM dual
+
+SELECT dbms_random.string('U',8) as UP,
+dbms_random.string('L',5) as LP,
+dbms_random.string('A',6) as AP,
+dbms_random.string('X',6) as XP,
+dbms_random.string('P',8) as PP FROM dual
+
+select SYSFUN.rand() from SYSIBM.SYSDUMMY1
+
+5.1.5
+MYSQL、MSSQLServer、DB2：
+SELECT FName,FWeight, CEILING(FWeight), CEILING(FWeight*-1)  
+FROM T_Person Oracle：
+SELECT FName,FWeight, CEIL(FWeight) , CEIL (FWeight*-1)  
+FROM T_Person
+
+5.1.6
+SELECT FName,FWeight,FLOOR(FWeight),FLOOR(FWeight*-1)  
+FROM T_Person
+
+5.1.7
+SELECT FName,FWeight, ROUND(FWeight,1), 
+ROUND(FWeight*-1,0) , ROUND(FWeight,-1) 
+FROM T_Person;
+
+SELECT FName,FWeight, ROUND(FWeight), ROUND(FWeight*-1)  
+FROM T_Person
+
+5.1.8
+SELECT FName,FWeight,SIN(FWeight)  FROM T_Person
+
+5.1.9
+SELECT FName,FWeight, COS(FWeight) FROM T_Person
+
+5.1.10
+SELECT FName,FWeight, ASIN(1/FWeight) FROM T_Person
+
+5.1.11
+SELECT FName,FWeight, ACOS(1/FWeight) FROM T_Person
+
+5.1.12
+SELECT FName,FWeight, TAN(FWeight) FROM T_Person
+
+5.1.13
+SELECT FName,FWeight, ATAN(FWeight) FROM T_Person
+
+5.1.14
+MYSQL,Oracle,DB2:
+SELECT FName,FWeight, ATAN2(FWeight,2)  FROM T_Person
+MSSQLServer:
+SELECT FName,FWeight, ATN2(FWeight,2)  FROM T_Person 
+
+5.1.15
+MYSQL,MSSQLServer,DB2:
+SELECT FName,FWeight, COT(FWeight)  FROM T_Person
+Oracle:
+SELECT FName,FWeight,1/tan(FWeight) FROM T_Person 
+
+5.1.16
+MYSQL,MSSQLServer:
+SELECT FName,FWeight,FWeight *PI() FROM T_Person
+Oracle,DB2:
+SELECT FName,FWeight,FWeight * acos(-1)  FROM T_Person 
+
+5.1.17
+MYSQL,MSSQLServer:
+SELECT FName,FWeight, DEGREES(FWeight)  FROM T_Person
+Oracle,DB2:
+SELECT FName,FWeight,(FWeight*180)/acos(-1) FROM T_Person 
+
+5.1.18
+MYSQL,MSSQLServer:
+SELECT FName,FWeight, RADIANS(FWeight)  FROM T_Person
+Oracle,DB2:
+SELECT FName,FWeight,(FWeight*acos(-1)/180) FROM T_Person 
+
+5.1.19
+SELECT FName,FWeight-48.68,SIGN(FWeight-48.68) FROM T_Person  
+
+5.1.20
+SELECT FName,FWeight-48.68,SIGN(FWeight-48.68) FROM T_Person  
+
+5.1.21
+MYSQL,Oracle:
+SELECT FName,FWeight,MOD(FWeight , 5) FROM T_Person
+MSSQLServer:
+SELECT FName,FWeight,FWeight % 5 FROM T_Person 
+
+5.1.22
+MYSQL,MSSQLServer,DB2:
+SELECT FName,FWeight, LOG(FWeight)  FROM T_Person
+Oracle:
+SELECT FName,FWeight, LN(FWeight)  FROM T_Person 
+
+5.1.23
+MYSQL,MSSQLServer,DB2:
+SELECT FName,FWeight, LOG(FWeight)  FROM T_Person
+Oracle:
+SELECT FName,FWeight, LN(FWeight)  FROM T_Person 
+
+5.1.24
+MYSQL,MSSQLServer,DB2:
+SELECT FName,FWeight, LOG10(FWeight)  FROM T_Person
+Oracle:
+SELECT FName,FWeight,LOG(10,FWeight) FROM T_Person 
+
+5.1.25
+SELECT FName,FWeight, POWER(1.18,FWeight)  FROM T_Person 
+
+5.2.1
+MYSQL,Oracle,DB2:
+SELECT FName, LENGTH(FName)  FROM T_Person
+MSSQLServer:
+SELECT FName, LEN(FName)  FROM T_Person 
+
+5.2.2
+MYSQL,MSSQLServer,Oracle:
+SELECT FName, LOWER(FName)  FROM T_Person
+DB2:
+SELECT FName, LCASE(FName)  FROM T_Person 
+
+5.2.3
+MYSQL,MSSQLServer,Oracle:
+SELECT FName, UPPER(FName)  FROM T_Person
+DB2:
+SELECT FName, UCASE(FName)  FROM T_Person 
+
+5.2.4
+SELECT FName,LTRIM(FName),LTRIM('  abc    ')  FROM T_Person 
+
+MYSQL:
+SELECT '  123 abc    ', LENGTH('  123 abc    ') , 
+LENGTH( LTRIM('  123 abc    ') )
+MSSQLServer:
+SELECT '  123 abc    ', LEN('  123 abc    ') , 
+LEN( LTRIM('  123 abc    ') )
+Oracle:
+SELECT '  123 abc    ', LENGTH('  123 abc    ') , 
+LENGTH( LTRIM('  123 abc    ') )  FROM DUAL
+DB2:
+SELECT '  123 abc    ', LENGTH('  123 abc    ') , 
+LENGTH( LTRIM('  123 abc    ') )  FROM SYSIBM.SYSDUMMY1
+
+5.2.5
+SELECT FName,RTRIM(FName),RTRIM('   abc    ')  FROM T_Person 
+
+MYSQL:
+SELECT '  123 abc    ', LENGTH('  123 abc    ') , 
+LENGTH( RTRIM('  123 abc    ') )
+MSSQLServer:
+SELECT '  123 abc    ', LEN('  123 abc    ') , 
+LEN( RTRIM('  123 abc    ') )
+Oracle:
+SELECT '  123 abc    ', LENGTH('  123 abc    ') , 
+LENGTH( RTRIM('  123 abc    ') )  FROM DUAL
+DB2:
+SELECT '  123 abc    ', LENGTH('  123 abc    ') , 
+LENGTH( RTRIM('  123 abc    ') )  FROM SYSIBM.SYSDUMMY1	
+
+5.2.6
+MYSQL,Oracle:
+SELECT FName,TRIM(FName),TRIM('   abc    ') FROM T_Person
+MSSQLServer,DB2:
+SELECT FName,LTRIM(RTRIM(FName)),LTRIM(RTRIM('   abc    ')) FROM T_Person
+
+MYSQL:
+SELECT '  123 abc    ', LENGTH('  123 abc    ') , 
+LENGTH(TRIM('  123 abc    '))
+MSSQLServer:
+SELECT '  123 abc    ', LEN('  123 abc    ') , 
+LEN(LTRIM(RTRIM('  123 abc    ')))
+Oracle:
+SELECT '  123 abc    ', LENGTH('  123 abc    ') , 
+LENGTH(TRIM('  123 abc    '))  FROM DUAL
+DB2:
+SELECT '  123 abc    ', LENGTH('  123 abc    ') , 
+LENGTH(LTRIM(RTRIM('  123 abc    ')))  FROM SYSIBM.SYSDUMMY1	
+
+5.2.7
+MYSQL、MSSQLServer:
+SELECT  SUBSTRING('abcdef111',2,3)
+Oracle:
+SELECT  SUBSTR('abcdef111',2,3)  FROM DUAL
+DB2:
+SELECT  SUBSTR('abcdef111',2,3)  FROM SYSIBM.SYSDUMMY1 
+
+MYSQL,MSSQLServer:
+SELECT FName, SUBSTRING(FName,2,3)  FROM T_Person
+Oracle,DB2:
+SELECT FName, SUBSTR(FName,2,3)  FROM T_Person 
+
+5.2.8
+MYSQL,Oracle:
+SELECT FName, INSTR(FName,'m') , INSTR(FName,'ly') 
+FROM T_Person
+MSSQLServer:
+SELECT FName,CHARINDEX(FName,'m'), CHARINDEX(FName,'ly')  
+FROM T_Person
+DB2:
+SELECT FName, LOCATE('m',FName) , LOCATE('ly',FName)  
+FROM T_Person
+
+5.2.9
+MYSQL,MSSQLServer,DB2:
+SELECT FName, LEFT(FName,3) , LEFT(FName,2)  
+FROM T_Person
+Oracle:
+SELECT FName,SUBSTR(FName, 1,3),SUBSTR(FName, 1,2)
+FROM T_Person 
+
+5.2.10 
+MYSQL,MSSQLServer,DB2:
+SELECT FName, RIGHT(FName,3) , RIGHT(FName,2)  
+FROM T_Person
+Oracle:
+SELECT FName,SUBSTR(FName, LENGTH(FName)-3 +1, 3),
+SUBSTR(FName, LENGTH(FName)-2 +1, 2) FROM T_Person 
+
+5.2.11
+select FName,REPLACE(FName,'i','e'),FIDNumber,
+REPLACE(FIDNumber,'2345','abcd') FROM T_Person
+
+SELECT FName, REPLACE(FName,'m','') ,FIDNumber, 
+REPLACE(FIDNumber,'123','')  FROM T_Person 
+
+MYSQL、MSSQLServer:
+SELECT  REPLACE(' abc  123  wpf',' ','') , REPLACE(' ccw  enet  wcf f',' ','')
+Oracle:
+SELECT  REPLACE(' abc  123  wpf',' ','') , 
+REPLACE(' ccw  enet  wcf f',' ','')  FROM DUAL
+DB2:
+SELECT  REPLACE(' abc  123  wpf',' ','') , 
+REPLACE(' ccw  enet  wcf f',' ','')  FROM SYSIBM.SYSDUMMY1
+
+5.2.12 
+MYSQL,MSSQLServer:
+SELECT  ASCII('a') , ASCII('abc')
+Oracle:
+SELECT  ASCII('a') , ASCII('abc')  FROM DUAL
+DB2:
+SELECT  ASCII('a') , ASCII('abc')  FROM SYSIBM.SYSDUMMY1 
+
+MYSQL,MSSQLServer,DB2:
+SELECT FName, LEFT(FName,1) , ASCII( LEFT(FName,1) ) , 
+ASCII(FName)  FROM T_Person
+Oracle:
+SELECT FName,SUBSTR(FName, 1,1), ASCII(SUBSTR(FName, 1,1)) , 
+ASCII(FName)  FROM T_Person
+
+5.2.13
+MYSQL,MSSQLServer:
+SELECT  CHAR(56) , CHAR(90) ,'a', CHAR( ASCII('a') )
+Oracle:
+SELECT  CHR(56) , CHR(90) ,'a', CHR( ASCII('a') )  
+FROM DUAL
+DB2:
+SELECT CHR(56),CHR(90),'a',CHR( ASCII('a') ) 
+FROM SYSIBM.SYSDUMMY1 
+
+MYSQL、MSSQLServer:
+SELECT FWeight, CEILING(FWeight) , CHAR( CEILING(FWeight) )  
+FROM T_Person
+Oracle:
+SELECT FWeight, CEIL(FWeight) , CHR( CEIL(FWeight) )  
+FROM T_Person
+DB2:
+SELECT FWeight, CEILING(FWeight),CHR(int(CEILING(FWeight)))
+FROM T_Person
+
+5.2.14
+SELECT * from T_Person
+WHERE FName='jack'
+
+MYSQL,MSSQLServer:
+SELECT  SOUNDEX('jack') , SOUNDEX('jeck') , SOUNDEX('joke') , 
+SOUNDEX('juke') , SOUNDEX('look') , SOUNDEX('jobe')
+Oracle:
+SELECT  SOUNDEX('jack') , SOUNDEX('jeck') , SOUNDEX('joke') , 
+SOUNDEX('juke') , SOUNDEX('look') , SOUNDEX('jobe')  
+FROM DUAL
+DB2:
+SELECT  SOUNDEX('jack') , SOUNDEX('jeck') , SOUNDEX('joke') , 
+SOUNDEX('juke') , SOUNDEX('look') , SOUNDEX('jobe')  
+FROM SYSIBM.SYSDUMMY1
+
+SELECT FName, SOUNDEX(FName)  FROM T_Person 
+
+SELECT DIFFERENCE(FName,'Merry')  FROM T_Person
+
+SELECT * FROM T_Person
+WHERE DIFFERENCE(FName,'Tim')>=3
+
+5.3.3.1
+SELECT NOW(),SYSDATE(),CURRENT_TIMESTAMP 
+SELECT CURDATE(),CURRENT_DATE
+SELECT CURTIME(),CURRENT_TIME
+
+5.3.3.2
+SELECT GETDATE() as 当前日期时间 
+SELECT CONVERT(VARCHAR(50) ,GETDATE( ), 101) as 当前日期
+SELECT CONVERT(VARCHAR(50) ,GETDATE(), 108) as 当前时间
+
+5.3.3.3
+SELECT SYSTIMESTAMP 
+FROM DUAL 
+
+SELECT SYSDATE
+FROM DUAL 
+
+SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+FROM DUAL
+
+SELECT TO_CHAR(SYSDATE, 'HH24:MI:SS')
+FROM DUAL
+
+5.3.3.4
+SELECT CURRENT TIMESTAMP
+FROM SYSIBM.SYSDUMMY1 
+
+SELECT CURRENT DATE
+FROM SYSIBM.SYSDUMMY1  
+
+SELECT CURRENT TIME
+FROM SYSIBM.SYSDUMMY1  
+
+5.3.4.1
+SELECT FBirthDay,
+DATE_ADD(FBirthDay,INTERVAL 1 WEEK) as w1,
+DATE_ADD(FBirthDay,INTERVAL 2 MONTH) as m2,
+DATE_ADD(FBirthDay,INTERVAL 5 QUARTER) as q5
+FROM T_Person
+
+SELECT FBirthDay,
+DATE_ADD(FBirthDay,INTERVAL '3 2:10' DAY_MINUTE) as dm,
+DATE_ADD(FBirthDay,INTERVAL '1-6' YEAR_MONTH) as ym
+FROM T_Person
+
+SELECT FBirthDay,
+DATE_ADD(DATE_ADD(FBirthDay,INTERVAL 1 YEAR),INTERVAL 6 MONTH) as dm
+FROM T_Person
+
+
+SELECT FBirthDay,
+DATE_ADD(FBirthDay,INTERVAL -1 WEEK) as w1,
+DATE_ADD(FBirthDay,INTERVAL -2 MONTH) as m2,
+DATE_ADD(FBirthDay,INTERVAL -5 QUARTER) as q5
+FROM T_Person
+
+
+SELECT FBirthDay,
+DATE_SUB(FBirthDay,INTERVAL 1 WEEK) as w1,
+DATE_SUB(FBirthDay,INTERVAL 2 MONTH) as m2,
+DATE_SUB(FBirthDay, INTERVAL '3 2:10' DAY_MINUTE) as dm
+FROM T_Person
+
+5.3.4.2 
+SELECT FBirthDay, DATEADD (YEAR ,3,FBirthDay) as threeyrs,
+DATEADD(QUARTER ,20,FBirthDay) as ttqutrs,
+DATEADD(MONTH ,68,FBirthDay) as sxtmonths,
+DATEADD(WEEK, -1000,FBirthDay) as thweeik
+FROM T_Person
+
+5.3.4.3
+SELECT FBirthDay,
+FBirthDay+3,
+FBirthDay-10
+FROM T_Person
+
+SELECT FBirthDay,
+FBirthDay+(2/24+10/60/24),
+FBirthDay+(3*7)
+FROM T_Person
+
+SELECT FBirthDay,
+ADD_MONTHS(FBirthDay,2),
+ADD_MONTHS(FBirthDay,-10)
+FROM T_Person
+
+SELECT FBirthDay,
+ADD_MONTHS(FBirthDay,2)+10 as bfd,
+ADD_MONTHS(FBirthDay,-3)-(10/24) as afd
+FROM T_Person
+
+5.3.4.4
+SELECT FBirthDay, FBirthDay+3 YEAR + 10 DAY,
+FBirthDay-100 MONTH
+FROM T_Person
+
+5.3.5.1
+SELECT FRegDay,FBirthDay, DATEDIFF(FRegDay, FBirthDay) , DATEDIFF(FBirthDay ,FRegDay)
+FROM T_Person 
+
+SELECT FRegDay,FBirthDay, DATEDIFF(FRegDay, FBirthDay)/7 
+FROM T_Person
+
+5.3.5.2
+SELECT FRegDay,FBirthDay,DATEDIFF(WEEK, FBirthDay, FRegDay) FROM T_Person 
+
+5.3.5.3
+SELECT FRegDay,FBirthDay,FRegDay-FBirthDay
+FROM T_Person
+
+SELECT SYSDATE,FBirthDay,SYSDATE-FBirthDay
+FROM T_Person
+
+SELECT (SYSDATE-FBirthDay)*24,(SYSDATE-FBirthDay)*24*60,
+(SYSDATE-FBirthDay)*24*60*60
+FROM T_Person
+
+SELECT SYSDATE,FBirthDay,(SYSDATE-FBirthDay)/7
+FROM T_Person
+
+SELECT ROUND((SYSDATE-FBirthDay)*24),ROUND((SYSDATE-FBirthDay)*24*60),
+ROUND((SYSDATE-FBirthDay)*24*60*60)
+FROM T_Person
+
+5.3.5.4
+SELECT DAYS(FBirthDay),DAYS(FRegDay),DAYS(CURRENT DATE)
+FROM T_Person
+
+SELECT FBirthDay,FRegDay,
+DAYS(FRegDay)-DAYS(FBirthDay)
+FROM T_Person
+
+SELECT FBirthDay,FRegDay,
+(DAYS(FRegDay)-DAYS(FBirthDay))/7
+FROM T_Person
+
+5.3.6.1
+SELECT FBirthDay,DAYNAME(FBirthDay),
+FRegDay,DAYNAME(FRegDay)
+FROM T_Person
+
+5.3.6.2
+SELECT FBirthDay,DATENAME(Weekday,FBirthDay),
+FRegDay,DATENAME(DW, FRegDay)
+FROM T_Person
+
+5.3.6.3
+SELECT FBirthDay,
+TO_CHAR(FBirthDay, 'YYYY') as yyyy,
+TO_CHAR(FBirthDay, 'MM') as mm,
+TO_CHAR(FBirthDay, 'MON') as mon,
+TO_CHAR(FBirthDay, 'WW') as ww
+FROM T_Person
+
+SELECT FBirthDay,
+TO_CHAR(FBirthDay, 'YYYY-MM-DD') as yyymmdd,
+FRegDay,
+TO_CHAR(FRegDay, 'DD-YYYY-MM') as ddyyyymm
+FROM T_Person
+
+SELECT
+FBirthDay,TO_CHAR(FBirthDay, 'DAY') as birthwk,
+FRegDay,TO_CHAR(FRegDay, 'DAY') as regwk
+FROM T_Person
+
+5.3.6.4
+SELECT
+FBirthDay,DAYNAME(FBirthDay) as birthwk,
+FRegDay,DAYNAME(FRegDay) as regwk
+FROM T_Person
+
+5.3.7.1
+SELECT
+FBirthDay,
+DATE_FORMAT(FBirthDay,'%y-%M %D %W') AS bd,
+FRegDay,
+DATE_FORMAT(FRegDay,'%Y年%m月%e日') AS rd
+FROM T_Person
+
+SELECT
+FBirthDay,
+DATE_FORMAT(FBirthDay,'%Y') AS y,
+DATE_FORMAT(FBirthDay,'%j') AS d,
+DATE_FORMAT(FBirthDay,'%U') AS u
+FROM T_Person
+
+5.3.7.2
+SELECT
+FBirthDay,
+DATENAME(year,FBirthDay) AS y,
+DATENAME(dayofyear,FBirthDay) AS d,
+DATENAME(week,FBirthDay) AS u
+FROM T_Person
+
+SELECT FBirthDay, DATEPART(Dayofyear,FBirthDay),
+FRegDay, DATEPART(Year, FRegDay)
+FROM T_Person
+
+5.3.7.3
+SELECT
+FBirthDay,
+TO_CHAR(FBirthDay,'YYYY') AS y,
+TO_CHAR(FBirthDay,'DDD') AS d,
+TO_CHAR(FBirthDay,'WW') AS u
+FROM T_Person
+
+5.3.7.4
+SELECT
+FBirthDay,
+YEAR(FBirthDay),
+FRegDay,
+MONTHNAME(FRegDay),
+WEEK(FRegDay)
+FROM T_Person
+
+5.4.1.1
+SELECT 
+CAST('-30' AS SIGNED) as sig, 
+CONVERT ('36', UNSIGNED INTEGER) as usig,
+CAST('2008-08-08' AS DATE) as d, 
+CONVERT ('08:09:10', TIME) as t
+
+5.4.1.2
+SELECT 
+CAST('-30' AS INTEGER) as i, 
+CONVERT(DECIMAL,'3.1415726') as d,
+CONVERT(DATETIME,'2008-08-08 08:09:10') as dt
+
+SELECT FIdNumber,
+RIGHT(FIdNumber,3) as 后三位,
+CAST(RIGHT(FIdNumber,3) AS INTEGER) as 后三位的整数形式,
+CAST(RIGHT(FIdNumber,3) AS INTEGER)+1 as 后三位加1,
+CONVERT(INTEGER,RIGHT(FIdNumber,3))/2 as 后三位除以2
+FROM T_Person
+
+5.4.1.3
+SELECT FBirthDay,
+TO_CHAR(FBirthDay,'YYYY-MM-DD') as c1,
+FWeight,
+TO_CHAR(FWeight,'L99D99MI') as c2,
+TO_CHAR(FWeight) as c3
+FROM T_Person
+
+SELECT 
+TO_DATE('2008-08-08 08:09:10', 'YYYY-MM-DD HH24:MI:SS') as dt1,
+TO_DATE('20080808 080910', 'YYYYMMDD HH24MISS') as dt2
+FROM DUAL
+
+SELECT 
+TO_NUMBER('33.33') as n1,
+TO_NUMBER('100.00', '9G999D99') as n2
+FROM DUAL
+
+SELECT HEXTORAW('7D'),
+RAWTOHEX ('a'),
+HEXTORAW(RAWTOHEX('w'))
+FROM DUAL
+
+SELECT
+TO_MULTI_BYTE('moring'),
+TO_SINGLE_BYTE('ｈｅｌｌｏ')
+FROM DUAL
+
+5.4.1.4 
+SELECT CHAR(FRegDay),
+INT('33'),
+DOUBLE('-3.1415926')
+FROM T_Person
+
+5.4.2
+UPDATE T_Person SET FBirthDay=null WHERE FName='Kerry';
+UPDATE T_Person SET FBirthDay=null, FRegDay=null WHERE FName='Smith';
+
+5.4.2.1
+MYSQL、MSSQLServer、DB2:
+SELECT FName,FBirthDay,FRegDay,
+COALESCE(FBirthDay,FRegDay,'2008-08-08')  AS ImportDay 
+FROM T_Person
+Oracle:
+SELECT FBirthDay,FRegDay, 
+COALESCE(FBirthDay,FRegDay,TO_DATE('2008-08-08', 'YYYY-MM-DD HH24:MI:SS'))  AS ImportDay 
+FROM T_Person 
+
+5.4.2.2
+MYSQL:
+SELECT FBirthDay,FRegDay, 
+IFNULL(FBirthDay,FRegDay)  AS ImportDay 
+FROM T_Person
+MSSQLServer:
+SELECT FBirthDay,FRegDay, 
+ISNULL(FBirthDay,FRegDay)  AS ImportDay 
+FROM T_Person
+Oracle:
+SELECT FBirthDay,FRegDay, 
+NVL(FBirthDay,FRegDay)  AS ImportDay 
+FROM T_Person
+
+5.4.2.3
+SELECT FBirthDay,FRegDay, 
+NULLIF(FBirthDay,FRegDay)
+FROM T_Person
+
+5.4.3.1
+SELECT 
+	FName,
+	(CASE FName 
+	WHEN 'Tom' THEN 'GoodBoy' 
+	WHEN 'Lily' THEN 'GoodGirl' 
+	WHEN 'Sam' THEN 'BadBoy' 
+	WHEN 'Kerry' THEN 'BadGirl'
+	ELSE 'Normal' 
+	END) as isgood
+FROM T_Person
+
+SELECT 
+	FName,
+	(CASE FLevel
+	WHEN 1 THEN 'VIP客户' 
+	WHEN 2 THEN '高级客户' 
+	WHEN 3 THEN '普通客户'
+	ELSE '客户类型错误' 
+	END) as FLevelName
+FROM T_Customer
+
+5.4.3.2
+SELECT 
+	FName,
+	FWeight,
+	(CASE
+	WHEN FWeight<40 THEN 'thin' 
+	WHEN FWeight>50 THEN 'fat' 
+	ELSE 'ok' 
+	END) as isnormal
+FROM T_Person
+
+5.5.1.1
+SELECT 
+	FName,
+	FWeight,
+	IF(FWeight>50,'太胖','正常') AS ISTooFat
+FROM T_Person
+
+5.5.1.2
+SELECT CONV('26',10,2), CONV(26,10,2),CONV('7D',16,8)
+
+SELECT FWeight,Round(FWeight),
+CONV(Round(FWeight),10,2)
+FROM T_Person
+
+SELECT FWeight,Round(FWeight),
+BIN(Round(FWeight)) as b,
+OCT(Round(FWeight)) as o,
+HEX(Round(FWeight)) as h
+FROM T_Person
+
+5.5.1.3 
+SELECT FName,LPAD(FName,5,'*'),RPAD(FName,5,'*')
+FROM T_Person
+
+5.5.1.4
+SELECT REPEAT('*',5), REPEAT('OK',3)
+
+5.5.1.5
+SELECT FName, REVERSE(FName)
+FROM T_Person
+
+5.5.1.6 
+SELECT 
+ELT(2, 'ej', 'Heja', 'hej', 'foo'),
+ELT(4, 'ej', 'Heja', 'hej', 'foo')
+
+SELECT 
+	FName,
+	ELT(FLevel, 'VIP客户', '高级客户', '普通客户')
+FROM T_Customer
+
+SELECT FIELD('vip','normal','member','vip') as f1,
+FIELD('ej', 'Hej', 'ej', 'Heja', 'hej', 'foo') as f2
+
+SELECT 
+	FName,
+	FIELD(FCustomerTypeName, 'VIP', '会员', '普通客户')
+FROM T_Customer
+
+SELECT FIND_IN_SET('b','a,b,c,d') as f1,
+FIND_IN_SET('d','a,b,c,d') as f2,
+FIND_IN_SET('w','a,b,c,d') as f3
+
+5.5.1.7
+SELECT GREATEST(2,7,1,8,30,4,3,99,2,222,12),
+LEAST(2,7,1,8,30,4,3,99,2,222,12)
+
+5.5.1.8
+SELECT DATABASE(),VERSION(),USER()
+
+SELECT FName,
+Length(ENCODE(FName,'aha')),
+DECODE(ENCODE(FName,'aha'),'aha') 
+FROM T_Person
+
+5.5.2.1
+SELECT FName,PATINDEX('%_m%',FName)
+FROM T_Person
+
+5.5.2.2
+SELECT FName,FWeight,
+CAST(FWeight/20 AS INT),
+REPLICATE(FName, CAST(FWeight/20 AS INT))
+FROM T_Person
+
+5.5.2.3
+SELECT FName, REVERSE(FName)
+FROM T_Person
+
+5.5.2.4
+SELECT 
+ISDATE(NULL) as d1,
+ISDATE('13/43/3425') as d2,
+ISDATE('1995-10-1a') as d3,
+ISDATE(19920808) as d4,
+ISDATE('1/23/95') as d5,
+ISDATE('1995-10-1') as d6,
+ISDATE('19920808') as d7,
+ISDATE(' Abc') as d8
+
+5.5.2.5 
+SELECT 
+ISNUMERIC(NULL) as d1,
+ISNUMERIC('13/43/3425') as d2,
+ISNUMERIC('30a.8') as d3,
+ISNUMERIC(19920808) as d4,
+ISNUMERIC('1/23/95') as d5,
+ISNUMERIC('3E-3') as d6,
+ISNUMERIC('19920808') as d7,
+ISNUMERIC('-30.3') as d8
+
+5.5.2.6
+SELECT APP_NAME() as appname,
+CURRENT_USER as cu,
+HOST_NAME() as hostname
+
+SELECT NEWID() AS id1,
+NEWID() AS id2
+
+5.5.3.1
+SELECT FName,
+LPAD(FName,5,'*'),
+RPAD(FName,5,'#')
+FROM T_Person
+
+5.5.3.2
+SELECT FName,FBirthDay, 
+LAST_DAY(FBirthDay) 
+FROM T_Person
+WHERE FBirthDay IS NOT NULL
+
+5.5.3.3
+SELECT GREATEST(2,7,1,8,30,4,5566,99,2,222,12),
+LEAST(2,7,1,8,30,4,3,99,-2,222,12)
+FROM DUAL
+
+5.5.3.4
+SELECT USER
+FROM DUAL
+
+SELECT USERENV('ISDBA') AS ISDBA,
+USERENV('LANGUAGE') AS LANGUAGE,
+USERENV('LANG') AS LANG
+
+DROP TABLE T_Person
+
+
+
