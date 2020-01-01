@@ -1,0 +1,605 @@
+第四章开头部分
+MYSQL:
+CREATE TABLE T_Employee (FNumber VARCHAR(20),FName VARCHAR(20),FAge INT,FSalary DECIMAL(10,2),PRIMARY KEY (FNumber))
+MSSQLServer:
+CREATE TABLE T_Employee (FNumber VARCHAR(20),FName VARCHAR(20),FAge INT,FSalary NUMERIC(10,2),PRIMARY KEY (FNumber))
+Oracle:
+CREATE TABLE T_Employee (FNumber VARCHAR2(20),FName VARCHAR2(20),FAge NUMBER (10),FSalary NUMERIC(10,2),PRIMARY KEY (FNumber))
+DB2:
+CREATE TABLE T_Employee (FNumber VARCHAR(20) NOT NULL,FName VARCHAR(20),FAge INT,FSalary DECIMAL(10,2),PRIMARY KEY (FNumber))
+
+INSERT INTO T_Employee(FNumber,FName,FAge,FSalary) VALUES('DEV001','Tom',25,8300);
+INSERT INTO T_Employee(FNumber,FName,FAge,FSalary) VALUES('DEV002','Jerry',28,2300.80);
+INSERT INTO T_Employee(FNumber,FName,FAge,FSalary) VALUES('SALES001','John',23,5000);
+INSERT INTO T_Employee(FNumber,FName,FAge,FSalary) VALUES('SALES002','Kerry',28,6200);
+INSERT INTO T_Employee(FNumber,FName,FAge,FSalary) VALUES('SALES003','Stone',22,1200);
+INSERT INTO T_Employee(FNumber,FName,FAge,FSalary) VALUES('HR001','Jane',23,2200.88);
+INSERT INTO T_Employee(FNumber,FName,FAge,FSalary) VALUES('HR002','Tina',25,5200.36);
+INSERT INTO T_Employee(FNumber,FName,FAge,FSalary) VALUES('IT001','Smith',28,3900);
+
+4.1.1
+SELECT * FROM T_Employee
+
+4.1.2
+SELECT FNumber FROM T_Employee
+SELECT FName,FAge FROM T_Employee
+SELECT FNumber,FName,FAge,FSalary FROM T_Employee
+
+4.1.3
+SELECT FNumber AS Number1,FName AS Name,FAge AS Age,FSalary AS Salary FROM T_Employee
+SELECT FNumber Number1,FName Name,FAge Age,FSalary Salary FROM T_Employee
+SELECT FNumber 工号,FName 姓名,FAge 年龄,FSalary 工资 FROM T_Employee
+
+4.1.4
+SELECT FName FROM T_Employee
+WHERE FSalary<5000
+
+SELECT * FROM T_Employee
+WHERE FSalary<5000 OR FAge>25
+
+4.1.5
+SELECT MAX(FSalary) FROM T_Employee 
+WHERE FAge>25
+
+SELECT MAX(FSalary) as MAX_SALARY FROM T_Employee 
+WHERE FAge>25
+
+SELECT AVG(FAge) FROM  T_Employee
+WHERE FSalary>3800
+
+SELECT SUM(FSalary) FROM  T_Employee
+
+SELECT MIN(FSalary),MAX(FSalary) FROM  T_Employee
+
+SELECT COUNT(*),COUNT(FNumber) FROM  T_Employee
+
+INSERT INTO T_Employee(FNumber,FAge,FSalary) VALUES('IT002',27,2800)
+SELECT COUNT(*),COUNT(FNumber),COUNT(FName) FROM  T_Employee
+
+4.1.6
+SELECT * FROM  T_Employee 
+ORDER BY FAge ASC
+
+SELECT * FROM  T_Employee 
+ORDER BY FAge
+
+SELECT * FROM  T_Employee 
+ORDER BY FAge DESC
+
+SELECT * FROM  T_Employee 
+ORDER BY FAge DESC,FSalary DESC
+
+SELECT * FROM T_Employee 
+ORDER BY FAge DESC,FSalary DESC
+WHERE FAge>23
+
+SELECT * FROM T_Employee 
+WHERE FAge>23
+ORDER BY FAge DESC,FSalary DESC
+
+4.2.1.1 
+SELECT * FROM T_Employee 
+WHERE FName LIKE '_erry'
+
+SELECT * FROM T_Employee 
+WHERE FName LIKE '__n_'
+
+4.2.1.2
+SELECT * FROM T_Employee 
+WHERE FName LIKE 'T%'
+
+SELECT * FROM T_Employee 
+WHERE FName LIKE '%n%'
+
+SELECT * FROM T_Employee 
+WHERE FName LIKE '%n_'
+
+4.2.1.3
+SELECT * FROM T_Employee 
+WHERE FName LIKE '[SJ]%'
+
+SELECT * FROM T_Employee 
+WHERE FName LIKE '[^SJ]%'
+
+
+SELECT * FROM T_Employee 
+WHERE FName LIKE 'S%' OR FName LIKE 'J%'
+
+
+SELECT * FROM T_Employee 
+WHERE NOT(FName LIKE 'S%') AND NOT(FName LIKE 'J%')
+
+4.2.2
+SELECT * FROM T_Employee 
+WHERE FNAME=null
+
+SELECT * FROM T_Employee 
+WHERE FNAME IS NULL
+
+SELECT * FROM T_Employee 
+WHERE FNAME IS NOT NULL
+SELECT * FROM T_Employee 
+WHERE FNAME IS NOT NULL AND FSalary <5000
+
+4.2.3
+SELECT * FROM T_Employee 
+WHERE FAge!=22 AND FSALARY!<2000
+
+SELECT * FROM T_Employee 
+WHERE FAge<>22 AND FSALARY>=2000
+
+SELECT * FROM T_Employee 
+WHERE NOT(FAge=22) AND NOT(FSALARY<2000)	
+
+4.2.4 
+SELECT FAge,FNumber,FName FROM T_Employee 
+WHERE FAge=23 OR FAge=25 OR FAge=28
+
+
+SELECT FAge,FNumber,FName FROM T_Employee 
+WHERE FAge=21 OR FAge=22 OR FAge=25 
+OR FAge=28 OR FAge=30 OR FAge=33 
+OR FAge=35 OR FAge=38 OR FAge=46
+
+SELECT FAge,FNumber,FName FROM T_Employee 
+WHERE FAge IN (23,25,28)
+
+4.2.5
+SELECT * FROM T_Employee
+WHERE FAGE IN(23,24,25,26,27)
+
+SELECT * FROM T_Employee
+WHERE FAGE>=23 AND FAGE <=27
+
+SELECT * FROM T_Employee
+WHERE FAGE BETWEEN 23 AND 27
+
+33、
+SELECT * FROM T_Employee
+WHERE (FSalary BETWEEN 2000 AND 3000) 
+OR (FSalary BETWEEN 5000 AND 8000)
+
+4.2.6
+SELECT * FROM T_Employee
+WHERE FNumber BETWEEN 'DEV001' AND 'DEV008'
+AND FName LIKE '%J%'
+AND FSalary BETWEEN 3000 AND 6000 
+
+
+SELECT * FROM T_Employee
+WHERE FNumber BETWEEN 'DEV001' AND 'DEV008'
+AND FSalary BETWEEN 3000 AND 6000 
+
+SELECT * FROM T_Employee
+
+SELECT * FROM T_Employee WHERE 1=1
+AND FNumber BETWEEN 'DEV001' AND 'DEV008'
+AND FSalary BETWEEN 3000 AND 6000 
+
+
+SELECT * FROM T_Employee WHERE 1=1
+
+4.3
+SELECT COUNT(*) FROM T_Employee
+WHERE FAge=23
+
+MYSQL,MSSQLServer,DB2:
+ALTER TABLE T_Employee ADD FSubCompany VARCHAR(20);
+ALTER TABLE T_Employee ADD FDepartment VARCHAR(20);
+Oracle:
+ALTER TABLE T_Employee ADD FSubCompany VARCHAR2(20);
+ALTER TABLE T_Employee ADD FDepartment VARCHAR2(20);
+
+UPDATE T_Employee SET FSubCompany='Beijing',FDepartment='Development' 
+WHERE FNumber='DEV001';
+UPDATE T_Employee SET FSubCompany='ShenZhen',FDepartment='Development' 
+WHERE FNumber='DEV002';
+UPDATE T_Employee SET FSubCompany='Beijing',FDepartment='HumanResource' 
+WHERE FNumber='HR001';
+UPDATE T_Employee SET FSubCompany='Beijing',FDepartment='HumanResource' 
+WHERE FNumber='HR002';
+UPDATE T_Employee SET FSubCompany='Beijing',FDepartment='InfoTech' 
+WHERE FNumber='IT001';
+UPDATE T_Employee SET FSubCompany='ShenZhen',FDepartment='InfoTech' 
+WHERE FNumber='IT002';
+UPDATE T_Employee SET FSubCompany='Beijing',FDepartment='Sales' 
+WHERE FNumber='SALES001';
+UPDATE T_Employee SET FSubCompany='Beijing',FDepartment='Sales'  
+WHERE FNumber='SALES002';
+UPDATE T_Employee SET FSubCompany='ShenZhen',FDepartment='Sales'  
+WHERE FNumber='SALES003';
+
+4.3.1
+SELECT FAge FROM T_Employee
+GROUP BY FAge
+
+SELECT FAge FROM T_Employee
+GROUP BY FAge
+WHERE FSubCompany = 'Beijing'
+
+SELECT FAge FROM T_Employee
+WHERE FSubCompany = 'Beijing'
+GROUP BY FAge
+
+SELECT FAge,FSalary FROM T_Employee
+GROUP BY FAge
+
+SELECT FAge,AVG(FSalary) FROM T_Employee
+GROUP BY FAge
+
+SELECT FSubCompany,FDepartment FROM T_Employee
+GROUP BY FSubCompany,FDepartment
+
+4.3.2 
+SELECT FAge,COUNT(*) AS CountOfThisAge FROM T_Employee
+GROUP BY FAge
+
+SELECT FSubCompany,FAge,COUNT(*) AS CountOfThisSubCompAge FROM T_Employee
+GROUP BY FSubCompany,FAge
+
+SELECT FSubCompany,FAge,COUNT(*) AS CountOfThisSubCompAge FROM T_Employee
+GROUP BY FSubCompany,FAge
+ORDER BY FSubCompany
+
+SELECT FSubCompany,SUM(FSalary) AS FSalarySUM FROM T_Employee
+GROUP BY FSubCompany
+
+SELECT FDepartment,SUM(FSalary) AS FSalarySUM FROM T_Employee
+GROUP BY FDepartment
+
+SELECT FDepartment,MIN(FAge) AS FAgeMIN,MAX(FAge) AS FAgeMAX FROM T_Employee
+GROUP BY FDepartment
+
+4.3.3
+SELECT FAge,COUNT(*) AS CountOfThisAge FROM T_Employee
+GROUP BY FAge
+WHERE COUNT(*)>1
+
+SELECT FAge,COUNT(*) AS CountOfThisAge FROM T_Employee
+GROUP BY FAge
+HAVING COUNT(*)>1
+
+SELECT FAge,COUNT(*) AS CountOfThisAge FROM T_Employee
+GROUP BY FAge
+HAVING COUNT(*) =1 OR COUNT(*) =3
+
+SELECT FAge,COUNT(*) AS CountOfThisAge FROM T_Employee
+GROUP BY FAge
+HAVING COUNT(*) IN (1,3)
+
+SELECT FAge,COUNT(*) AS CountOfThisAge FROM T_Employee
+HAVING COUNT(*) IN (1,3)
+GROUP BY FAge
+
+SELECT FAge,COUNT(*) AS CountOfThisAge FROM T_Employee
+GROUP BY FAge
+HAVING FName IS NOT NULL
+
+SELECT FAge,COUNT(*) AS CountOfThisAge FROM T_Employee
+WHERE FName IS NOT NULL
+GROUP BY FAge
+
+4.4.1
+SELECT * FROM T_Employee ORDER BY FSalary DESC LIMIT 2,5
+SELECT * FROM T_Employee ORDER BY FSalary DESC LIMIT 0,5
+
+4.4.2
+select top 5 * from T_Employee order by FSalary Desc
+45、
+SELECT top 3 * FROM T_Employee
+WHERE FNumber NOT IN
+(SELECT TOP 5 FNumber FROM T_Employee ORDER BY FSalary DESC)
+ ORDER BY FSalary DESC 
+
+4.4.3
+SELECT ROW_NUMBER() OVER(ORDER BY FSalary),FNumber,FName,FSalary,FAge
+FROM T_Employee
+
+SELECT ROW_NUMBER() OVER(ORDER BY FSalary DESC),FNumber,FName,FSalary,FAge
+FROM T_Employee
+WHERE (ROW_NUMBER() OVER(ORDER BY FSalary DESC))>=3 
+AND (ROW_NUMBER() OVER(ORDER BY FSalary DESC))<=5
+
+4.4.4
+SELECT * FROM
+(
+SELECT ROW_NUMBER() OVER(ORDER BY FSalary DESC) AS rownum,
+FNumber,FName,FSalary,FAge FROM T_Employee
+) AS a
+WHERE a.rownum>=3 AND a.rownum<=5
+
+4.4.5
+SELECT * FROM
+(
+SELECT ROW_NUMBER() OVER(ORDER BY FSalary DESC) row_num,
+FNumber,FName,FSalary,FAge FROM T_Employee
+) a
+WHERE a.row_num>=3 AND a.row_num<=5
+
+SELECT rownum,FNumber,FName,FSalary,FAge FROM T_Employee
+SELECT * FROM T_Employee
+WHERE rownum<=6
+ORDER BY FSalary Desc
+
+SELECT rownum,FNumber,FName,FSalary,FAge FROM T_Employee
+WHERE rownum BETWEEN 3 AND 5
+ORDER BY FSalary DESC
+
+SELECT * FROM T_Employee
+WHERE rownum<=6
+ORDER BY FSalary Desc
+
+SELECT rownum,FNumber,FName,FSalary,FAge FROM T_Employee
+WHERE rownum BETWEEN 3 AND 5
+ORDER BY FSalary DESC
+
+SELECT * FROM
+(
+SELECT ROW_NUMBER() OVER(ORDER BY FSalary DESC) row_num,
+FNumber,FName,FSalary,FAge FROM T_Employee
+) a
+WHERE a.row_num>=3 AND a.row_num<=5
+
+SELECT * FROM T_Employee
+ORDER BY FSalary Desc
+FETCH FIRST 6 ROWS ONLY
+
+SELECT * FROM T_Employee
+WHERE FNumber NOT IN
+(
+SELECT FNumber FROM T_Employee
+ORDER BY FSalary DESC
+FETCH FIRST 5 ROWS ONLY
+)
+ORDER BY FSalary DESC 
+FETCH FIRST 3 ROWS ONLY
+
+4.5
+SELECT FDepartment FROM T_Employee
+
+SELECT DISTINCT FDepartment FROM T_Employee
+
+SELECT DISTINCT FDepartment,FSubCompany FROM T_Employee
+
+4.6.1
+SELECT 'CowNew集团',918000000,FName,FAge,FSubCompany FROM T_Employee
+
+SELECT 'CowNew集团' AS CompanyName,918000000 AS RegAmount,FName,FAge,FSubCompany 
+FROM T_Employee
+
+4.6.2
+SELECT FNumber,FName,FAge * FSalary FROM T_Employee  
+SELECT FNumber,FName,FAge * FSalary AS FSalaryIndex FROM T_Employee
+SELECT 125+521,FNumber,FName,FSalary/(FAge-21) AS FHappyIndex 
+FROM T_Employee
+
+SELECT * FROM T_Employee
+WHERE FSalary/(FAge-21)>1000
+
+4.6.3
+MYSQL、Oracle、DB2：
+SELECT FName, LENGTH(FName)  AS namelength FROM T_Employee 
+WHERE FName IS NOT  NULL
+MSSQLServer：
+SELECT FName, LEN(FName)  AS namelength FROM T_Employee 
+WHERE FName IS NOT  NULL 
+
+MYSQL、MSSQLServer：
+SELECT FName, SUBSTRING(FName,2,3)  FROM T_Employee 
+WHERE FName IS NOT NULL
+Oracle、DB2：
+SELECT FName, SUBSTR(FName,2,3)  FROM T_Employee
+WHERE FName IS NOT NULL 
+
+SELECT FName,FAge, SIN(FAge) , ABS(SIN(FAge)) FROM T_Employee
+
+4.6.4.1
+SELECT '12'+'33',FAge+'1' FROM T_Employee
+SELECT 'abc'+'123',FAge+'a' FROM T_Employee
+SELECT CONCAT('工号为:',FNumber,'的员工的幸福指数:',FSalary/(FAge-21)) FROM T_Employee
+SELECT CONCAT_WS(',',FNumber,FAge,FDepartment,FSalary) FROM T_Employee
+
+4.6.4.2
+SELECT '工号为'+FNumber+'的员工姓名为'+Fname FROM T_Employee
+WHERE FName IS NOT NULL
+
+4.6.4.3
+SELECT '工号为'||FNumber||'的员工姓名为'||FName FROM T_Employee
+WHERE FName IS NOT NULL
+
+SELECT CONCAT('工号:',FNumber) FROM T_Employee
+
+SELECT CONCAT('年龄:',FAge) FROM T_Employee
+
+SELECT CONCAT('工号为',FNumber,'的员工姓名为',FName) FROM T_Employee
+WHERE FName IS NOT NULL
+
+
+SELECT CONCAT(CONCAT(CONCAT('工号为',FNumber),'的员工姓名为'),FName) FROM T_Employee
+WHERE FName IS NOT NULL
+
+4.6.4.4
+SELECT '工号为'||FNumber||'的员工姓名为'||FName FROM T_Employee
+WHERE FName IS NOT NULL
+
+SELECT CONCAT('工号:',FNumber) FROM T_Employee
+
+SELECT CONCAT('年龄:',FAge) FROM T_Employee
+
+SELECT CONCAT('工号为',FNumber,'的员工姓名为',FName) FROM T_Employee
+WHERE FName IS NOT NULL
+
+SELECT CONCAT(CONCAT(CONCAT('工号为',FNumber),'的员工姓名为'),FName) FROM T_Employee
+WHERE FName IS NOT NULL
+
+4.6.5.1
+SELECT * FROM T_Employee 
+WHERE Fsalary BETWEEN Fage*1.5+2000 AND Fage*1.8+5000
+
+4.6.5.2
+SELECT MAX(FSalary/FAge) AS MAXVALUE,MIN(FSalary/FAge) AS MINVALUE 
+FROM T_Employee
+
+4.6.5.3
+UPDATE T_Employee SET FAge=FAge+1
+
+4.7
+SELECT 1 FROM T_Employee
+SELECT DISTINCT 1 FROM T_Employee
+
+SELECT 1	
+
+MYSQL:
+SELECT LENGTH('abc')
+MSSQLServer:
+SELECT LEN('abc') 
+
+SELECT 1,2,3,'a','b','c'
+
+SELECT 1, LENGTH('abc')  FROM DUAL 
+
+SELECT 1, LENGTH('abc')  FROM SYSIBM.SYSDUMMY1 
+
+4.8
+MYSQL:
+CREATE TABLE T_TempEmployee (FIdCardNumber VARCHAR(20),FName VARCHAR(20),FAge INT ,PRIMARY KEY (FIdCardNumber))
+MSSQLServer:
+CREATE TABLE T_TempEmployee (FIdCardNumber VARCHAR(20),FName VARCHAR(20),FAge INT, PRIMARY KEY (FIdCardNumber))
+Oracle:
+CREATE TABLE T_TempEmployee (FIdCardNumber VARCHAR2(20),FName VARCHAR2(20),FAge NUMBER (10), PRIMARY KEY (FIdCardNumber))
+DB2：
+CREATE TABLE T_TempEmployee (FIdCardNumber VARCHAR(20) Not NULL,FName VARCHAR(20),FAge INT, PRIMARY KEY (FIdCardNumber))
+
+
+INSERT INTO T_TempEmployee(FIdCardNumber,FName,FAge) VALUES('1234567890121','Sarani',33);
+INSERT INTO T_TempEmployee(FIdCardNumber,FName,FAge) VALUES('1234567890122','Tom',26);
+INSERT INTO T_TempEmployee(FIdCardNumber,FName,FAge) VALUES('1234567890123','Yalaha',38);
+INSERT INTO T_TempEmployee(FIdCardNumber,FName,FAge) VALUES('1234567890124','Tina',26);
+INSERT INTO T_TempEmployee(FIdCardNumber,FName,FAge) VALUES('1234567890125','Konkaya',29);
+INSERT INTO T_TempEmployee(FIdCardNumber,FName,FAge) VALUES('1234567890126','Fotifa',46);	
+
+
+4.8.1
+SELECT FNumber,FName,FAge FROM T_Employee
+
+SELECT FIdCardNumber,FName,FAge FROM T_TempEmployee
+
+SELECT FNumber,FName,FAge FROM T_Employee
+UNION
+SELECT FIdCardNumber,FName,FAge FROM T_TempEmployee
+
+
+SELECT FNumber,FName,FAge FROM T_Employee
+WHERE FAge<30
+UNION
+SELECT FIdCardNumber,FName,FAge FROM T_TempEmployee
+WHERE FAge>40
+UNION
+SELECT FIdCardNumber,FName,FAge FROM T_TempEmployee
+WHERE FAge<30
+
+4.8.2
+SELECT FNumber,FName,FAge,FDepartment FROM T_Employee
+UNION
+SELECT FIdCardNumber,FName,FAge FROM T_TempEmployee
+
+SELECT FNumber,FName,FAge,FDepartment FROM T_Employee
+UNION
+SELECT FIdCardNumber,FName,FAge,'临时工，不属于任何一个部门' FROM T_TempEmployee
+
+SELECT FIdCardNumber,FAge,FName FROM T_TempEmployee
+UNION
+SELECT FNumber,FName,FAge FROM T_Employee
+
+4.8.3
+SELECT FName,FAge FROM T_Employee
+UNION
+SELECT FName,FAge FROM T_TempEmployee
+
+SELECT FName,FAge FROM T_Employee
+UNION ALL
+SELECT FName,FAge FROM T_TempEmployee
+
+4.8.4.1 
+SELECT '正式员工最高年龄',MAX(FAge) FROM T_Employee
+UNION
+SELECT '正式员工最低年龄',MIN(FAge) FROM T_Employee
+UNION
+SELECT '临时工最高年龄',MAX(FAge) FROM T_TempEmployee
+UNION
+SELECT '临时工最低年龄',MIN(FAge) FROM T_TempEmployee
+
+4.8.4.2
+SELECT FNumber,FSalary FROM T_Employee
+UNION
+SELECT '工资合计',SUM(FSalary) FROM T_Employee
+
+4.8.4.3
+MYSQL、MSSQLServer：
+SELECT 1,1 * 1 
+UNION 
+SELECT 2,2 * 2 
+UNION 
+SELECT 3,3 * 3 
+UNION 
+SELECT 4,4 * 4 
+UNION 
+SELECT 5,5 * 5
+
+Oracle：
+SELECT 1,1 * 1 FROM DUAL 
+UNION 
+SELECT 2,2 * 2 FROM DUAL 
+UNION 
+SELECT 3,3 * 3 FROM DUAL 
+UNION 
+SELECT 4,4 * 4 FROM DUAL 
+UNION 
+SELECT 5,5 * 5 FROM DUAL
+
+DB2:
+SELECT 1,1 * 1 FROM SYSIBM.SYSDUMMY1 
+UNION 
+SELECT 2,2 * 2 FROM SYSIBM.SYSDUMMY1 
+UNION 
+SELECT 3,3 * 3 FROM SYSIBM.SYSDUMMY1 
+UNION 
+SELECT 4,4 * 4 FROM SYSIBM.SYSDUMMY1 
+UNION 
+SELECT 5,5 * 5 FROM SYSIBM.SYSDUMMY1
+
+4.8.4.4
+SELECT FName FROM T_Employee
+UNION
+SELECT FName FROM T_TempEmployee
+
+4.8.4.5
+MYSQL、MSSQLServer：
+SELECT '以下是正式员工的姓名' 
+UNION ALL 
+SELECT FName FROM T_Employee 
+UNION ALL 
+SELECT '以下是临时工的姓名' 
+UNION ALL 
+SELECT FName FROM T_TempEmployee
+
+Oracle：
+SELECT '以下是正式员工的姓名' FROM DUAL 
+UNION ALL 
+SELECT FName FROM T_Employee 
+UNION ALL 
+SELECT '以下是临时工的姓名' FROM DUAL 
+UNION ALL 
+SELECT FName FROM T_TempEmployee
+
+DB2：
+SELECT '以下是正式员工的姓名' FROM SYSIBM.SYSDUMMY1 
+UNION ALL 
+SELECT FName FROM T_Employee 
+UNION ALL 
+SELECT '以下是临时工的姓名' FROM SYSIBM.SYSDUMMY1 
+UNION ALL 
+SELECT FName FROM T_TempEmployee
+
+Drop TABLE T_Employee;
+Drop TABLE T_TempEmployee;

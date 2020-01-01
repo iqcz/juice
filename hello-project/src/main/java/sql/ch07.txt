@@ -1,0 +1,223 @@
+≥ı ºªØ
+MYSQL,MSSQLServer,DB2:
+CREATE TABLE T_Customer (FId INT NOT NULL ,FName VARCHAR(20) NOT NULL ,
+FAge INT,PRIMARY KEY (FId))
+Oracle:
+CREATE TABLE T_Customer (FId NUMBER (10) NOT NULL ,
+FName VARCHAR2(20) NOT NULL ,FAge NUMBER (10),PRIMARY KEY (FId))
+
+MYSQL,MSSQLServer,DB2:
+CREATE TABLE T_OrderType (FId INT NOT NULL ,FName VARCHAR(20) NOT NULL,
+PRIMARY KEY (FId))
+Oracle:
+CREATE TABLE T_OrderType (FId NUMBER (10) NOT NULL ,
+FName VARCHAR2(20) NOT NULL,PRIMARY KEY (FId))
+
+MYSQL,DB2:
+CREATE TABLE T_Order (FId INT NOT NULL ,FNumber VARCHAR(20) NOT NULL ,
+FPrice DECIMAL(10,2),FCustomerId INT,FTypeId INT,PRIMARY KEY (FId))
+MSSQLServer:
+CREATE TABLE T_Order (FId INT NOT NULL ,FNumber VARCHAR(20) NOT NULL ,
+FPrice NUMERIC(10,2),FCustomerId INT, FTypeId INT,PRIMARY KEY (FId))
+Oracle:
+CREATE TABLE T_Order (FId NUMBER (10) NOT NULL ,
+FNumber VARCHAR2(20) NOT NULL ,FPrice NUMERIC(10,2),
+FCustomerId NUMBER (10), FTypeId INT,PRIMARY KEY (FId))
+
+INSERT INTO T_Customer(FId,FName,FAge)
+VALUES(1,'TOM',21);
+INSERT INTO T_Customer(FId,FName,FAge)
+VALUES(2,'MIKE',24);
+INSERT INTO T_Customer(FId,FName,FAge)
+VALUES(3,'JACK',30);
+INSERT INTO T_Customer(FId,FName,FAge)
+VALUES(4,'TOM',25);
+INSERT INTO T_Customer(FId,FName,FAge)
+VALUES(5,'LINDA',NULL);
+
+INSERT INTO T_OrderType(FId,FName)
+VALUES(1,'MarketOrder');
+INSERT INTO T_OrderType(FId,FName)
+VALUES(2,'LimitOrder');
+INSERT INTO T_OrderType(FId,FName)
+VALUES(3,'Stop Order');
+INSERT INTO T_OrderType(FId,FName)
+VALUES(4,'StopLimit Order');
+
+INSERT INTO T_Order(FId,FNumber,FPrice,FCustomerId, FTypeId)
+VALUES(1,'K001',100,1,1);
+INSERT INTO T_Order(FId,FNumber,FPrice,FCustomerId, FTypeId)
+VALUES(2,'K002',200,1,1);
+INSERT INTO T_Order(FId,FNumber,FPrice,FCustomerId, FTypeId)
+VALUES(3,'T003',300,1,2);
+INSERT INTO T_Order(FId,FNumber,FPrice,FCustomerId, FTypeId)
+VALUES(4,'N002',100,2,2);
+INSERT INTO T_Order(FId,FNumber,FPrice,FCustomerId, FTypeId)
+VALUES(5,'N003',500,3,4);
+INSERT INTO T_Order(FId,FNumber,FPrice,FCustomerId, FTypeId)
+VALUES(6,'T001',300,4,3);
+INSERT INTO T_Order(FId,FNumber,FPrice,FCustomerId, FTypeId)
+VALUES(7,'T002',100,NULL,1);
+
+7.1
+SELECT FId
+FROM T_Customer
+WHERE FName='MIKE'
+
+SELECT FNumber,FPrice
+FROM T_Order
+WHERE FCustomerId=2
+
+7.2
+SELECT FNumber,FPrice
+FROM T_Order INNER JOIN T_Customer
+ON FCustomerId= T_Customer.FId
+WHERE T_Customer.FName='TOM'
+
+SELECT FNumber,FPrice
+FROM T_Order INNER JOIN T_Customer
+ON FCustomerId= FId
+WHERE T_Customer.FName='TOM'
+
+SELECT FId,FNumber,FPrice
+FROM T_Order INNER JOIN T_Customer
+ON FCustomerId= T_Customer.FId
+WHERE T_Customer.FName='TOM'
+
+SELECT T_Order.FId,FNumber,FPrice
+FROM T_Order INNER JOIN T_Customer
+ON FCustomerId= T_Customer.FId
+WHERE T_Customer.FName='TOM'
+
+SELECT T_Order.FId,T_Order.FNumber,T_Order.FPrice
+FROM T_Order INNER JOIN T_Customer
+ON T_Order.FCustomerId= T_Customer.FId
+WHERE T_Customer.FName='TOM'
+
+SELECT T_Order.FId,T_Order.FNumber,T_Order.FPrice,
+T_Customer.FId,T_Customer.FName,T_Customer.FAge
+FROM T_Order INNER JOIN T_Customer
+ON T_Order.FCustomerId= T_Customer.FId
+
+SELECT T_Order.FId,T_Order.FNumber,T_Order.FPrice,
+T_Customer.FId,T_Customer.FName,T_Customer.FAge
+FROM T_Order JOIN T_Customer
+ON T_Order.FCustomerId= T_Customer.FId
+
+SELECT o.FId,o.FNumber,o.FPrice,
+c.FId,c.FName,c .FAge
+FROM T_Order o JOIN T_Customer c
+ON o.FCustomerId= c.FId
+
+7.3
+SELECT T_Order.FNumber,T_Order.FPrice,
+T_Customer.FName,T_Customer.FAge
+FROM T_Order 
+INNER JOIN T_Customer
+ON T_Order.FPrice< T_Customer.FAge*5
+
+SELECT T_Order.FNumber,T_Order.FPrice,
+T_Customer.FName,T_Customer.FAge
+FROM T_Order 
+INNER JOIN T_Customer
+ON T_Order.FPrice< T_Customer.FAge*5 
+and T_Order.FCustomerId=T_Customer.FId
+
+7.4
+SELECT T_Customer.FId, T_Customer.FName, T_Customer.FAge,
+T_Order.FId, T_Order.FNumber, T_Order.FPrice
+FROM T_Customer, T_Order
+
+SELECT c.FId, c.FName, c.FAge,
+o.FId, o.FNumber, o.FPrice
+FROM T_Customer c, T_Order o
+
+SELECT T_Customer.FId, T_Customer.FName, T_Customer.FAge,
+T_Order.FId, T_Order.FNumber, T_Order.FPrice
+FROM T_Customer
+CROSS JOIN T_Order
+
+7.5
+SELECT FNumber,FPrice,FTypeId
+FROM T_Order
+WHERE FTypeId= FTypeId
+
+SELECT FNumber,FPrice,FTypeId
+FROM T_Order
+INNER JOIN T_Order
+ON T_Order.FTypeId=T_Order.FTypeId
+
+SELECT o1.FNumber,o1.FPrice,o1.FTypeId,
+o2.FNumber,o2.FPrice,o2.FTypeId
+FROM T_Order o1
+INNER JOIN T_Order o2
+ON o1.FTypeId=o2.FTypeId
+
+SELECT o1.FNumber,o1.FPrice,o1.FTypeId,
+o2.FNumber,o2.FPrice,o2.FTypeId
+FROM T_Order o1
+INNER JOIN T_Order o2
+ON o1.FTypeId=o2.FTypeId and o1.FId<>o2.FId
+
+SELECT o1.FNumber,o1.FPrice,o1.FTypeId,
+o2.FNumber,o2.FPrice,o2.FTypeId
+FROM T_Order o1
+INNER JOIN T_Order o2
+ON o1.FTypeId=o2.FTypeId and o1.FId<o2.FId
+
+SELECT o.FNumber,o.FPrice,o.FCustomerId,
+c.FName,c.FAge
+FROM T_Order o
+INNER JOIN T_Customer c
+ON o.FCustomerId=c.FId
+
+SELECT o.FNumber,o.FPrice,o.FCustomerId,
+c.FName,c.FAge
+FROM T_Order o
+INNER JOIN T_Customer c
+ON o.FCustomerId=c.FId
+
+7.6.1
+SELECT o.FNumber,o.FPrice,o.FCustomerId,
+c.FName,c.FAge
+FROM T_Order o
+LEFT OUTER JOIN T_Customer c
+ON o.FCustomerId=c.FId
+
+SELECT o.FNumber,o.FPrice,o.FCustomerId,
+c.FName,c.FAge
+FROM T_Order o
+LEFT OUTER JOIN T_Customer c
+ON o.FCustomerId=c.FId
+WHERE o.FPrice>=150
+
+7.6.2 
+SELECT o.FNumber,o.FPrice,o.FCustomerId,
+c.FName,c.FAge
+FROM T_Order o
+RIGHT OUTER JOIN T_Customer c
+ON o.FCustomerId=c.FId
+
+7.6.3
+SELECT o.FNumber,o.FPrice,o.FCustomerId,
+c.FName,c.FAge
+FROM T_Order o
+FULL OUTER JOIN T_Customer c
+ON o.FCustomerId=c.FId
+
+SELECT o.FNumber,o.FPrice,o.FCustomerId,
+c.FName,c.FAge
+FROM T_Order o
+LEFT OUTER JOIN T_Customer c
+ON o.FCustomerId=c.FId
+UNION
+SELECT o.FNumber,o.FPrice,o.FCustomerId,
+c.FName,c.FAge
+FROM T_Order o
+RIGHT OUTER JOIN T_Customer c
+ON o.FCustomerId=c.FId
+
+DROP TABLE T_Order;
+DROP TABLE T_OrderType;
+DROP TABLE T_Customer;
+
