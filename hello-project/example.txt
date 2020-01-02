@@ -3,4 +3,4 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 
 fi
-# 丫丫毛毛
+# 至繁归于至简。达芬奇（Leonardo Da Vinci）
